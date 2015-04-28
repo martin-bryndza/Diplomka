@@ -1,0 +1,190 @@
+\documentclass[11pt,singleside]{myfithesis2}
+\usepackage[hyphens]{url}
+\usepackage[english,slovak]{babel}  %  package  for  multilingual  support
+\usepackage[utf8]{inputenc}  %  UTF-8  encoding
+\usepackage[IL2]{fontenc}
+\usepackage[plainpages=false,pdfpagelabels,unicode]{hyperref}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage[small]{caption}
+\usepackage{float}
+\usepackage{verbatim}
+ 
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\definecolor{darkgray}{gray}{0.3}
+\definecolor{palegray}{gray}{0.85}
+
+\hyphenation{YSoft SafeQ Sikuli Soft}
+
+\lstset{
+	numbers=left,
+	backgroundcolor=\color{lbcolor},
+	tabsize=4,
+	rulecolor=,
+	language=java,
+       basicstyle=\footnotesize,
+       %basicstyle=\ttfamily,
+       upquote=true,
+       aboveskip={\baselineskip},
+       %belowskip={\baselineskip},
+       columns=fixed,
+       showstringspaces=false,
+       extendedchars=true,
+       breaklines=true,
+       prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+       frame=tb,
+       showtabs=false,
+       showspaces=false,
+       showstringspaces=false,
+       identifierstyle=\ttfamily,
+       keywordstyle=\color[rgb]{0,0,1},
+       commentstyle=\color[rgb]{0.133,0.545,0.133},
+       stringstyle=\color[rgb]{0.627,0.126,0.941},
+	emph=, emphstyle=\color{black},
+	captionpos=b,
+}
+
+
+
+\newcommand{\pict}[4]{
+	\begin{figure}[h!]
+  		\vspace{-7px}
+  		\centerline{\fcolorbox{darkgray}{palegray}{\includegraphics[#3]{#2}}}
+  		\caption{#1}
+  		\label{#4}
+	\end{figure}
+}
+
+\makeatletter
+\renewcommand\paragraph{
+   \vspace{-10pt}
+   \@startsection{paragraph}{4}{0mm}
+      {\baselineskip}
+      {- 5pt}
+      {\normalfont\normalsize\bfseries}
+}
+\makeatother
+\renewcommand\lstlistingname{Source code}
+\renewcommand\lstlistlistingname{List of source codes}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\thesistitle{Making internal communication in a software company more efficient}  %  thesis  title
+\thesissubtitle{Diploma thesis}
+\thesisstudent{Martin Bryndza}        %  name  of  the  author
+\thesiswoman{false} %  defines  author’s  gender
+\thesisfaculty{fi}
+\thesisyear{2015}
+\thesisadvisor{Mgr. Peter Neugebauer, MBA}  %  fill  in  advisor’s  name
+\thesislang{en} %  thesis  is  in  English
+\begin{document}
+\FrontMatter
+\ThesisTitlePage
+\begin{ThesisDeclaration}
+\DeclarationText
+\AdvisorName
+\end{ThesisDeclaration}
+\begin{ThesisThanks}
+I would like to thank to my supervisor Mgr. Petr Neugebauer, MBA for his valuable advices and guidance. Great thanks go to the Y Soft Corporation for giving me the opportunity to perform the unnecessary research. Many thanks also go to my colleagues from the ETNA team, who contributed to this thesis with their cooperation and willingness to try new things. These are the people who agreed to do some extra work without hesitation. I would like to send many thanks also to my colleagues from the QA team for their support in the last months of me working on this thesis. With their help I was able to have enough time for the thesis while also getting all the planned work done for each sprint. Last but not least, I would like to thank to my dear Marie for her patience with me working overnight and also to my parents for their support throughout my studies. 
+\end{ThesisThanks}
+\begin{ThesisAbstract}
+The goal of this thesis is to streamline communication between team members and to prevent loss of productivity due to frequent interruptions in a mid-size software company, where employers are dealing with adaptation of agile approaches. The thesis should analyze internal processes as well as requirements and expectations of different stakeholders regarding productivity, especially communication gaps. Based on these identified issues, the implementation part of the work will cover design and implementation of a tool, which will enforce the team members to follow the proposed process(es). This thesis is realized in cooperation with Y Soft Corporation, a.s.
+\end{ThesisAbstract}
+\begin{ThesisKeyWords}
+Agile, Communication, Teamwork.
+\end{ThesisKeyWords}
+\MainMatter
+\tableofcontents %  prints  table  of  contents
+%\listoffigures % prints list of pictures
+%\lstlistoflistings % prints list of blocks of code
+%\listoftables % prints list of tables
+
+\chapter{Introduction}
+
+\chapter{Communication in a software company}
+
+	\section{Importance of communication}
+	
+		\subsection{communication barriers}
+too little communication
+
+		\subsection{communication overload}
+too much of communication
+	
+	\section{Communication matrix}
+
+\chapter{Analysis of the current state}
+
+As an employee of Y Soft Corporation, a.s. I could define the communication patterns and customs from my point of view. However, this would certainly not be enough to propose a viable solution as there are many other aspects that are invisible for me. This chapter will give an insight on the current customs in internal communication in the company, elaborate on communication matrices and bring results of a small research.
+
+	\section{Characteristics of Y Soft Corporation, a.s.}
+In order to understand the employees, their customs and needs, first we have to look at the company itself...
+
+		\subsection{Historical background}
+The Y Soft Corporation, a.s. is a young company, which still considers itself a startup. Many of the current employees still remember the days, when the company consisted of a few people sitting in one room mostly working on the same subject. In those times...
+
+		\subsection{Current state}
+some mixture of corporation and startup
+
+R\&D in Brno consists of XY people. XY in QA, X in average in every team
+
+	\section{The nature of communication in Y Soft}
+
+		\subsection{Ad-hoc meetings inside R\&D}
+		
+		\subsection{Consultations from CSS}
+
+	\section{Unconference with Kentico software, s.r.o.}
+briefly the difference between Y Soft an Kentico in structure of R\&D + definition of their problems, ways of solving
+
+	\section{Initial research and meetings}
+Number of communication paths, amount of frequent and occasional communication
+Historical attempts (headphones, hats), time fragmentation of time of three colleagues (graphs), 
+
+	\section{Definition of issues to be solved}
+Deframent time, make inception of a consultation easier, prevent unnecessary communication
+
+\chapter{Proposed solution}
+
+	\section{The idea}
+Default state is Available, DND is available for certain period of time, users should know, when and where they can vommunicate
+	
+	\section{AnyOffice tool}
+Top level description of inner logic
+
+\chapter{Purposes and features to reach them}
+Purposes of AnyOffice with description of features, that make them possible
+
+\chapter{Results}
+Graphs from AnyOffice containing states and consultations
+
+
+\chapter{Conclusions and Future Work}
+
+\clearpage
+\phantomsection
+\markright{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}  %  sets  plain  bibliography  style
+\bibliography{diplomka} %  BibTeX  database  file
+
+
+\appendix
+
+\chapter{Some chapteri}
+
+
+
+\end{document}
