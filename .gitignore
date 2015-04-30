@@ -1,0 +1,9 @@
+*.*
+!*.tex
+!*.bib
+!data/
+!*.cls
+!*.clo
+!*.mf
+!Materials/
+!.gitignore
