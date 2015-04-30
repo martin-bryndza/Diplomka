@@ -1,9 +1,9 @@
 *.*
 !*.tex
 !*.bib
-!data/
+!data/*
 !*.cls
 !*.clo
 !*.mf
-!Materials/
+!Materials/*
 !.gitignore
