@@ -12,6 +12,7 @@
 \usepackage[small]{caption}
 \usepackage{float}
 \usepackage{verbatim}
+\usepackage{pdfpages}
  
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
@@ -115,15 +116,60 @@ Agile, Communication, Teamwork.
 
 \chapter{Effective Work}
 
+This chapter will give you an insight on what an interruption means to a programmer. The reasoning will be supported with a few researches bringing interesting results of the real cost of interruptions. In the second part you can find a short summary of The Pomodoro Technique, which can help reducing interruptions and boosting up productivity. The part also contains a list of objectives, that are necessary in order to implement the technique into your work customs.
+
 	\section{The Cost of Interruptions}
-Two - three studies on interuptions and their impact on work effectivity, stress level, workload, frustration and time pressure.
+Interruptions are a big source of inefficiency for everybody, but especially programmers, as it is more difficult for then to start where they finished prior to the interruption.
+
+		\subsection{What It Means To Interrupt a Programmer}
+In a company, there are position, for which interruptions are just a normal part of a day. Sometimes, interruptions is what their work is mostly based on. A nice representation of this group are managers, who constantly change focus throughout the day. Their time is usually spit up in one hour intervals, each of them containing a single task. Likewise, if we take people from marketing. An interruption for them means time spent dealing with the interruption and a few seconds more to find out where they had finished. For programmers, it is much more different.
+
+A comic made by Jason Heeris, which you can find in the Appendix on page \pageref{app:programmer},  is probably the best way to give you an idea about what it means for a programmer to be interrupted.
+
+Erik Dietrich in an article on his blog \cite{costOfInterruptions} provides a simple way of showing, what it means for a developer to be interrupted:\newline
+Write down a series of 3 to 4 digit numbers in sequence. Now, tell the person to add those numbers as fast as possible without writing anything down. After some time ask the person questions about how he is doing, what number he/she is on, whether it is 198 or 674 and get him/her to respond. Ask him to help you with adding some other three numbers real quick. Moreover, you can pretend a phone call in the vicinity of the person, talking about some numbers. When he/she is done, check the result and ask, how many times a fresh start was necessary. Several experiments showed, that usually the examinee had to start over several times and also did not get the correct result.
+
+		\subsection{The Real Cost of Interruptions }
+Several studies have been done on interruptions and their impact on work. Various measures have been done including context of the interruptions, their frequency, impact on work effectiveness, stress level, workload and effort. Other studies focus on the amount of productivity time wasted by these interruptions. In this section I will mention several of these studies.
+
+\paragraph*{More Speed and Stress: } The study \cite{studySpeedAndStress} was performed on people answering to emails in their inbox as quickly, correctly and politely as possible. They were told that their ``supervisor'' sitting in another room will contact them regularly to ask questions either over telephone or IM. The results of the study show, that when people are constantly interrupted, they develop a mode of working faster and producing less, to compensate for the time lost by the interruptions. But this faster pace of work has its cost: higher workload and frustration, more stress, effort and time pressure. In conclusion, when being interrupted, the work can be done faster, but at a price. This study also shows that the context of the interruption to the currently performed task makes no difference or very little different. Table \ref{table:workload} shows the measures stated.
+\paragraph*{The Cost of Not Paying Attention: } This study \cite{studyAttention} is focusing on the amount of time that interruptions waste. Data were gathered by observers in real offices, where these observers noted every single change of action of a knowledge worker\footnote{A knowledge worker is anyone who works for a living at the tasks of developing or using knowledge. \cite{knowledgeWorker}}. Their findings are that interruptions consume 28 \% of the knowledge worker's day. Not all of these interruptions are unnecessary and considered as a waste of time. For example helping a co-worker in a business-related matter is recognized as beneficial to the company's well being. Nevertheless, combining the unnecessary interruptions and the time needed to switch context results in 503.52 hours per employee per year. The study also mentions common ways of how workers fight constant interruptions in order to get their work done. Some of them are:
+\begin{itemize}
+	\item refuse eye contact;
+	\item post sign;
+	\item work when no one else is around;
+	\item relocate to another office or conference room;
+	\item work from home;
+	\item work offsite;
+\end{itemize}
+These methods clearly disrupt teamwork or are at least not beneficial to it. Some of them are also quite ineffective and can be ignored by co-workers.
+\paragraph*{Dealing with interruptions: } This older study \cite{studyDealingWithInterruptions} used 29 hours of videotaped materials to perform a diary research. Their findings are that participants, on average, experienced over four interruptions per hour. Moreover, 41 \% of the time, the disrupted task was not resumed after the interruption finished. It is presumed that the worker does not return to the previous task either because it is too difficult to resume the task from the point it had been disrupted, or the task has been forgotten. Furthermore, the study points out a benefit that recipients receive when being interrupted, and the service that individuals may be contracted to perform for others. 
+
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|r|r|r|r|r|}
+\hline
+                           & \textbf{Mental workload} & \textbf{Stress} & \textbf{Frustration} & \textbf{Time pressure} & \textbf{Effort} \\ \hline
+\textbf{No interruptions}  & 10.02                    & 6.92            & 4.73                 & 11.02                  & 9.50            \\ \hline
+\textbf{Same context}      & 10.83                    & 9.46            & 6.63                 & 12.69                  & 11.04           \\ \hline
+\textbf{Different context} & 11.50                    & 9.13            & 6.48                 & 12.17                  & 11.52           \\ \hline
+\end{tabular}
+}
+\caption{Mean workload measures across interruption types. Scale is 1(low)-20(high).}
+\label{table:workload}
+\end{table}
+
+\paragraph*{}
+
 
 	\section{The Pomodoro Technique}
-The Pomodoro Technique was created with the aim of using time as a valuable ally to acomplish what we want to do the way we want to do it, and to empower us to continually improve our work or study processes.\cite{pomodoro} The technique was invented by Francesco Cirillo in the early 80s, as a result of his own and fellow students ineffective study habits. The name `'Pomodoro'' translates as `'Tomato'' and is inspired by a kitchen timer, that usually comes in a shape of this vegetable. And it is this kitchen-timer-like device which plays an important role in the process of using the Pomodoro Technique.
+The Pomodoro Technique was created with the aim of using time as a valuable ally to accomplish what we want to do the way we want to do it, and to empower us to continually improve our work or study processes. \cite{pomodoro} The technique was invented by Francesco Cirillo in the early 80s, as a result of his own and fellow students ineffective study habits. The name `'Pomodoro'' translates as `'Tomato'' and is inspired by a kitchen timer, that usually comes in a shape of this vegetable. And it is this kitchen-timer-like device which plays an important role in the process of using the Pomodoro Technique.
 
-The goal of the Pomodoro Technique is to provide a simple tool/process for improving productivity of not only individuals, but also whole teams. The technique is supposed to do the following\cite{pomodoro}:
+The goal of the Pomodoro Technique is to provide a simple tool/process for improving productivity of not only individuals, but also whole teams. The technique is supposed to do the following: \cite{pomodoro}
 \begin{itemize}
-	\item alleviate anxiety linked to becoming\footnote{An abstract, dimensional aspect of time which is supported by the idea of representing time on an axis,  as we would represent spatial dimensions. This results in a concept of the duration of an event and the idea of being late (the distance of two points on the temporal axis).\cite{pomodoro}};
+	\item alleviate anxiety linked to becoming\footnote{An abstract, dimensional aspect of time which is supported by the idea of representing time on an axis,  as we would represent spatial dimensions. This results in a concept of the duration of an event and the idea of being late (the distance of two points on the temporal axis). \cite{pomodoro}};
 	\item enhance focus and concentration by cutting down on interruptions;
 	\item increase awareness of your decisions;
 	\item boost motivation and keep it constant;
@@ -133,15 +179,15 @@ The goal of the Pomodoro Technique is to provide a simple tool/process for impro
 	\item strenghten your determination to keep on applying yourself in the face of complex situations
 \end{itemize}
 
-The Pomodoro Technique is founded on three basic assumptions\cite{pomodoro}:
+The Pomodoro Technique is founded on three basic assumptions: \cite{pomodoro}
 \begin{itemize}
 	\item A different way of seeing time (no longer focused on the concept of becoming) alleviates anxiety and in doing so leads to enhanced personal effectiveness. 
 	\item Better use of the mind enables us to achieve greater clarity of thought, higher consciousness, and sharper focus, all the while facilitating learning. 
 	\item Employing easy-to-use, unobtrusive tools reduces the complexity of applying the Technique while favoring continuity, and allows you to concentrate your efforts on the 	activities you want to accomplish. Many time management techniques fail because they subject the people who use them to a higher level of added complexity with respect to the intrinsic complexity of the task at hand.
 \end{itemize}
 
-The following objectives are required to be met one after another in order to implement the Pomodoro Technique\cite{pomodoro}.
-\paragraph*{Find out how much effort an activity requires: } The traditional Pomodoro takes 25 minutes of work and a 5-minute break. First, a list of To Do Today Sheet should be created out of a pool of tasks in a Activity Inventory Sheet, which contains all the tasks ordered according to their priority. When a Pomodoro is started, it ought not to be interrupted by anybody and anything, otherwise it is considered void. The remaining time should always be clearly visible. When Pomodoro rings, it is not allowed to continue working any longer and the current activity is considered finished, at least temporarily. The successfully finished Pomodoro is marked with an X on the To Do Today Sheet. A 3-5 minute break follows, which gives time needed to ``disconnect'' from the activity, assimilate what's been learned and, for example, do something beneficial for health such as stand up and walk around. The whole cycle repeats four times, when a longer 15-30 minute break takes place. The X symbols make it possible to easily measure the total time spent on each activity, which represent the real expended effort.
+The following objectives are required to be met one after another in order to implement the Pomodoro Technique \cite{pomodoro}.
+\paragraph*{Find out how much effort an activity requires: } First, a list of To Do Today Sheet should be created out of a pool of tasks in a Activity Inventory Sheet, which contains all the tasks ordered according to their priority. The traditional Pomodoro takes 25 minutes of work and a 5-minute break. When a Pomodoro is started, it ought not to be interrupted by anybody and anything, otherwise it is considered void. The remaining time should always be clearly visible. When Pomodoro rings, it is not allowed to continue working any longer and the current activity is considered finished, at least temporarily. The successfully finished Pomodoro is marked with an X on the To Do Today Sheet. A 3-5 minute break follows, which gives time needed to ``disconnect'' from the activity, assimilate what's been learned and, for example, do something beneficial for health such as stand up and walk around. The whole cycle repeats four times, when a longer 15-30 minute break takes place. The X symbols make it possible to easily measure the total time spent on each activity, which represent the real expended effort.
 \paragraph*{Cut down on interruptions: } There are two types of interruptions: internal and external. The internal interruptions are ways to procrastinate on the activity at hand, which generally is a disguised fear of not being able to finish the activity the way we want and when we want. The external interruptions are generally caused by other people. These types of interruptions share the way of dealing with them: invert the dependency on interruptions and make them depend on us. Generally, almost all of these interruptions can be delayed until the end of the currently running Pomodoro or even until later, though the interruption is considered urgent at the time it emerges. The delay isn't usually detrimental to the source of the interruption and gives an enormous advantage in terms of working more effectively. The interruption should be marked on the To Do Today Sheet and the new activity written down in order to be planned based on it's priority at the end of the Pomodoro.
 \paragraph*{Estimate the effort for activities: } The long-term objective here is to successfully predict the effort that an activity requires.These estimates are based on the previously finished Pomodoros. The predicted and real number of Pomodoros spent for each activity is noted and used for better predictions in the future.
 \paragraph*{Make the Pomodoro more effective and set up a timetable: } These two objectives are implemented after mastering the previous ones. They include using the first and last few minutes of each Pomodoro for reviewing the work done and setting up timetable for each day in order to prevent working late hours after wasting time in the morning.
@@ -217,7 +263,12 @@ Graphs from AnyOffice containing states and consultations
 
 \appendix
 
-\chapter{Some chapter}
+\chapter{Why You Should Not Interrupt a Programmer}\label{app:programmer}
+%\includepdf[pages={1}, scale=.4, pagecommand={}]{data/ProgrammerInterrupted.pdf}
+\begin{figure}[htp] \centering{
+\includegraphics[scale=0.117]{data/ProgrammerInterrupted.png}}
+\cite{programmerInterrupted}
+\end{figure}  
 
 
 
