@@ -164,7 +164,7 @@ Several studies have been done on interruptions and their impact on work. Variou
 	\item work, when no one else is around;
 	\item relocate to another office or conference room;
 	\item work from home;
-	\item work offsite;
+	\item work offsite.
 \end{itemize}
 These methods clearly disrupt teamwork or are at least not beneficial to it. Some of them are also quite ineffective and could be ignored by co-workers.
 \paragraph*{Dealing with interruptions: } This older study \cite{studyDealingWithInterruptions} used 29 hours of videotaped materials to perform a diary research. Their findings are that participants, on average, experienced over four interruptions per hour. Moreover, 41 \% of the time, the disrupted task was not resumed after the interruption finished. It is presumed that the worker does not return to the previous task either because it is too difficult to resume the task from the point it had been disrupted, or the task has been forgotten. Furthermore, the study points out a benefit that recipients receive when being interrupted, and the service that individuals may be contracted to perform for others.
@@ -187,8 +187,8 @@ The goal of the Pomodoro Technique is to provide a simple tool/process for impro
 	\item boost motivation and keep it constant;
 	\item bolster the determination to achieve your goals;
 	\item refine the estimation process, both in qualitative and quantitative terms;
-	\item improve your work or study process
-	\item strenghten your determination to keep on applying yourself in the face of complex situations
+	\item improve your work or study process;
+	\item strenghten your determination to keep on applying yourself in the face of complex situations.
 \end{itemize}
 
 Francesco Cirrillo in \cite{pomodoro}, founded the Pomodoro Technique on three basic assumptions:
@@ -308,16 +308,30 @@ Historical attempts (headphones, hats), time fragmentation of time of three coll
 		\subsection{Consultations from CSS}
 Official way and unofficial ways.
 
-	\section{Unconference with Kentico Software, s.r.o.}
+	\section{Unconference with Kentico Software, s.r.o.}\label{Kentico}
 In February 2015, and unconference\footnote{An unconference is a conference organized, structured and led by the people attending it. Instead of passive listening, all attendees and organizers are encouraged to become participants, with discussion leaders providing moderation and structure for attendees. \cite{unconference}} took place in the headquarters of Y Soft Corporation. One of the proposed and later consulted topics was ''Team cooperation vs. peace for individual work.''
 
 Comparing Kentico to Y Soft, members of Research and Development department in Kentico are also divided into teams. Apart from Y Soft, each team in Kentico is self-sustaining and cooperation among teams is exceptional. The cause of this difference is high degree of decoupling of modules, or better said, parts of their product portfolio.
 
-Attendees for Kentico Software confirmed, that they also have problems focusing on their work because of constant interruptions by their colleagues. 
+Attendees from Kentico Software confirmed, that they also have problems focusing on their work because of constant interruptions by their colleagues. The methods they use to avoid them are very similar to those mentioned in the list on page \pageref{list:avoidingCommunication}, which means that they are basic, ineffective and disruptive to the teamwork.
+
+At the unconference we were not able to find a viable solution. The discussion group showed interest in such a process or tool, that would help them manage the internal communication in a way it becomes less intrusive.
 
 	\section{Definition of Issues to be Solved}
 
-Thankfully, face-to-face communication is very common in Y Soft and the employees need not to be encouraged to use it over  IMs.
+Thankfully, there is a high level of face-to-face communication in Y Soft and the employees need not to be encouraged to use it over IMs or emails. Actually, a small research shows, that there may be too much of interruptions by other colleagues, that makes it impossible to keep focus on one task for a longer period of time.
+
+I've asked several of my colleagues in Y Soft to note down every interruption from the task they were currently working on. The result are shown on graphs in the figures \ref{pic:originalStatesNormal} and \ref{pic:originalStatesExposed}.
+
+\pict{Interruptions of a less exposed developer}{data/originalStatesNormal.png}{width=0.8\textwidth}{pic:originalStatesNormal}
+
+\pict{Interruptions of an exposed developer}{data/originalStatesExposed.png}{width=0.8\textwidth}{pic:originalStatesExposed}
+
+(bude doplnene o body vyrusenia)
+
+
+
+
 
 Defragment time, make inception of a consultation easier, prevent unnecessary communication, prevent frequent interruptions
 Streamline communication
@@ -337,27 +351,43 @@ This chapter will elaborate on possible solutions of the defines issues and pres
 
 As mentioned in section \ref{rndMeetings}, there have already been some attempts for the people to become unavailable. None of them really worked and soon people started to ignore them. A little survey among colleagues showed why:
 \begin{itemize}
-	\item most people think that they matter is of high importance and cannot wait
-	\item unavailable state could last hours
-	\item everybody was unavailable
-	\item one could never know, when the target person will become available
+	\item most people think that they matter is of high importance and cannot wait;
+	\item unavailable state could last hours;
+	\item everybody was unavailable;
+	\item one could never know, when the target person will become available.
 \end{itemize}
 To sum things up, the default state was the unavailable state, which is unacceptable in an agile cooperative environment.
 
 There is a need to make people to be available regularly and let their colleagues know about their availability. One of the simplest solutions available would be to dedicate some parts of the day to communication and the rest of it to working without interruptions. As stated in section \ref{Kentico}, employees of Kentico could not imagine using such a system. The same is true also for Y Soft, as its employees have individual working hours and work customs. 
 
-With periods of unavailability that are individual to each employee, the aforementioned problems would be solved. Also, when there are more people who could solve the issue to be discussed, there is a better chance that some of them is available at that moment. Moreover, employees could use the do not disturb status only when needed. As this status would be only temporal, the default state would be the available state.
+With periods of unavailability that are individual to each employee, the aforementioned problems would be solved. Also, when there are more people who could provide the response, there is a better chance that some of them is available at that moment. Moreover, employees could use the do not disturb status only when needed. As this status would be only temporal, the default state would be the available state.
 
-After several meeting with one of the teams and some more consultations in R\&D and CSS departments, we agreed on the following solution:
+After several meeting with one of the teams and some more consultations in R\&D and CSS departments, we agreed on the solution depicted on the figure \ref{pic:states}.
 
+\pict{States of employees and possible switches between them}{data/States.png}{width=0.8\textwidth}{pic:states}
 
-
-Default state is Available, DND is available for certain period of time, users should know, when and where they can communicate
-Top level description of inner logic
+The implemented tool will enforce the following basic set of rules:
+\begin{itemize}
+	\item Do Not Disturb state is possible only for maximum of 45 minutes;
+	\item Away state is triggered when user's workstation is locked;
+	\item if user goes Away during the Do Not Disturb state, the Away period counts as Do Not Disturb period;
+	\item user can be switched to Available state manually (Switch 1), or automatically after the aforementioned 45 minutes has elapsed (Switch 2);
+	\item user has to be in Available state for at least 15 minutes before enabled to switch back to Do Not Disturb state (Switch 1);
+	\item if user goes Away during the Available state (Switch 4), the Away period does not count as a Available period;
+	\item if user is in Away state when Do Not Disturb state period times out, user is switched to the Away state (Switch 3) and starts the Available period upon unlocking the workstation (Switch 4);
+	\item the system will be as little obtrusive as possible;
+	\item it will be possible for users to be notified when a person of their interest becomes available.
+\end{itemize}
 
 \chapter{AnyOffice Tool}
 
+The new tool got name AnyOffice. It consists of a web page and a light client application, that lives on the users' machines in the notification area of taskbar.
+
+From the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The last section is dedicated to the technologies, that were used to implement this tool and to those the tool makes use of.
+
 	\section{Basic Setup and Usage}
+
+
 
 	\section{Purposes and Features to Reach Them}
 Purposes of AnyOffice with description of features, that make them possible
