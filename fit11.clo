@@ -4,7 +4,7 @@
 \ProvidesFile{fit11.clo}[2008/12/15 myfithesis2 (size option)]
 
 % redefines \normalsize command to change font size
-\renewcommand{\normalsize}{\fontsize\@xipt{14}\selectfont%
+\renewcommand{\normalsize}{\fontsize\@xipt{17}\selectfont%
 \abovedisplayskip 11\p@ plus3\p@ minus6\p@
 \belowdisplayskip \abovedisplayskip
 \belowdisplayshortskip  6.5\p@ plus3.5\p@ minus3\p@
