@@ -126,23 +126,23 @@ Communication is the act of transmitting information between individuals. The ne
 
 \chapter{Effective Work}
 
-This chapter will give you an insight on what an interruption means to a programmer. The reasoning will be supported with a few researches bringing interesting results of the real cost of interruptions. In the second part you can find a short summary of The Pomodoro Technique, which can help reducing interruptions and boosting up productivity. The section also contains a list of objectives, that are necessary in order to implement the technique into your work customs.
+This chapter will give you an insight on what an interruption means to a programmer. The reasoning will be supported with a few researches bringing interesting results of the real cost of interruptions. In the second part, you can find a short summary of The Pomodoro Technique, which can help reducing interruptions and boosting up productivity. The section also contains a list of objectives, that are necessary, in order to implement the technique into your work customs.
 
 	\section{The Cost of Interruptions}
-Interruptions are a big source of inefficiency for everybody. For programmers it is even more difficult to start where they finished prior to the interruption.
+Interruptions are a big source of inefficiency for everybody. For programmers, it is even more difficult to start where they finished prior to the interruption.
 
 		\subsection{What It Means To Interrupt a Programmer}
-In a company, there are positions, for which interruptions are just a normal part of a day. Sometimes, interruptions is what their work is mostly based on. A nice representation of this group are managers, who constantly change focus throughout the day. Their time is usually spit up in one hour intervals, each of them containing a single task. Likewise, if we take people from marketing. An interruption for them means time spent dealing with the interruption and a few seconds more to find out where they had finished. For programmers, it is much more different.
+In a company, there are positions, for which interruptions are just a normal part of the day. Sometimes, interruptions are what their work is mostly based on. A nice representation of this group are managers, who constantly change focus throughout the day. Their time is usually spit up in one hour intervals, each of them containing a single task. Likewise, if we take people from marketing. An interruption for them means a time spent dealing with the interruption and a few seconds more to find out where they had finished. For programmers, it is much more different.
 
-A comic made by Jason Heeris, which you can find in the Appendix on page \pageref{app:programmer},  is probably the best way to give you an idea about what it means for a programmer to be interrupted.
+A comic made by Jason Heeris, which you can find in the Appendix on page \pageref{app:programmer},  is probably the best way to give you an idea about what it means for a programmer to be interrupted. Imagine a programmer in a middle of a debugging task. He has finally come to a sufficient level of understanding of the tricky condition in the code, has done the right amount of cycles to get the correct value in a variable, which purpose is a little mystery to him, and is very probably just about to find out, what causes the exception, that the important customer sees in logs from time to time under unknown conditions. All of a sudden, a colleague comes by to ask about that other task the programmer had been working on and is currently under test. The distraction causes him to accidentally step over the expression instead of stepping into it. So, he asks the colleague to repeat the question, as he was only partly listening. After helping the colleague, he looks down at his paper wondering, what `'18rts97'' means, and restarts the debugging process.
 
 Erik Dietrich in an article on his blog \cite{costOfInterruptions} provides a simple way of showing, what it means for a developer to be interrupted:\newline
-Write down a series of 3 to 4 digit numbers in sequence. Now, tell the person to add those numbers as fast as possible without writing anything down. After some time ask the person questions about how he is doing, what number he/she is on, whether it is 198 or 674 and get him/her to respond. Ask him to help you with adding some other three numbers real quick. Moreover, you can pretend a phone call in the vicinity of the person, talking about some numbers. When he/she is done, check the result and ask, how many times a fresh start was necessary. Several experiments showed, that usually the examinee had to start over several times and also did not get the correct result.
+Write down a series of 3 to 4 digit numbers in a sequence. Now, tell the person to add those numbers as fast as possible without writing anything down. After some time, ask the person questions about how it is going, what number he/she is currently adding, whether it is 198 or 674 and get him/her to respond. Ask him to help you with adding some other three numbers real quick. Moreover, you can pretend a phone call in the vicinity of the person, talking about some numbers. When the person is done, check the result and ask, how many times a fresh start was necessary. Several experiments, which I have performed on my friends, showed, that usually the examinee had to start over several times and also did not get the correct result.
 
 		\subsection{The Real Cost of Interruptions }
-Several studies have been done on interruptions and their impact on work. Various measures have been done including context of the interruptions, their frequency, impact on work efficiency, stress level, workload and effort. Other studies focus on the amount of productivity time wasted by these interruptions. In this section I will mention several of these studies.
+Several studies have been done on interruptions and their impact on work. Various measures have been done including context of the interruptions, their frequency, impact on work efficiency, stress level, workload and effort. Other studies focus on the amount of productivity time wasted by these interruptions. In this section, I will mention several of these studies.
 
-\paragraph*{More Speed and Stress: } The study \cite{studySpeedAndStress} was performed on people answering to emails in their inbox as quickly, correctly and politely as possible. They were told that their ``supervisor'' sitting in another room will contact them regularly to ask questions either over telephone or IM. The results of the study show, that when people are constantly interrupted, they develop a mode of working faster and producing less, to compensate for the time lost by the interruptions. But this faster pace of work has its cost: higher workload and frustration, more stress, effort and time pressure. In conclusion, when being interrupted, the work can be done faster, but at a price. This study also shows that the context of the interruption to the currently performed task makes no difference or very little different. Table \ref{table:workload} shows the measures stated.
+\paragraph*{More Speed and Stress: } The study \cite{studySpeedAndStress} was performed on people answering to emails in their inbox as quickly, correctly and politely as possible. They were told that their ``supervisor'' is sitting in another room and will contact them regularly to ask questions either over telephone or IM\footnote{IM can refer to Instant Messenger or Instant Message, which is a text message sent using a service (messenger), that enables real time communication over the Internet.}. The results of the study show, that when people are constantly interrupted, they develop a mode of working faster and producing less, to compensate for the time lost by the interruptions. However, this faster pace of work has its cost: higher workload and frustration, more stress, effort and time pressure. In conclusion, when being interrupted, the work can be done faster, but at a price. This study also shows that the context of the interruption to the currently performed task makes no difference or a very little difference. Table \ref{table:workload} shows the measures stated.
 \begin{table}[h]
 \centering
 \resizebox{\textwidth}{!}{%
@@ -157,7 +157,7 @@ Several studies have been done on interruptions and their impact on work. Variou
 \caption{Mean workload measures across interruption types. Scale is 1(low)-20(high).}
 \label{table:workload}
 \end{table}
-\paragraph*{The Cost of Not Paying Attention: } This study \cite{studyAttention} is focusing on the amount of time that interruptions waste. Data were gathered by observers in real offices, where these observers noted every single change of action of a knowledge worker\footnote{A knowledge worker is anyone who works for a living at the tasks of developing or using knowledge. \cite{knowledgeWorker}}. Their findings are that interruptions consume 28 \% of the knowledge worker's day. Not all of these interruptions are unnecessary and considered as a waste of time. For example helping a co-worker in a business-related matter is recognized as beneficial to the company's well being. Nevertheless, combining the unnecessary interruptions and the time needed to switch context results in 503.52 hours per employee per year. The study also mentions common ways of how workers fight constant interruptions in order to get their work done. Some of them are: \label{list:avoidingCommunication}
+\paragraph*{The Cost of Not Paying Attention: } This study \cite{studyAttention} is focusing on the amount of time that interruptions waste. Data were gathered by observers in real offices, where these observers noted every single change of action of a knowledge worker\footnote{A knowledge worker is anyone who works for a living at the tasks of developing or using knowledge. \cite{knowledgeWorker}}. Their findings are, that interruptions consume 28 \% of the knowledge worker's day. Not all of these interruptions are unnecessary and considered as a waste of time. For example, helping a co-worker in a business-related matter is recognized as beneficial to the company's well being. Nevertheless, combining the unnecessary interruptions and the time needed to switch context results in 503.52 hours per employee per year. The study also mentions common ways of how workers fight constant interruptions in order to get their work done. Some of them are: \label{list:avoidingCommunication}
 \begin{itemize}
 	\item refuse eye contact;
 	\item post a sign;
@@ -167,15 +167,15 @@ Several studies have been done on interruptions and their impact on work. Variou
 	\item work offsite.
 \end{itemize}
 These methods clearly disrupt teamwork or are at least not beneficial to it. Some of them are also quite ineffective and could be ignored by co-workers.
-\paragraph*{Dealing with interruptions: } This older study \cite{studyDealingWithInterruptions} used 29 hours of videotaped materials to perform a diary research. Their findings are that participants, on average, experienced over four interruptions per hour. Moreover, 41 \% of the time, the disrupted task was not resumed after the interruption finished. It is presumed that the worker does not return to the previous task either because it is too difficult to resume the task from the point it had been disrupted, or the task has been forgotten. Furthermore, the study points out a benefit that recipients receive when being interrupted, and the service that individuals may be contracted to perform for others.
+\paragraph*{Dealing with interruptions: } This older study \cite{studyDealingWithInterruptions} used 29 hours of videotaped materials to perform a diary research. Their findings are, that participants, on average, experienced over four interruptions per hour. Moreover, 41 \% of the time, the disrupted task was not resumed after the interruption finished. It is presumed that the worker does not return to the previous task either because it is too difficult to resume the task from the point it had been disrupted, or the task has been forgotten. Furthermore, the study points out a benefit that recipients receive when being interrupted, and the service that individuals may be contracted to perform for others.
 \paragraph*{Resumption strategies for interrupted programming tasks: } Another study \cite{studyResumptionStrategies} performed on 10,000 recorded sessions of 86 programmers and 414 surveyed programmers says that resumption is a frequent and persistent problem for developers. Only 10 \% of the sessions have programming activity resumed in less than 1 minute and only 7 \% of the programming sessions involve no navigation to other locations prior to resuming work. Actually, about 30 \% of sessions took more than 30 minutes to restore the programming task.
 
 In conclusion, constant interruptions are mostly harmful to the work efficiency, ease of work and company itself. On the other hand, some of the interruptions are highly beneficial to the interrupting person and the interrupted worker as well. Most of the common techniques used to avoid unwanted interruptions are really basic, mostly inefficient and disruptive to the teamwork.
 
 	\section{The Pomodoro Technique}
-The Pomodoro Technique was created with the aim of using time as a valuable ally to accomplish what we want to do the way we want to do it, and to empower us to continually improve our work or study processes. \cite{pomodoro} This technique is often used complementary to a set of methods named `'Getting Things Done'' \cite{gtd} created by David Allen, which he presents as `'A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''
+The Pomodoro Technique \cite{pomodoro} was created with the aim of using time as a valuable ally to accomplish what we want to do, the way we want to do it, and to empower us to continually improve our work or study processes. This technique is often used complementary to a set of methods named `'Getting Things Done'' \cite{gtd} created by David Allen, which he presents as `'A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''
 
-The Getting Things Done is more of a personal guide for organizing tasks into projects in order to stop forgetting to do things, to make yourself do them, to do them on time and to have more time for yourself. The method is suited more for a solitary workers, who do not need to work in teams or the teamwork is not very intense.
+The Getting Things Done is more of a personal guide for organizing tasks into projects in order to stop forgetting to do things, to make yourself do them, to do them on time and to have more time for yourself. The method is suited more for a solitary workers, who do not need to work in teams or the teamwork is not very intense, as the method does not consider external interruptions.
 
 The Pomodoro Technique was invented by Francesco Cirillo in the early 80s, as a result of his own and fellow students ineffective study habits. The name `'Pomodoro'' translates as `'Tomato'' and is inspired by a kitchen timer, that usually comes in a shape of this vegetable. And it is this kitchen-timer-like device which plays an important role in the process of using the Pomodoro Technique.
 
@@ -198,11 +198,11 @@ Francesco Cirrillo in \cite{pomodoro}, founded the Pomodoro Technique on three b
 	\item Employing easy-to-use, unobtrusive tools reduces the complexity of applying the Technique while favoring continuity, and allows you to concentrate your efforts on the 	activities you want to accomplish. Many time management techniques fail because they subject the people who use them to a higher level of added complexity with respect to the intrinsic complexity of the task at hand.
 \end{itemize}
 
-The following objectives are required to be met one after another in order to implement the Pomodoro Technique \cite{pomodoro}.
-\paragraph*{Find out how much effort an activity requires: } First, a list of To Do Today Sheet should be created out of a pool of tasks in a Activity Inventory Sheet, which contains all the tasks ordered according to their priority. The traditional Pomodoro takes 25 minutes of work and a 5-minute break. When a Pomodoro is started, it ought not to be interrupted by anybody and anything, otherwise it is considered void. The remaining time should always be clearly visible. When Pomodoro rings, it is not allowed to continue working any longer and the current activity is considered finished, at least temporarily. The successfully finished Pomodoro is marked with an X on the To Do Today Sheet. A 3-5 minute break follows, which gives time needed to ``disconnect'' from the activity, assimilate what's been learned and, for example, do something beneficial for health such as stand up and walk around. The whole cycle repeats four times, when a longer 15-30 minute break takes place. The X symbols make it possible to easily measure the total time spent on each activity, which represent the real expended effort.
+The following objectives are required to be met, one after another, in order to implement the Pomodoro Technique \cite{pomodoro}.
+\paragraph*{Find out how much effort an activity requires: } First, a To Do Today Sheet should be created out of a pool of tasks in an Activity Inventory Sheet, which contains all the tasks ordered according to their priority. The traditional Pomodoro takes 25 minutes of work and a 5-minute break. When a Pomodoro is started, it ought not to be interrupted by anybody and anything, otherwise it is considered void. The remaining time should always be clearly visible. When Pomodoro rings, it is not allowed to continue working any longer and the current activity is considered finished, at least temporarily. The successfully finished Pomodoro is marked with an X on the To Do Today Sheet. A 3-5 minute break follows, which gives time needed to ``disconnect'' from the activity, assimilate what's been learned and, for example, do something beneficial for health such as stand up and walk around. The whole cycle repeats four times, when a longer 15-30 minute break takes place. The X symbols make it possible to easily measure the total time spent on each activity, which represent the real expended effort.
 \paragraph*{Cut down on interruptions: } There are two types of interruptions: internal and external. The internal interruptions are ways to procrastinate on the activity at hand, which generally is a disguised fear of not being able to finish the activity the way we want and when we want. The external interruptions are generally caused by other people. These types of interruptions share the way of dealing with them: invert the dependency on interruptions and make them depend on us. Generally, almost all of these interruptions can be delayed until the end of the currently running Pomodoro or even until later, though the interruption is considered urgent at the time it emerges. The delay isn't usually detrimental to the source of the interruption and gives an enormous advantage in terms of working more effectively. The interruption should be marked on the To Do Today Sheet and the new activity written down in order to be planned based on it's priority at the end of the Pomodoro.
 \paragraph*{Estimate the effort for activities: } The long-term objective here is to successfully predict the effort that an activity requires.These estimates are based on the previously finished Pomodoros. The predicted and real number of Pomodoros spent for each activity is noted and used for better predictions in the future.
-\paragraph*{Make the Pomodoro more effective and set up a timetable: } These two objectives are implemented after mastering the previous ones. They include using the first and last few minutes of each Pomodoro for reviewing the work done and setting up timetable for each day in order to prevent working late hours after wasting time in the morning.
+\paragraph*{Make the Pomodoro more effective and set up a timetable: } These two objectives are implemented after mastering the previous ones. They include using the first and last few minutes of each Pomodoro for reviewing the work done and setting up timetable for each day, in order to prevent working late hours after wasting time in the morning.
 
 \vspace{\baselineskip}
 With Pomodoro, there is an ever-valid rule: `'Next Pomodoro will go better.'' According to the Francesco Cirillo's book The Pomodoro Technique \cite{pomodoro}, the technique has been successfully applied in various types of activities: organizing work and study habits, writing books, drafting technical reports, preparing presentations, and managing projects, meetings, events, conferences, and training courses.
@@ -212,44 +212,44 @@ With Pomodoro, there is an ever-valid rule: `'Next Pomodoro will go better.'' Ac
 
 As defined in \cite{orgCommForSurvival}, an organization is `'an organized collection of individuals working independently within a relatively structured, organized, open system to achieve common goals''. The same publication defines organizational communication as `'the process by which individuals stimulate meaning in the minds of other individuals by means of verbal and nonverbal messages in the context of a formal organization''. Generally, communication maintains and sustains relationships in any organization, and it does not only effect the people communicating at that moment, but also the whole organization as a system.
 
-This chapter will provide you with several misconception about organizational communication, that are commonly made. The second section contains rules and principles to be implemented in order to improve efficiency of the internal communication. At the end of the chapter you can find reasonings, why ad-hoc face-to-face communication is heart and soul of agile projects.
+This chapter will provide you several misconceptions about organizational communication, that are commonly made. The second section contains rules and principles to be implemented in order to improve efficiency of the internal communication. At the end of the chapter, you can find reasonings why ad-hoc face-to-face communication is heart and soul of agile projects.
 
 
 	\section{Efficiency of Organizational Communication}\label{effOfOrgComm}
 There is a common belief that communication is a good thing. It is always beneficial to sit down and talk things through, share thoughts, give opinion, get things straight. And the same common sense tells us, that if a little bit of something is good, more will be better. Since then, managers are widely encouraging people to communicate with their co-workers, subordinates and supervisors. However, little thoughts were given to the way the communication is done, its efficiency and impact on processes. 
 
-A reason why management of many companies is not systematically focused on internal communication is its sudden growth from a small company into an enterprise. Over that time, external communication with customers and partners is much more important than internal communication, which is believed to establish itself according to a common sense. Although this is possible with a few units or dozens of employees, it gradually becomes a problem as their amount rises. There begin to exist too many communication paths and channels making communication noise too loud. When the official sources of information are not identified or unavailable, employees may create their own information and transfer it further.
+A reason why management of many companies is not systematically focused on internal communication is its sudden growth from a small company into an enterprise. Over that time, external communication with customers and partners is much more important than internal communication, which is believed to establish itself according to a common sense. Although this is possible with a few units or dozens of employees, it gradually becomes a problem as their amount rises. There begin to exist too many communication paths and channels, making communication noise too loud. When the official sources of information are not identified or are unavailable, employees may create their own information and transfer it further.
 
-Moreover, it can easily happen that we start communicating to such extend that there is only a little time left to actually produce something. The following paragraphs will present you some statements and observations of people professionally examining organizational communication and the communication process itself..
+Moreover, it can easily happen, that we start communicating to such extend, that there is only a little time left to actually produce something. The following paragraphs will present you some statements and observations of people professionally examining organizational communication and the communication process itself..
 
-As stated in \cite{orgCommForSurvival} it is clearly a myth that the more we communicate, the better. Actually, important is the quality of communication rather than it's quantity. Thus, if somebody is bored, bothered or even annoyed with the communication, there is only a little quality he can give to it.
+As stated in \cite{orgCommForSurvival}, it is clearly a myth that the more we communicate, the better. Actually, important is the quality of communication rather than it's quantity. Thus, if somebody is bored, bothered or even annoyed with the communication, there is only a little quality he can give to it.
 
-Another myth according to \cite{orgCommForSurvival} says `'telling is communicating''. In fact, telling is only a part of communication, a very small part. Very important part of it is the background of the receiver, which influences the meaning the receiver attaches to the message and the acknowledgment of it. Generally, people occupied by some other activity may easily overhear or forget the communication and it's meaning, which stands for ad-hoc communication even more.
+Another myth according to \cite{orgCommForSurvival} says `'telling is communicating''. In fact, telling is only a part of communication, a very small part. Very important part of it is the background of the receiver, which influences the meaning the receiver attaches to the message and the acknowledgment of it. Generally, people occupied by some other activity may easily overhear or forget the communication and it's meaning, and this stands for ad-hoc communication even more.
 
-In the days of emails, IMs\footnote{IM stands for Instant Message, which is a text message sent using a service that enables real time communication over the Internet.} and always available telephone, people consider communication to be more of a verbal process. We are left only with words that are supposed to carry the whole message. The nonverbal aspect is often given only a little relevance, yet much of communication is actually not verbal. The same verbal message can be perceived in various and even totally opposite ways based on the intonation, gestures and mimics. As an example, let's take a team member who has an idea about a new product feature. He communicates this idea over an email to his team leader, who's office is not in the same building. The team leader likes the idea, but has some additional questions, which he sends back to the team member. A simple question like `'And what will we do about that particular thing? Have you thought about that?'' can be easily misunderstood as offensive, which would make an impression of his leader's negative attitude towards the idea. The conversation will either have to be repeated again or the idea will be dismissed by the originator himself.
+In the current days of emails, IMs and always available telephone, people consider communication to be more of a verbal process. We are left only with words that are supposed to carry the whole message. The nonverbal aspect is often given only a little relevance, yet much of communication is actually not verbal. The same verbal message can be perceived in various and even totally opposite ways based on the intonation, gestures and mimics. As an example, let's take a team member who has an idea about a new product feature. He communicates this idea over an email to his team leader, whose office is not in the same building. The team leader likes the idea, but has some additional questions, which he sends back to the team member. A simple question like `'And what will we do about that particular thing? Have you thought about that?'' can be easily misunderstood as offensive, which would make an impression of his leader's negative attitude towards the idea. The conversation will either have to be repeated again or the idea will be dismissed by the originator himself.
 
 
 	\section{Improving Internal Communication Efficiency}
-If a company wants to improve efficiency of internal communication, it is important to implement certain rules and principles, as \cite{intCommManag} points out. The rules and principles need to be put into effect gradually and with care as it is very difficult to change one's habits. In order to do this, a project has to be defined and approved by management of the company. The person executing the project has to be supported and given sufficient authority. 
+If a company wants to improve efficiency of internal communication, it is important to implement certain rules and principles, as \cite{intCommManag} points out. The rules and principles need to be put into effect gradually and with care, as it is very difficult to change one's habits. In order to do this, a project has to be defined and approved by management of the company. The person executing the project has to be supported and given sufficient authority. 
 
-In the section \ref{effOfOrgComm} we have already talked about quality as being a crucial aspect of communication. An it is the quality that we should focus on when establishing efficient internal communication, which can vary according to conditions. In \cite{intCommManag}, there are several principles that the project of altering a level of communication must assume:
+In the section \ref{effOfOrgComm}, we have already talked about quality as being a crucial aspect of communication. An it is the quality that we should focus on when establishing efficient internal communication, which can vary according to conditions. In \cite{intCommManag}, there are several principles that the project of altering a level of communication must assume:
 \begin{enumerate}
-	\item Map the current situation in a meaning of describing the current state. Find its strengths and weaknesses in order to know, what should be enhanced and what to be eliminated. Define opportunities and threats like technology, environment, current customs and specific employees. A 7Ss analysis\footnote{A 7Ss analysis is an analysis of seven strategic factors of internal operation of the company: structures, systems, style, staff, skills, strategy and shared values. \cite{intCommManag}} focusing on internal environment and a SWOT analysis\footnote{SWOT analysis is a technique for evaluating strengths and weaknesses, and for identifying opportunities and threats.} could be used for this purpose.
-	\item Make a specific description of the aim of the change. It is crucial to exactly know the definition of done to be able to find the way to reach it.
+	\item Map the current situation in a meaning of describing the current state. Find its strengths and weaknesses, in order to know, what should be enhanced and what to be eliminated. Define opportunities and threats like technology, environment, current customs and specific employees. A 7Ss analysis\footnote{A 7Ss analysis is an analysis of seven strategic factors of internal operation of the company: structures, systems, style, staff, skills, strategy and shared values. \cite{intCommManag}} focusing on internal environment and a SWOT analysis\footnote{SWOT analysis is a technique for evaluating strengths and weaknesses, and for identifying opportunities and threats.} could be used for this purpose.
+	\item Make a specific description of the aim of the change. It is crucial to exactly know the definition of done, to be able to find the way to reach it.
 	\item Verify the aim and measure the improvement according to certain criteria in both short term and long term horizons.
 \end{enumerate}
 
-Sadly, according to \cite{intCommManag}, these projects usually fail due to insufficient support and/or competencies of the executive. Its role also plays inconsistency among managers and their preference of other seemingly more important tasks, results of which appear more immediately and thus are more `'lucrative'' than a complex strategic task.
+Sadly, according to \cite{intCommManag}, these projects usually fail due to insufficient support and/or competencies of the executive. Inconsistency among managers and their preference of other seemingly more important tasks also play thair role, as results of such tasks appear more immediately and thus are more `'lucrative'' than a complex strategic task.
 
 
 	\section{Importance of Ad-hoc Face-to-face Conversations in Agile Environments}\ref{commImportance}
-Scott W. Ambler is a Senior Consulting Partner with Scott Ambler + Associates, a consulting firm specializing in helping organizations to successfully adopt disciplined agile strategies. He has written several books and white papers on object-oriented software development, software process, Disciplined Agile Delivery, Agile Scrum Model, Agile Model Driven Development, Agile Database Techniques and more, as he presents himself on his home page \cite{ambler}.
+Scott W. Ambler is a Senior Consulting Partner with Scott Ambler + Associates, a consulting firm specializing in helping organizations to successfully adopt disciplined agile strategies. He has written several books and white papers on object-oriented software development, software processes, Disciplined Agile Delivery, Agile Scrum Model, Agile Model Driven Development, Agile Database Techniques and more, as he presents himself on his home page \cite{ambler}.
 
-Figure \ref{pic:commModes}, originally from \cite{agileCockburn} and edited by the Scott W. Ambler in \cite{roninInt}, shows various communication modes, that people may choose when working together, comparing their effectiveness with the richness of the communication channel they provide. The left arc depicts communication options of documentation and the right one is for the real-time communication. It is important to bear in mind that context and background is very important and can make some of the channels more effective. Nevertheless, in most cases, speech is much more effective than a written word, even if it is not real-time, which is caused by the ability to use intonation and voice modulation. When the communicating parties can see each other, the effectiveness of the conversation grows rapidly, as the speech is enriched by gestures and facial expression. Any other visual tool can help even more, whether it is a whiteboard, paper, computer screen, etc.
+Figure \ref{pic:commModes}, originally from \cite{agileCockburn} and edited by the Scott W. Ambler in \cite{roninInt}, shows various communication modes, that people may choose when working together, comparing their effectiveness with the richness of the communication channel they provide. The left arc depicts communication options of documentation and the right one is for the real-time communication. It is important to bear in mind that context and background is very important and can make some of the channels more effective. Nevertheless, in most cases, speech is much more effective than a written word, even if it is not real-time, which is caused by the ability to use intonation and voice modulation. When the communicating parties can see each other, the effectiveness of the conversation grows rapidly, as the speech is enriched by gestures and facial expressions. Any other visual tool can help even more, whether it is a whiteboard, paper, computer screen, etc.
 
 \pict{Modes of Communication \cite{roninInt}}{data/communicationModes.png}{width=0.8\textwidth}{pic:commModes}
 
-Alistair Cockburn, one of the initiators of the agile movement in software development, in his book \cite{commCockburn} calls software development `'a cooperative game of invention and communication.'' Software engineers no longer are those lone-sitting individuals locked from anybody else, but they need to be always open for communication and cooperation. Considering the amount of communication, that is necessary in agile software development, this is true more than ever. Constant communication starts with product owner communicating a new functionality with team members, continues with their mutual communication and inquiries back to the product owner about missed points or limitations, and finishes with communication between developers and testers, who need to design, develop and test everything in a short period of time. 
+Alistair Cockburn, one of the initiators of the agile movement in software development, in his book \cite{commCockburn} calls software development `'a cooperative game of invention and communication.'' Software engineers no longer are those lone-sitting individuals locked away from anybody else, as they need to be always open for communication and cooperation. Considering the amount of communication that is necessary in agile software development, this is true more than ever. Constant communication starts with product owner communicating a new functionality with team members, continues with their mutual communication and inquiries about missed points or limitations back to the product owner, and finishes with communication between developers and testers, who need to design, develop and test everything in a short period of time. 
 
 As seen in the list on page \pageref{list:avoidingCommunication}, to stop being constantly interrupted, people are avoiding constant communication mostly by `'hiding'' somewhere else. This hurts the agile approach to development very much, as face-to-face conversations are crucial for agile projects. Due to the short periods of time, the communication needs to be immediate, effective and efficient.
 	
@@ -259,7 +259,7 @@ As seen in the list on page \pageref{list:avoidingCommunication}, to stop being 
 As an employee of Y Soft Corporation, a.s. I could define the communication patterns and customs from my point of view. However, this would certainly not be enough to propose a viable solution as there are many other aspects that are invisible for me. This chapter will give you an insight on the current customs in internal communication of the company, elaborate on communication matrices and bring results of a small research.
 
 	\section{Characteristics of Y Soft Corporation, a.s.}
-In order to understand the employees, their customs and needs, first we have to look at the company itself. The following section is based on information form Y Soft's website \cite{ysoft} and ............
+In order to understand the employees, their customs and needs, first we have to look at the company itself, with focus on Research and Development department. The following section is based on information form Y Soft's website \cite{ysoft} and ............
 
 		\subsection{Historical Background}
 
@@ -286,7 +286,7 @@ After more than 10 years of double-digit growth\footnote{Double-digit growth is 
 
 Apart from it's size, Y Soft Corporation considers itself a startup and also adjusts the company culture this way. The company tries to keep friendly and open environment with a relatively flat structure. (Popis obrazka struktury)
 
-(Obrazok struktury)
+\pict{Structure of Research and Development department}{data/rndStructure.png}{width=0.8\textwidth}{pic:rndStructure}
 
 Research and Development department consists of XY people. XY employees are in quality department and X employees on average are in every team. Majority of these employees are located in Brno, which is XY people. Each engineering team consists of team leader and developers. Most of the teams have a dedicated QA engineer, who primarily takes care about tasks resolved by the team members.
 
@@ -301,21 +301,33 @@ Official information flow is working well both vertically and horizontally, whic
 As stated in the previous section, Y Soft Corporation, a.s. is a young company, which still considers itself a startup. Many of the current employees still remember the days, when the company consisted of a few people sitting in one room mostly working on the same subject. This directly influences the nature of internal communication in the whole company. The following section will focus on official and unofficial, formal and informal communication channels inside Research \& Development department. The focus will be on their utilization rates, efficiency, availability and compliance with official definitions of processes.
 
 		\subsection{Meetings inside R\&D}\label{rndMeetings}
-Number of communication paths, amount of frequent and occasional communication
+(Number of communication paths, amount of frequent and occasional communication
 Define communication media (face to face, HipChat, Cisco Jabber, email, Skype)
-Historical attempts (headphones, hats), time fragmentation of time of three colleagues (graphs), 
+Historical attempts (headphones, hats) )
 		
 		\subsection{Consultations from CSS}
-Official way and unofficial ways.
+(HT302
+
+konzultácie cez team leaderov
+
+každá komponenta má namapovaný team a teda aj team leadera, ktorý konzultáciu prehodí na team membera a ten písomne odpovedá
+
+takto idú veci od zákazníka ale aj interné veci (defekty, workaroundy)
+
+ak je písomná odpoveď nedostatočná, tak sa pokračuje v písaní si alebo sa volá team leaderovi
+
+neoficiálne sa stáva, že sa telefonuje alebo posiela IM priamo developerovi alebo sa ide po face-to-face ad-hoc konzultáciu
+
+ak CSS má remote desktop k zákazníkovi, tak je potrebná aktívna ad-hoc asistencia od RnD)
 
 	\section{Unconference with Kentico Software, s.r.o.}\label{Kentico}
 In February 2015, and unconference\footnote{An unconference is a conference organized, structured and led by the people attending it. Instead of passive listening, all attendees and organizers are encouraged to become participants, with discussion leaders providing moderation and structure for attendees. \cite{unconference}} took place in the headquarters of Y Soft Corporation. One of the proposed and later consulted topics was ''Team cooperation vs. peace for individual work.''
 
-Comparing Kentico to Y Soft, members of Research and Development department in Kentico are also divided into teams. Apart from Y Soft, each team in Kentico is self-sustaining and cooperation among teams is exceptional. The cause of this difference is high degree of decoupling of modules, or better said, parts of their product portfolio.
+The same as in Y Soft, members of Research and Development department in Kentico are also divided into teams. However, each team in Kentico is self-sustaining and cooperation among teams is exceptional. The cause of this difference is high degree of decoupling of modules, or better said, parts of their product portfolio.
 
 Attendees from Kentico Software confirmed, that they also have problems focusing on their work because of constant interruptions by their colleagues. The methods they use to avoid them are very similar to those mentioned in the list on page \pageref{list:avoidingCommunication}, which means that they are basic, ineffective and disruptive to the teamwork.
 
-At the unconference we were not able to find a viable solution. The discussion group showed interest in such a process or tool, that would help them manage the internal communication in a way it becomes less intrusive.
+At the unconference, we were not able to find a viable solution. The discussion group showed interest in such a process or tool, that would help them manage the internal communication to make it less intrusive.
 
 	\section{Definition of Issues to be Solved}
 
@@ -329,19 +341,25 @@ I've asked several of my colleagues in Y Soft to note down every interruption fr
 
 (bude doplnene o body vyrusenia)
 
-The day of a developer depicted on the graph in figure \ref{pic:originalStatesExposed} was almost completely spent on consultations and other interruptions. Between those interruptions, the developer had most of the time less than 20 minutes of time, which is neither enough to start doing something serious nor to restore work on a previous task. Although there is a value from the consultations given by the developer, there is a lot of void space, where the value is negligible. Also, the developer went home frustrated, that he did nothing that day and that he is behind his schedule, thus he will have work longer hours the following day.
+The day of a developer depicted on the graph in figure \ref{pic:originalStatesExposed} was almost completely spent on consultations and other interruptions. Between those interruptions, the developer had most of the time less than 30 minutes of time, which is just enough to start doing something serious or to restore work on a previous task. The following interruption made the developer change context again. After the interruption, the developer had to spend some time again in order to gain the focus back. Although there is a value from the consultations given by the developer, there also was a lot of time spent on refocusing. Moreover, the developer went home frustrated, that he did almost nothing that day and that he is behind his schedule, thus he will have work longer hours the following day.
 
-If we put all the void time together,....
+If the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the figure \ref{pic:groupedStates}.
 
+\pict{Grouped interruptions of an exposed developer}{data/groupedStates.png}{width=0.8\textwidth}{pic:groupedStates}
 
+.......
 
-Defragment time, make inception of a consultation easier, prevent unnecessary communication, prevent frequent interruptions
+(SWOT a 7Ss analyzy ???)
+
+(Defragment time, make inception of a consultation easier, prevent unnecessary communication, prevent frequent interruptions
 Streamline communication
 
 make efficient in terms of quality, which means assuring full focus of communication parties (not being distracted by some ongoing work or focused on something else)
 
+pre CSS je potreba u platinového zákazníka mať okamžitú podporu od RnD (riešenie problému do 1 h))
+
 \chapter{Proposed Solution}
-This chapter will elaborate on possible solutions of the defines issues and presents the selected one.
+This chapter will elaborate on possible solutions of the defined issues and presents the selected one.
 
 \paragraph*{Use existing IMs and email for communication: } As stated in section \ref{commImportance}, face-to-face communication is important because of its high efficiency and it would be counterproductive to eliminate it. Moreover, co-workers should be encouraged to choose this form of communication over communication using email or IMs, which are very popular. Even though forcing the communication to happen over IMs would solve the interruptions, one would never know when his message will get a response or whether it is not only overlooked.
 
@@ -392,18 +410,18 @@ From the first part of this chapter you can learn the steps necessary to start u
 
 
 	\section{Purposes and Features to Reach Them}
-Purposes of AnyOffice with description of features, that make them possible
+(Purposes of AnyOffice with description of features, that make them possible)
 
 	\section{Technologies Used}
 
 \chapter{Results}
-Graphs from AnyOffice containing states and consultations
+(Graphs from AnyOffice containing states and consultations
 
-Usability for the CSS department and other departments
+Usability for the CSS department and other departments)
 
 \chapter{Conclusions and Future Work}
 
-planned features
+(planned features)
 
 % skratky 7Ss, CSS, IM, QA, R\&D, SWOT
 
