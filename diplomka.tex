@@ -303,6 +303,7 @@ As stated in the previous section, Y Soft Corporation, a.s. is a young company, 
 		\subsection{Meetings inside R\&D}\label{rndMeetings}
 (Number of communication paths, amount of frequent and occasional communication
 Define communication media (face to face, HipChat, Cisco Jabber, email, Skype)
+Sending IMs with request for consultation - overseen
 Historical attempts (headphones, hats) )
 		
 		\subsection{Consultations from CSS}
@@ -318,7 +319,9 @@ ak je písomná odpoveď nedostatočná, tak sa pokračuje v písaní si alebo s
 
 neoficiálne sa stáva, že sa telefonuje alebo posiela IM priamo developerovi alebo sa ide po face-to-face ad-hoc konzultáciu
 
-ak CSS má remote desktop k zákazníkovi, tak je potrebná aktívna ad-hoc asistencia od RnD)
+ak CSS má remote desktop k zákazníkovi, tak je potrebná aktívna ad-hoc asistencia od RnD
+
+pre CSS je potreba u platinového zákazníka mať okamžitú podporu od RnD (riešenie problému do 1 h))
 
 	\section{Unconference with Kentico Software, s.r.o.}\label{Kentico}
 In February 2015, and unconference\footnote{An unconference is a conference organized, structured and led by the people attending it. Instead of passive listening, all attendees and organizers are encouraged to become participants, with discussion leaders providing moderation and structure for attendees. \cite{unconference}} took place in the headquarters of Y Soft Corporation. One of the proposed and later consulted topics was ''Team cooperation vs. peace for individual work.''
@@ -331,32 +334,30 @@ At the unconference, we were not able to find a viable solution. The discussion 
 
 	\section{Definition of Issues to be Solved}
 
-Thankfully, there is a high level of face-to-face communication in Y Soft and the employees need not to be encouraged to use it over IMs or emails. Actually, a small research shows, that there may be too much of interruptions by other colleagues, that makes it impossible to keep focus on one task for a longer period of time.
-
-I've asked several of my colleagues in Y Soft to note down every interruption from the task they were currently working on. The result are shown on graphs in the figures \ref{pic:originalStatesNormal} and \ref{pic:originalStatesExposed}.
-
-\pict{Interruptions of a less exposed developer}{data/originalStatesNormal.png}{width=0.8\textwidth}{pic:originalStatesNormal}
+Thankfully, there is a high level of face-to-face communication in Y Soft and the employees need not to be encouraged to use it over IMs or emails. Actually, a small research shows, that there may be too much of interruptions by other colleagues, that makes it impossible to keep focus on one task for a longer period of time. I asked several of my colleagues in Y Soft to note down every interruption from the task they were currently working on, and also to write down their feeling about the day compared to other days in terms of interruptions effecting their main course of work. The result are shown on graphs in the figures \ref{pic:originalStatesNormal} and \ref{pic:originalStatesExposed}. Each graph represents a 12 hour clock. Days start at 8 a.m., which is marked by a thin black stripe with time written next to it. The red, green and yellow stripes represent the following activities':
+\begin{itemize}
+	\item{red stripe:} main course of work (e.g. programming)
+	\item{green stripe:} external (unexpected) interruption (e.g. face-to-face ad-hoc consultation, IM)
+	\item{yellow stripe:} planned or internal interruption (e.g. scheduled meeting, coffe break, lunch)
+\end{itemize}
 
 \pict{Interruptions of an exposed developer}{data/originalStatesExposed.png}{width=0.8\textwidth}{pic:originalStatesExposed}
 
-(bude doplnene o body vyrusenia)
+A day of a developer is depicted on the graph in figure \ref{pic:originalStatesExposed}.The working hours were almost completely spent on consultations and other interruptions. Between those interruptions, the developer often had less than 30 minutes of time, which is just enough to start doing something serious or to restore work on a previous task. The following interruption made the developer change context again. After the interruption, the developer had to spend some time in order to gain the focus back again. Although there was some value from the consultations given by the developer, there also was a lot of time wasted on refocusing. Another scenario would be the developer not wanting to loose focus on the task, which lowers the quality of the consultation, as the developer did not pay full attention to it. Moreover, the developer went home frustrated, that he did almost nothing that day and that he is behind his schedule, thus he would have to work longer hours the following day. The most interesting is that the developer marked that day as a casual one, which means that this is a pretty common scenario.
 
-The day of a developer depicted on the graph in figure \ref{pic:originalStatesExposed} was almost completely spent on consultations and other interruptions. Between those interruptions, the developer had most of the time less than 30 minutes of time, which is just enough to start doing something serious or to restore work on a previous task. The following interruption made the developer change context again. After the interruption, the developer had to spend some time again in order to gain the focus back. Although there is a value from the consultations given by the developer, there also was a lot of time spent on refocusing. Moreover, the developer went home frustrated, that he did almost nothing that day and that he is behind his schedule, thus he will have work longer hours the following day.
+\pict{Interruptions of a less exposed developer}{data/originalStatesNormal.png}{width=0.8\textwidth}{pic:originalStatesNormal}
 
-If the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the figure \ref{pic:groupedStates}.
-
-\pict{Grouped interruptions of an exposed developer}{data/groupedStates.png}{width=0.8\textwidth}{pic:groupedStates}
-
-.......
+Graph in figure \ref{pic:originalStatesNormal} shows an example of a day, which was rated as subnormally calm. There were only two unexpected interruptions, both of them were face-to-face conversations with colleagues that needed ad-hoc help. Although such a day is considered ideal, there is a couple of things that could be improved. Firstly, there is a possibility, that if the interruptions happened in some other time, they might have been less disruptive for the developer. Secondly, there might have been somebody looking for the developer during his absence before lunch and during the lunch. The person probably went to check his workplace several times only to find out, that he was not there. There were 5 minutes, during which the developer was present in between his absence (marked by a red stripe at about 11 a.m.). It there were some way to notify that person about presence of the developer at his workplace, the person could have been able to contact him during the 5 minutes.
 
 (SWOT a 7Ss analyzy ???)
 
-(Defragment time, make inception of a consultation easier, prevent unnecessary communication, prevent frequent interruptions
-Streamline communication
+The main focus of the solution is to defragment time of workers and to make the time on their interruptions depend on themselves. For example, if the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the figure \ref{pic:groupedStates}.
 
-make efficient in terms of quality, which means assuring full focus of communication parties (not being distracted by some ongoing work or focused on something else)
+\pict{Grouped interruptions of an exposed developer}{data/groupedStates.png}{width=0.8\textwidth}{pic:groupedStates}
 
-pre CSS je potreba u platinového zákazníka mať okamžitú podporu od RnD (riešenie problému do 1 h))
+The secondary issue to be solved is the need to check on a colleague regularly in order to see, whether he has yet returned to his workplace or not. This is necessary for ad-hoc face-to-face consultations and for other matters with high priority. Current method of sending an IM with a request for consultation as soon as possible is ineffective, because the IMs are frequently being overseen.
+
+If solved properly, removing these issues should streamline internal communication of the target company. The internal communication should also become more efficient in terms of improving its quality. The improved quality should be a result of restraining conversation when one of the parties is focused on some other task and thus does not pay full attention to the communication.
 
 \chapter{Proposed Solution}
 This chapter will elaborate on possible solutions of the defined issues and presents the selected one.
@@ -401,7 +402,7 @@ The implemented tool will enforce the following basic set of rules:
 
 \chapter{AnyOffice Tool}
 
-The new tool got name AnyOffice. It consists of a web page and a light client application, that lives on the users' machines in the notification area of taskbar.
+The new tool got name AnyOffice. It consists of a web page and a light client application, which runs on the users' machines in the notification area of taskbar.
 
 From the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The last section is dedicated to the technologies, that were used to implement this tool and to those the tool makes use of.
 
