@@ -104,7 +104,7 @@ I would like to thank to my supervisor Mgr. Petr Neugebauer, MBA for his valuabl
 The goal of this thesis is to streamline communication between team members and to prevent loss of productivity due to frequent interruptions in a mid-size software company, where employers are dealing with adaptation of agile approaches. The thesis should analyze internal processes as well as requirements and expectations of different stakeholders regarding productivity, especially communication gaps. Based on these identified issues, the implementation part of the work will cover design and implementation of a tool, which will enforce the team members to follow the proposed process(es). This thesis is realized in cooperation with Y Soft Corporation, a.s.
 \end{ThesisAbstract}
 \begin{ThesisKeyWords}
-Agile, Communication, Company, Interruption, Organization, Team, Teamwork.
+Agile, Communication, Company, Internal, Interruption, Organization, Team, Teamwork.
 \end{ThesisKeyWords}
 \MainMatter
 \tableofcontents %  prints  table  of  contents
@@ -114,20 +114,44 @@ Agile, Communication, Company, Interruption, Organization, Team, Teamwork.
 
 \chapter{Introduction}
 
-Management of internal organizational communication is very often neglected. Reasons for this vary, but the most common is, that the communication will manage itself according to a common sense. This results in companies suffering from insufficient or excessive, not efficient or even not effective communication, which leads to several serious problems. 
-
-As an employee of Y Soft Corporation, I can tell, that internal communication is certainly not being neglected.  by defining and opening communication paths throughout the organizational structure. There are several internal policies for assuring efficient meetings, reporting of incidents and defining tasks.
-
-
-
-The first chapter of this thesis explains,   with a focus on software engineers.
-
-Agile frameworks overview, benefits of agile approaches => communication (From ISTQB syllabus)
-
-scrum diagram
-
-http://www.agilemodeling.com/essays/communication.htm
 Communication is the act of transmitting information between individuals. The need to communicate effectively pervades software development, operations, and support. Developers and end users must communicate with one another. Developers and operations staff must communicate. Developers and management must communicate. And so on.
+
+
+	\section{Motivation}
+Several months ago, as a Junior Quality Assurance Engineer in Y Soft, I've become a part of an engineering team. My role is to give support to the team in terms of being present throughout the development cycle and, from the quality point of view, to give my inputs where necessary. This means, that I'm tightly cooperating with the team all of the time. 
+
+After a few weeks of my presence in the team I started noticing, that, quite regularly, the developers of the team go home frustrated. Often they leave work earlier, with a comment, that they did nothing that day and there is no point in staying there longer. On the other hand, some other days I see them working late hours, most of the time apparently stressed out about not meeting deadlines.
+
+In Y Soft, we use Agile as a philosophy and a little modified version of Scrum as a framework. This means, that as a team member, I'm also part of planning and team review meetings. There I noticed, that even if only about half of the developers' time is planned, spring goals are eventually either not met or there is a serious amount of time pressure at the end of the sprint, in order to get things somehow done on time.
+
+This got me thinking, why is that so. What it is that the developers are doing, which is not planned. I don't see them procrastinating much and they very rarely take breaks. In fact, it was not very difficult to tell, that it is the communication, which is on a high level in the Research and Development department. Some of the communication, like corporate meetings or cooperation on tasks, is predicted and planned. But there also is a significant amount of unpredictable communication, which can be denoted as unofficial. This includes ad-hoc help to colleagues with their tasks, providing information when requested, conversations about long term goals, about state of things, sharing feedbacks and more. These conversations are not managed nor tracked, they can happen anytime and take several minutes or maybe even hours each day.
+
+I asked my colleagues to give their opinions on this observation. Almost all of them confirmed, that the internal communication is distractive for them and that they feel its direct impact on their productivity. The other inquired colleagues declared, that they are only rarely interrupted or that they don't mind the interruptions, even less if they are related to their current task.
+
+The aforementioned realization and research are reasons for this thesis, which goal is to streamline the internal communication between team members in Research and Development department in Y Soft Corporation, a.s., with possible applicability also to other departments and companies. The main focus will be on the daily communication, that happens throughout the Scrum Process, which is shown on Figure \ref{pic:scrumProcess}. The focused part of the process is marked with a red arrow.
+
+\pict{Scrum Process \cite{scrumProcess}}{data/Scrum_process.png}{width=0.8\textwidth}{pic:scrumProcess}
+
+
+	\section{Structure of the Thesis}
+The first part of this thesis explains what it means to interrupt for a software engineer to be interrupted. Several studies are mentioned in this chapter, in order to get an image of all possible impacts that interruptions can have on not only an engineer but a knowledge worker in general. Rest of this chapter is dedicated to three most common time management techniques, choosing one as the most appropriate for use in an agile environment, where cooperation is essential.
+
+Chapter \ref{internalCommunication} introduces a concept of the internal organizational communication, mentioning several most common myths in communication management. Second part of this chapter advises on the steps to take and risks to count with, when establishing an efficient internal communication. This is followed by some ideas on why it would not be a good idea to eliminate ad-hoc face-to-face communication in an agile environment, as this would be the simplest solution of the aforementioned issues.
+
+Analytical part of the thesis focuses on the historical background and current state of the Y Soft Corporation, as it is essential for understanding the nature of communication in the company. There it is possible to see the rapid growth in number of employees in the recent years, which introduced the issues this theses is addressing. Report from an unconference with Kentico Software is also a part of this chapter, which confirmed that Y Soft's employees are not the only ones who are troubled by frequent interruptions in their work. The chapter is concluded by definition of issues, that need to be resolved.
+
+The final parts of the thesis bring solution in a form of a new tool, that has also been implemented as a part of the work. The usage instruction of the tool are included in this part together with a list of issues this tool solves and purposes it can serve. From the development point of view, used technologies, architecture and design patterns are presented here. The chapter also includes the feedback from colleagues that were using the tool, as well as the one that performed a code review.
+
+The thesis also includes summarization of results in terms of measured improvements as well as subjective feelings of the users. The last chapter is dedicated to ideas about future development of the tool and its potential.
+
+
+
+
+%Agile frameworks overview, benefits of agile approaches => communication (From ISTQB syllabus)
+
+
+%http://www.agilemodeling.com/essays/communication.htm
+%Communication is the act of transmitting information between individuals. The need to communicate effectively pervades software development, operations, and support. Developers and end users must communicate with one another. Developers and operations staff must communicate. Developers and management must communicate. And so on.
 
 
 
@@ -183,7 +207,9 @@ In conclusion, constant interruptions are mostly harmful to the work efficiency,
 
 ....
 
-The Pomodoro Technique \cite{pomodoro} was created with the aim of using time as a valuable ally to accomplish what we want to do, the way we want to do it, and to empower us to continually improve our work or study processes. This technique is often used complementary to a set of methods named `'Getting Things Done'' \cite{gtd} created by David Allen, which he presents as `'A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''	
+The Pomodoro Technique \cite{pomodoro} was created with the aim of using time as a valuable ally to accomplish what we want to do, the way we want to do it, and to empower us to continually improve our work or study processes. 
+
+This technique is often used complementary to a set of methods named `'Getting Things Done'' \cite{gtd} created by David Allen, which he presents as `'A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''	
 	
 The Getting Things Done is more of a personal guide for organizing tasks into projects in order to stop forgetting to do things, to make yourself do them, to do them on time and to have more time for yourself. The method is suited more for a solitary workers, who do not need to work in teams or the teamwork is not very intense, as the method does not consider external interruptions.
 
@@ -219,7 +245,7 @@ The following objectives are required to be met, one after another, in order to 
 With Pomodoro, there is an ever-valid rule: `'Next Pomodoro will go better.'' According to the Francesco Cirillo's book The Pomodoro Technique \cite{pomodoro}, the technique has been successfully applied in various types of activities: organizing work and study habits, writing books, drafting technical reports, preparing presentations, and managing projects, meetings, events, conferences, and training courses.
 
 
-\chapter{Internal Communication in an~Organization}
+\chapter{Internal Communication in an~Organization}\label{internalCommunication}
 
 As defined in \cite{orgCommForSurvival}, an organization is `'an organized collection of individuals working independently within a relatively structured, organized, open system to achieve common goals''. The same publication defines organizational communication as `'the process by which individuals stimulate meaning in the minds of other individuals by means of verbal and nonverbal messages in the context of a formal organization''. Generally, communication maintains and sustains relationships in any organization, and it does not only effect the people communicating at that moment, but also the whole organization as a system.
 
@@ -240,7 +266,7 @@ Another myth according to \cite{orgCommForSurvival} says `'telling is communicat
 In the current days of emails, IMs and always available telephone, people consider communication to be more of a verbal process. We are left only with words that are supposed to carry the whole message. The nonverbal aspect is often given only a little relevance, yet much of communication is actually not verbal. The same verbal message can be perceived in various and even totally opposite ways based on the intonation, gestures and mimics. As an example, let's take a team member who has an idea about a new product feature. He communicates this idea over an email to his team leader, whose office is not in the same building. The team leader likes the idea, but has some additional questions, which he sends back to the team member. A simple question like `'And what will we do about that particular thing? Have you thought about that?'' can be easily misunderstood as offensive, which would make an impression of his leader's negative attitude towards the idea. The conversation will either have to be repeated again or the idea will be dismissed by the originator himself.
 
 
-	\section{Improving Internal Communication Efficiency}
+	\section{Improving Internal Communication Efficiency}\label{improvingEff}
 If a company wants to improve efficiency of internal communication, it is important to implement certain rules and principles, as \cite{intCommManag} points out. The rules and principles need to be put into effect gradually and with care, as it is very difficult to change one's habits. In order to do this, a project has to be defined and approved by management of the company. The person executing the project has to be supported and given sufficient authority. 
 
 In the section \ref{effOfOrgComm}, we have already talked about quality as being a crucial aspect of communication. An it is the quality that we should focus on when establishing efficient internal communication, which can vary according to conditions. In \cite{intCommManag}, there are several principles that the project of altering a level of communication must assume:
@@ -254,8 +280,8 @@ Sadly, according to \cite{intCommManag}, these projects usually fail due to insu
 
 
 	\section{Importance of Ad-hoc Face-to-face Conversations in Agile Environments}\label{commImportance}
-Scott W. Ambler is a Senior Consulting Partner with Scott Ambler + Associates, a consulting firm specializing in helping organizations to successfully adopt disciplined agile strategies. He has written several books and white papers on object-oriented software development, software processes, Disciplined Agile Delivery, Agile Scrum Model, Agile Model Driven Development, Agile Database Techniques and more, as he presents himself on his home page \cite{ambler}.
-
+Scott W. Ambler is a Senior Consulting Partner in a firm specialized in helping organizations to successfully adopt disciplined agile strategies. He has written several books and white papers on object-oriented software development, software processes, Disciplined Agile Delivery, Agile Scrum Model, Agile Model Driven Development, Agile Database Techniques and more, as he presents himself on his home page \cite{ambler}. In most of his books and papers, he pays a considerable amount of attention to communication, as it plays a significant role in every agile environment. 
+	
 Figure \ref{pic:commModes}, originally from \cite{agileCockburn} and edited by the Scott W. Ambler in \cite{roninInt}, shows various communication modes, that people may choose when working together, comparing their effectiveness with the richness of the communication channel they provide. The left arc depicts communication options of documentation and the right one is for the real-time communication. It is important to bear in mind that context and background is very important and can make some of the channels more effective. Nevertheless, in most cases, speech is much more effective than a written word, even if it is not real-time, which is caused by the ability to use intonation and voice modulation. When the communicating parties can see each other, the effectiveness of the conversation grows rapidly, as the speech is enriched by gestures and facial expressions. Any other visual tool can help even more, whether it is a whiteboard, paper, computer screen, etc.
 
 \pict{Modes of Communication \cite{roninInt}}{data/communicationModes.png}{width=0.8\textwidth}{pic:commModes}
@@ -386,9 +412,37 @@ A day of a developer is depicted on the graph in figure \ref{pic:originalStatesE
 
 Graph in figure \ref{pic:originalStatesNormal} shows an example of a day, which was rated as subnormally calm. There were only two unexpected interruptions, both of them were face-to-face conversations with colleagues that needed ad-hoc help. Although such a day is considered ideal, there is a couple of things that could be improved here. Firstly, there is a possibility, that if the interruptions happened in some other time, they might have been less disruptive for the developer. Secondly, there might have been somebody looking for the developer during his absence before lunch and during the lunch period. The person probably went to check his workplace several times only to find out, that he was not there. There were 5 minutes, during which the developer was present in between his absences (marked by a red stripe at about 11 a.m.). It there were some way to notify that person about presence of the developer at his workplace, the person could have been able to contact him during those 5 minutes.
 
-(SWOT)
+As mentioned in section \ref{improvingEff}, a SWOT analysis is a tool suitable to find out what should be enhanced and what should be eliminated:
+\paragraph*{Strengths}
+\begin{itemize}
+	\item Internal organizational communication. Our internal communication is on a high level both vertically and horizontally.
+	\item Open-minded management. The management is open to new ideas, solutions and proposals.
+	\item Existing internal rules for official communication. There are several rules for efficient meetings, reporting system and group emails.
+	\item Possibility to cut down on interruptions. Most of the ad-hoc consultations can be postponed and thus grouped together, without any harm to the agile environment.
+\end{itemize}
+\paragraph*{Weaknesses}
+\begin{itemize}
+	\item Unofficial internal communication inside R\&D is not managed. There are currently no restrictions or rules about unofficial internal communication.
+	\item Extensive communication impacts productivity of work. Every day, members of R\&D are distracted several times. (The impact is stated in the previous chapters.)
+	\item Too many communication paths. In R\&D, it is possible to talk anytime to anybody, which adds on possible sources of distractions.
+	\item A lot of knowledge is not documented. Some knowledge is very difficult to be documented or it is not feasible to do so.
+	%\item It is easier to ask somebody then to find the information yourself in the documentation or other sources.
+	\item Multiple communication tools. There are several tools currently in use and each person uses some indefinite subset of them.
+\end{itemize}
+\paragraph*{Opportunities}
+\begin{itemize}
+	\item Resolve more tasks from customers with SLA in time. This would cut down on penalties paid by the company to these customers, when SLA conditions are not met.
+	\item Attractiveness of work environment to new employees. If a pro-work productive environment is created, this can become attractive to potential employees and help them decide to work in Y Soft.
+	\item Deliver new features sooner than the competition. More productive and effective work causes faster development with less errors, which allows more new features per release of the product.
+	\item More effective development would lower time spent on development of a feature, which would make the feature cheaper. 
+\end{itemize}
+\paragraph*{Threats}
+\begin{itemize}
+	\item Inefficient communication causes inefficient work and makes room for competition to take over the position of the company on the market.
+	\item Chaotic and disruptive environment discourage new potential employees to work in Y Soft.
+\end{itemize}
 
-The main focus of the solution is to defragment time of workers and to make the time of their interruptions depend on themselves. For example, if the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the figure \ref{pic:groupedStates}.
+Based on the analysis and studied materials, the main focus of the solution will be to defragment time of workers and to make the time of their interruptions depend on themselves. For example, if the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the figure \ref{pic:groupedStates}.
 
 \pict{Grouped interruptions of an exposed developer}{data/groupedStates.png}{width=0.8\textwidth}{pic:groupedStates}
 
@@ -401,6 +455,8 @@ The secondary issue to be solved is the need to check on a colleague regularly i
 If solved properly, removing these issues should streamline internal communication of the target company. The internal communication should also become more efficient in terms of improving its quality. The improved quality should be a result of restraining conversation when one of the parties is focused on some other task and thus would not pay full attention to the communication.
 
 For Customer Services Support department, it is necessary to know, whether it is appropriate to contact the developer at a given moment and whether the developer is available too. It is not required to handle the communication inside the CSS department in any way.
+
+With that said and to sum things up, the solution should make the interruptions of software engineers depend on themselves, although with some restrictions to it, in order to keep the communication on a sufficient level and not hurt the agile environment. Thus, there is also a need to effectively inform people when it is possible to contact their coworkers.
 
 
 \chapter{Proposed Solution}
@@ -462,12 +518,26 @@ From the first part of this chapter you can learn the steps necessary to start u
 
 
 	\section{Technologies Used}
+	
+	
+	\section{Architecture and Design Patterns}
+	
+	
+	\section{Code Review and Feedback}
+
+code
+GUI
+functionality
 
 
 \chapter{Results}
 (Graphs from AnyOffice containing states and consultations
 
 Usability for the CSS department and other departments)
+
+subjective feedback
+
+additional costs
 
 
 \chapter{Conclusions and Future Work}
