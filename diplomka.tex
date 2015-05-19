@@ -10,6 +10,7 @@
 \usepackage{color}
 \usepackage{textcomp}
 \usepackage[small]{caption}
+\usepackage{subcaption}
 \usepackage{float}
 \usepackage{verbatim}
 \usepackage{pdfpages}
@@ -57,6 +58,24 @@
   		\centerline{\fcolorbox{darkgray}{palegray}{\includegraphics[#3]{#2}}}
   		\caption{#1}
   		\label{#4}
+	\end{figure}
+}
+
+\newcommand{\twopict}[9]{
+	\begin{figure}[h!]
+  		\vspace{-7px}
+		\begin{subfigure}{.5\textwidth}
+  			\centerline{\fcolorbox{darkgray}{palegray}{\includegraphics[#8]{#2}}}
+  			\caption{#1}
+  			\label{#3}
+		\end{subfigure}
+		\begin{subfigure}{.5\textwidth}
+  			\centerline{\fcolorbox{darkgray}{palegray}{\includegraphics[#8]{#5}}}
+  			\caption{#4}
+  			\label{#6}
+		\end{subfigure}
+		\caption{#7}
+		\label{#9}
 	\end{figure}
 }
 
@@ -167,7 +186,7 @@ In a company, there are positions, for which interruptions are just a normal par
 
 A comic made by Jason Heeris [Appendix \ref{app:software engineer}],  is probably the best way to give you an idea about what it means for a software engineer to be interrupted.\footnote{Erik Dietrich in an article on his blog \cite{costOfInterruptions} provides a simple way of showing, what it means for a programmer to be interrupted: Write down a series of 3 to 4 digit numbers in a sequence. Now, tell a person to add those numbers as fast as possible without writing anything down. After some time, ask the person questions about how it is going, what number he/she is currently adding, whether it is 198 or 674 and get him/her to respond. Ask him to help you with adding some other three numbers real quick. Moreover, you can pretend a phone call in the vicinity of the person, talking about some numbers. When the person is done, check the result and ask, how many times a fresh start was necessary. Several experiments, which I have performed on my friends, showed, that usually the examinee had to start over several times and also did not get the correct result.} Software engineers often find it very difficult to start where they had finished prior to the interruption, if it is at all possible. As an example, debugging of code may become a very time demanding process, which requires a high level of concentration, as there is no undo or step backwards. A distraction may cause that the engineer makes a mistake, forgets the context or the debugged program times out and terminates itself. This can cause frustration and a nontrivial loss of time.
 
-%Imagine a software engineer in a middle of a debugging task. He has finally come to a sufficient level of understanding of the tricky condition in the code, has done the right amount of cycles to get the correct value in a variable, which purpose is a little mystery to him, and is very probably just about to find out, what causes the exception, that the important customer sees in logs from time to time under unknown conditions. All of a sudden, a colleague comes by to ask about that other task the software engineer had been working on and is currently under test. The distraction causes him to accidentally step over the expression instead of stepping into it. So, he asks the colleague to repeat the question, as he was only partly listening. After helping the colleague, he looks down at his paper wondering, what `'18rts97'' means, and restarts the debugging process.
+%Imagine a software engineer in a middle of a debugging task. He has finally come to a sufficient level of understanding of the tricky condition in the code, has done the right amount of cycles to get the correct value in a variable, which purpose is a little mystery to him, and is very probably just about to find out, what causes the exception, that the important customer sees in logs from time to time under unknown conditions. All of a sudden, a colleague comes by to ask about that other task the software engineer had been working on and is currently under test. The distraction causes him to accidentally step over the expression instead of stepping into it. So, he asks the colleague to repeat the question, as he was only partly listening. After helping the colleague, he looks down at his paper wondering, what ''18rts97'' means, and restarts the debugging process.
 
 
 		\subsection{The Real Cost of Interruptions }
@@ -209,12 +228,12 @@ In conclusion, constant interruptions are mostly harmful to the work efficiency,
 
 The Pomodoro Technique \cite{pomodoro} was created with the aim of using time as a valuable ally to accomplish what we want to do, the way we want to do it, and to empower us to continually improve our work or study processes. 
 
-This technique is often used complementary to a set of methods named `'Getting Things Done'' \cite{gtd} created by David Allen, which he presents as `'A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''	
+This technique is often used complementary to a set of methods named ''Getting Things Done'' \cite{gtd} created by David Allen, which he presents as ''A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''	
 	
 The Getting Things Done is more of a personal guide for organizing tasks into projects in order to stop forgetting to do things, to make yourself do them, to do them on time and to have more time for yourself. The method is suited more for a solitary workers, who do not need to work in teams or the teamwork is not very intense, as the method does not consider external interruptions.
 
 	\section{The Pomodoro Technique}
-%The Pomodoro Technique was invented by Francesco Cirillo in the early 80s, as a result of his own and fellow students ineffective study habits. The name `'Pomodoro'' translates as `'Tomato'' and is inspired by a kitchen timer, that usually comes in a shape of this vegetable. And it is this kitchen-timer-like device which plays an important role in the process of using the Pomodoro Technique.
+%The Pomodoro Technique was invented by Francesco Cirillo in the early 80s, as a result of his own and fellow students ineffective study habits. The name ''Pomodoro'' translates as ''Tomato'' and is inspired by a kitchen timer, that usually comes in a shape of this vegetable. And it is this kitchen-timer-like device which plays an important role in the process of using the Pomodoro Technique.
 
 The goal of the Pomodoro Technique is to provide a simple tool/process for improving productivity of not only individuals, but also whole teams. According to \cite{pomodoro}, the technique is supposed to do the following:
 \begin{itemize}
@@ -242,12 +261,12 @@ The following objectives are required to be met, one after another, in order to 
 \paragraph*{Make the Pomodoro more effective and set up a timetable: } These two objectives are implemented after mastering the previous ones. They include using the first and last few minutes of each Pomodoro for reviewing the work done and setting up timetable for each day, in order to prevent working late hours after wasting time in the morning.
 
 \vspace{\baselineskip}
-With Pomodoro, there is an ever-valid rule: `'Next Pomodoro will go better.'' According to the Francesco Cirillo's book The Pomodoro Technique \cite{pomodoro}, the technique has been successfully applied in various types of activities: organizing work and study habits, writing books, drafting technical reports, preparing presentations, and managing projects, meetings, events, conferences, and training courses.
+With Pomodoro, there is an ever-valid rule: ''Next Pomodoro will go better.'' According to the Francesco Cirillo's book The Pomodoro Technique \cite{pomodoro}, the technique has been successfully applied in various types of activities: organizing work and study habits, writing books, drafting technical reports, preparing presentations, and managing projects, meetings, events, conferences, and training courses.
 
 
 \chapter{Internal Communication in an~Organization}\label{internalCommunication}
 
-As defined in \cite{orgCommForSurvival}, an organization is `'an organized collection of individuals working independently within a relatively structured, organized, open system to achieve common goals''. The same publication defines organizational communication as `'the process by which individuals stimulate meaning in the minds of other individuals by means of verbal and nonverbal messages in the context of a formal organization''. Generally, communication maintains and sustains relationships in any organization, and it does not only effect the people communicating at that moment, but also the whole organization as a system.
+As defined in \cite{orgCommForSurvival}, an organization is ''an organized collection of individuals working independently within a relatively structured, organized, open system to achieve common goals''. The same publication defines organizational communication as ''the process by which individuals stimulate meaning in the minds of other individuals by means of verbal and nonverbal messages in the context of a formal organization''. Generally, communication maintains and sustains relationships in any organization, and it does not only effect the people communicating at that moment, but also the whole organization as a system.
 
 This chapter will provide you several misconceptions about organizational communication, that are commonly made. The second section contains rules and principles to be implemented in order to improve efficiency of the internal communication. At the end of the chapter, you can find reasonings why ad-hoc face-to-face communication is heart and soul of agile projects.
 
@@ -261,9 +280,9 @@ Moreover, it can easily happen, that we start communicating to such extend, that
 
 As stated in \cite{orgCommForSurvival}, it is clearly a myth that the more we communicate, the better. Actually, important is the quality of communication rather than it's quantity. Thus, if somebody is bored, bothered or even annoyed with the communication, there is only a little quality he can give to it.
 
-Another myth according to \cite{orgCommForSurvival} says `'telling is communicating''. In fact, telling is only a part of communication, a very small part. Very important part of it is the background of the receiver, which influences the meaning the receiver attaches to the message and the acknowledgment of it. Generally, people occupied by some other activity may easily overhear or forget the communication and it's meaning, and this stands for ad-hoc communication even more.
+Another myth according to \cite{orgCommForSurvival} says ''telling is communicating''. In fact, telling is only a part of communication, a very small part. Very important part of it is the background of the receiver, which influences the meaning the receiver attaches to the message and the acknowledgment of it. Generally, people occupied by some other activity may easily overhear or forget the communication and it's meaning, and this stands for ad-hoc communication even more.
 
-In the current days of emails, IMs and always available telephone, people consider communication to be more of a verbal process. We are left only with words that are supposed to carry the whole message. The nonverbal aspect is often given only a little relevance, yet much of communication is actually not verbal. The same verbal message can be perceived in various and even totally opposite ways based on the intonation, gestures and mimics. As an example, let's take a team member who has an idea about a new product feature. He communicates this idea over an email to his team leader, whose office is not in the same building. The team leader likes the idea, but has some additional questions, which he sends back to the team member. A simple question like `'And what will we do about that particular thing? Have you thought about that?'' can be easily misunderstood as offensive, which would make an impression of his leader's negative attitude towards the idea. The conversation will either have to be repeated again or the idea will be dismissed by the originator himself.
+In the current days of emails, IMs and always available telephone, people consider communication to be more of a verbal process. We are left only with words that are supposed to carry the whole message. The nonverbal aspect is often given only a little relevance, yet much of communication is actually not verbal. The same verbal message can be perceived in various and even totally opposite ways based on the intonation, gestures and mimics. As an example, let's take a team member who has an idea about a new product feature. He communicates this idea over an email to his team leader, whose office is not in the same building. The team leader likes the idea, but has some additional questions, which he sends back to the team member. A simple question like ''And what will we do about that particular thing? Have you thought about that?'' can be easily misunderstood as offensive, which would make an impression of his leader's negative attitude towards the idea. The conversation will either have to be repeated again or the idea will be dismissed by the originator himself.
 
 
 	\section{Improving Internal Communication Efficiency}\label{improvingEff}
@@ -276,7 +295,7 @@ In the section \ref{effOfOrgComm}, we have already talked about quality as being
 	\item Verify the aim and measure the improvement according to certain criteria in both short term and long term horizons.
 \end{enumerate}
 
-Sadly, according to \cite{intCommManag}, these projects usually fail due to insufficient support and/or competencies of the executive. Inconsistency among managers and their preference of other seemingly more important tasks also play thair role, as results of such tasks appear more immediately and thus are more `'lucrative'' than a complex strategic task.
+Sadly, according to \cite{intCommManag}, these projects usually fail due to insufficient support and/or competencies of the executive. Inconsistency among managers and their preference of other seemingly more important tasks also play thair role, as results of such tasks appear more immediately and thus are more ''lucrative'' than a complex strategic task.
 
 
 	\section{Importance of Ad-hoc Face-to-face Conversations in Agile Environments}\label{commImportance}
@@ -286,9 +305,9 @@ Figure \ref{pic:commModes}, originally from \cite{agileCockburn} and edited by t
 
 \pict{Modes of Communication \cite{roninInt}}{data/communicationModes.png}{width=0.8\textwidth}{pic:commModes}
 
-Alistair Cockburn, one of the initiators of the agile movement in software development, in his book \cite{commCockburn} calls software development `'a cooperative game of invention and communication.'' Software engineers no longer are those lone-sitting individuals locked away from anybody else, as they need to be always open for communication and cooperation. Considering the amount of communication that is necessary in agile software development, this is true more than ever. Constant communication starts with product owner communicating a new functionality with team members, continues with their mutual communication and inquiries about missed points or limitations back to the product owner, and finishes with communication between developers and testers, who need to design, develop and test everything in a short period of time. 
+Alistair Cockburn, one of the initiators of the agile movement in software development, in his book \cite{commCockburn} calls software development ''a cooperative game of invention and communication.'' Software engineers no longer are those lone-sitting individuals locked away from anybody else, as they need to be always open for communication and cooperation. Considering the amount of communication that is necessary in agile software development, this is true more than ever. Constant communication starts with product owner communicating a new functionality with team members, continues with their mutual communication and inquiries about missed points or limitations back to the product owner, and finishes with communication between developers and testers, who need to design, develop and test everything in a short period of time. 
 
-As seen in the list on page \pageref{list:avoidingCommunication}, to stop being constantly interrupted, people are avoiding constant communication mostly by `'hiding'' somewhere else. This hurts the agile approach to development very much, as face-to-face conversations are crucial for agile projects. Due to the short periods of time, the communication needs to be immediate, effective and efficient.
+As seen in the list on page \pageref{list:avoidingCommunication}, to stop being constantly interrupted, people are avoiding constant communication mostly by ''hiding'' somewhere else. This hurts the agile approach to development very much, as face-to-face conversations are crucial for agile projects. Due to the short periods of time, the communication needs to be immediate, effective and efficient.
 	
 	
 \chapter{Analysis of the Current State}
@@ -319,7 +338,7 @@ The recent years of Y Soft were marked by a spirit of growth in number of employ
 		\subsection{Current State}\label{currentState}
 After more than 10 years of double-digit growth\footnote{Double-digit growth is a growth by at least 10 \%} in billing, the company has become a leader on the market of printing solutions. This requires a significant amount of employees and a truly agile approach to development, in order to fulfill needs of their customers in a timely manner. 
 
-Apart from it's size, Y Soft Corporation considers itself a startup and also adjusts the company culture this way. The company tries to keep friendly and open environment with a relatively flat structure. A structure of the Research and Development department is shown on picture \ref{pic:endStructure}. On the top of the hierarchy is Chief Technology Officer (CTO), who leads the R\&D management team. His role is to appoint the management team, approve R\&D policies and product architecture. The R\&D management team consists of the following roles:
+Apart from it's size, Y Soft Corporation considers itself a startup and also adjusts the company culture this way. The company tries to keep friendly and open environment with a relatively flat structure. A structure of the Research and Development department is shown on picture \ref{pic:rndStructure}. On the top of the hierarchy is Chief Technology Officer (CTO), who leads the R\&D management team. His role is to appoint the management team, approve R\&D policies and product architecture. The R\&D management team consists of the following roles:
 \begin{itemize}
 	\item{Chief Product Manager (Chief PdM):} This role ensures understanding of product strategy and manages team of Product Managers (PdM), while also acting at their level. Product Managers provide communication bridge between engineering teams and various stakeholders, and define, accept and evaluate results of engineering teams.
 	\item{Chief Architect:} Manages the product architecture team, which is responsible for having straightforward and coherent architecture across all hardware and software products.  
@@ -347,12 +366,12 @@ Internal communication inside Research and Development department happen in seve
 
 \paragraph*{All staff meetings: } These meetings are infrequent and mostly regular. They are planned at least several days upfront because all members of R\&D department and also some other departments are required to participate. Such meetings take place on a Cisco WebEx conferencing tool, in a bigger meeting room or directly in the R\&D office open space. Purpose is usually to give information about current corporate progress, successes and failures, or to inform staff about decisions of the line management. The meetings take up to one and a half hour, sparsely more.
 
-\paragraph*{Meetings of managers and team leaders: } These are also quite regular meetings, which are planned in advance. Attendees vary depending on the purpose of the meeting. Long and short term goals, new features and other directive matters are discussed at these meetings. Length of these meetings is unstable.
+\paragraph*{Meetings of managers and team leaders: } These meetings are usually planned in advance, but can also happen in an ad-hoc manner in case of an urgent matter. Attendees vary depending on the purpose of the meeting. Long and short term goals, new features and other directive matters are discussed at these meetings. Length of these meetings is unstable.
 
 \paragraph*{Meetings of teams: } There are several types of meetings that are held by teams. They are mostly regular and planned.
 \begin{itemize}
-	\item{Pre-plannings, plannings, reviews:} Meetings take place in a meeting room once in three or six weeks. Their purpose is to plan work for next development iteration and to review the currently passed iteration. They are usually about an hour in length. Attendees are members of the particular team. 
-	\item{Daily standups:} The standups take place in the R\&D office open space or in a relax room, usually in front of a whiteboard. Every team member informs about his work done in the previous business day, the work planned for the current day and issues he is facing. These standups are as quick as possible and rarely exceed 15 minutes. All team members are required to be present, and the meeting is open also to anybody from the R\&D department, but only in a role of a listener.
+	\item{Pre-plannings, plannings, reviews:} Meetings take place in a meeting room once in three weeks. Their purpose is to plan work for next development iteration and to review the currently passed iteration. They are usually about an hour in length. Attendees are members of the particular team. 
+	\item{Daily standups:} The standups take place in the R\&D office open space or in a relax room, usually in front of a whiteboard. Every team member informs about his work done in the previous business day, the work planned for the current day and issues he is facing. These standups are as quick as possible, usually take 5 and rarely exceed 15 minutes. All team members are required to be present, and the meeting is open also to anybody from the R\&D department, but only in a role of a listener.
 	\item{Focus groups:} Attendees from several teams gather up in a meeting room to elaborate on a task they will be cooperating on. Length of such meetings is highly variable.
 	\item{Other:} Some other meetings are dedicated for discussions usually about some currently emerged issue with high priority, that concerns more members of one team or across teams. The meetings are irregular and planned often only a few hours in advance.
 \end{itemize}
@@ -370,7 +389,10 @@ Internal communication inside Research and Development department happen in seve
 
 \pict{Communication paths in R\&D department}{data/paths.png}{width=1\textwidth}{pic:paths}
 
-Communication inside R\&D department is on a high level not only because it is required, but also thanks to the various communication channels and occasions for communication that are available. Other factor is that the majority of members of the department are in the same location. This allows them to use the most efficient way of communication - the face-to-face communication. On the other hand, the ad-hoc communication is so frequent, that it becomes bothering to the most exposed people. Based on the information in section \ref{currentState}, there currently are 3403 possible communication paths inside the R\&D department. The main communication paths between the individual roles of people in R\&D department (defined in section \ref{currentState}) are marked on picture \ref{pic:paths}. The preferred communication paths are marked red, however, many other paths exist.
+Communication inside R\&D department is on a high level not only because it is required, but also thanks to the various communication channels and occasions for communication that are available. Other factor is that the majority of members of the department are in the same location. This allows them to use the most efficient way of communication - the face-to-face communication. On the other hand, the ad-hoc communication is so frequent, that it becomes bothering to the most exposed people. Based on the information in section \ref{currentState}, there currently are 3655 possible communication paths\footnote{There currently are 86 people in R\&D department, while everybody can possibly speak with anybody. This is a common ''handshake problem'' or combination of n items:
+\begin{equation}
+	\frac{n*(n-1)}{2}=\frac{86*85}{2}=3655.
+\end{equation} } inside the R\&D department. The main communication paths between the individual roles of people in R\&D department (defined in section \ref{currentState}) are marked on picture \ref{pic:paths}. The preferred communication paths are marked red, however, many other paths exist.
 
 			
 		\subsection{Consultations from the CSS Department}\label{cssConsult}
@@ -448,7 +470,7 @@ Based on the analysis and studied materials, the main focus of the solution will
 
 The graph in figure \ref{pic:groupedStates} was created from graph in figure \ref{pic:originalStatesExposed} by postponing the external unexpected interruptions by no more than 1 hour. This way the interruptions got grouped together, which reduced the number of the main task resumptions from 14 to 6, which is a theoretical reduction of 57 \%. 
 
-It is important to note, that there already have been some attempts to reduce the number of external interruptions by allowing people to be in a Do Not Disturb state. One of the methods was called `'a rule of headphones''. Basically, when a person has headphones on, he or she is not supposed to be interrupted. Eventually, this and other similar methods started to be ignored for various reasons.
+It is important to note, that there already have been some attempts to reduce the number of external interruptions by allowing people to be in a Do Not Disturb state. One of the methods was called ''a rule of headphones''. Basically, when a person has headphones on, he or she is not supposed to be interrupted. Eventually, this and other similar methods started to be ignored for various reasons.
 
 The secondary issue to be solved is the need to check on a colleague regularly in order to see, whether he has yet returned to his workplace or not. This is necessary for ad-hoc face-to-face consultations and for other matters with high priority. Current method of sending an IM with a request for an instant consultation is ineffective, because the IMs are frequently being overseen.
 
@@ -516,6 +538,9 @@ From the first part of this chapter you can learn the steps necessary to start u
 	\section{Purposes and Features to Reach Them}
 (Purposes of AnyOffice with description of features, that make them possible)
 
+
+	\section{Motivations to use AnyOffice}
+
 	
 	\section{Architecture and Design Patterns}
 	(+ technologies)
@@ -527,15 +552,14 @@ GUI
 functionality
 
 
-\chapter{Results}
+\chapter{Results}\label{results}
 Together with Chief of Engineering and some Team Leads, we came upon agreement, that the AnyOffice tool will be tried by 3 engineering teams for a period of 1 month. We chose an Integration team from Quality Assurance, one team of developers with a member from quality assurance and one team without him. All users were presented with installation instructions and basic usage instructions. Also, they were asked to note down any external disturbance and also, whether it was by a person currently using the tool or not.
 
 The results show that 45 \% of disturbances were during users' the Available state, the remaining 55 \% during the Do Not Disturb state.\footnote{The Away state is not figuring here as the user had to be present in order to note the disturbance, as the disturbances were noted using the client application.} The probable reason is that the disturbance was noted mostly when users were in the Do Not Disturb state and forgot to note the disturbance while in the Available state.
 
-The users not using the tool, disturbed their colleagues by 30 \% in the Available state and 70 \% in the Do Not Disturb state. Considering disturbances by AnyOffice users only, 20 \% of disturbances were during the Do Not Disturb state of the object and the rest 80 \% were in the Available state. The AnyOffice users, who disturbed their colleague in his Do Not Disturb state, said that it was caused by their habit and thus their forgot to check the disturbed user's state.
+The users not using the tool, disturbed their colleagues by 30 \% in the Available state and 70 \% in the Do Not Disturb state. Considering disturbances by AnyOffice users only, 20 \% of disturbances were during the Do Not Disturb state of the object and the rest 80 \% were in the Available state. The AnyOffice users, who disturbed their colleague in his Do Not Disturb state, said that it was caused by their habit and thus their forgot to check the disturbed user's state. Visual comparison can be seen on figure \ref{pic:disturbancesGraphs}.
 
-\pict{Disturbances by people, who do not use AnyOffice}{data/aoNotDisturbances.png}{width=0.8\textwidth}{pic:aoNotDisturbances}
-\pict{Disturbances by people, who use AnyOffice}{data/aoDisturbances.png}{width=0.8\textwidth}{pic:aoDisturbances}
+\twopict{Not AnyOffice users}{data/aoNotDisturbances.png}{pic:aoNotDisturbances}{AnyOffice users}{data/aoDisturbances.png}{pic:aoDisturbances}{Disturbances by people}{width=0.9\textwidth}{pic:disturbancesGraphs}
 
 \paragraph*{Feedback from users mainly being contacted: } Although there was some decrease in number disturbances during the Do Not Disturb periods, they were unable to fully experience a interruption-free work periods, mainly due to the colleagues not using the AnyOffice tool. Also thanks to the ''automatic-switch'' function, the tool was unobtrusive. When changing their place of work, they rarely remembered to switch their location also in AnyOffice.
 
@@ -543,28 +567,49 @@ The users not using the tool, disturbed their colleagues by 30 \% in the Availab
 
 \paragraph*{Feedback from Customer Support Services department: } As mentioned in section \ref{cssConsult}, CSS department has a ''buddy'' system, thus they do not need to manage interruptions there. In the aforementioned section was further stated, that occasionally also ad-hoc consultations with R\&D department happen. Inquired people from CSS agreed, that they would use the CSS tool in terms of checking the state of the person they want to contact before doing so. For this reason, they would like to be able to get a notification about a person becoming available without having to authenticate at the web page.
 
-Overall, AnyOffice reduced number of disturbances in an inappropriate time by 71 \%\footnote{For every 70 disturbances by a person not using the AnyOffice tool, there were 20 disturbances by an AnyOffice user.}. Thus it is true to say, that the tool succeeded in grouping the disturbances together, into the Available state periods. A day of a developer with a lot of programming work and no meeting scheduled, can be seen on figure \ref{pic:anyOfficeStatesFinal}, as it was captured by the AnyOffice tool.
+Overall, AnyOffice reduced number of inappropriate time disturbances by 71~\%\footnote{For every 70 disturbances by a person not using the AnyOffice tool, there were 20 disturbances by an AnyOffice user.}. Therefor, it is true to say, that the tool succeeded in grouping the disturbances together, into the Available state periods. A day of a developer with a lot of programming work and no meeting scheduled, can be seen on figure \ref{pic:anyOfficeStatesFinal}, as it was captured by the AnyOffice tool.
 
 \pict{States of a developer using AnyOffice}{data/anyOfficeStatesFinal.png}{width=0.8\textwidth}{pic:anyOfficeStatesFinal}
 
-After introduction of ''Start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people considered the tool unobtrusive.
+After introduction of ''Start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people started to consider the tool unobtrusive. 
 
-(Graphs from AnyOffice containing states and consultations
 
-Usability for the CSS department and other departments)
 
-subjective feedback
 
-additional costs
-
+Initial costs related to introducing the AnyOffice tool consist of:
+\begin{itemize}
+	\item{hardware to run the server-side application (neglegible for Y Soft);}
+	\item{short training of employees (about 1 hour);}
+	\item{download, first start and configuration of the client application by the employees on their computers (15 to 30 minutes).}
+\end{itemize}
+The tool requires no maintenance other than updating the server-side application and the client application when necessary. 
 
 \chapter{Conclusions and Future Work}
 
-(planned features)
+Internal communication inside Research and Development department is manage in some ways. There are rules for effective meetings, email communication, reporting system and also consultations from Customer Support Services department, which are up to their purpose. What has not been managed is the ad-hoc face-to-face internal communication inside the R\&D department. Due to a rapid growth in numbers of employees, number of communication paths grew as well. Currently, there are so many possible sources of interruption, that it became at times impossible to keep focus on one thing for more than half an hour, or even less. Too many interruptions in inappropriate times are hurting to work productivity and are a cause of frustration, stress and higher work effort among employees.
 
-% skratky 7Ss, CSS, IM, QA, R\&D, SWOT
+This thesis analyzed the current state by studying customs and processes from point of view of their users. The identified issues were gathered from several informal consultations with members of both R\&D and CSS departments. Impacts of these issues were confirmed by several studies \cite{studySpeedAndStress, studyAttention, studyDealingWithInterruptions, studyResumptionStrategies}. With a knowledge of important factors of efficient organizational communication, and also inspiration by the most common time management techniques, a solution was proposed. Moreover, a tool has been created in order to support this solution and make it easier to follow.
 
-% napojit a, an, the, in, on, at, with, of, to, 
+According to the results stated in previous chapter \ref{results}, I consider the solution and the tool a success. All of the issues has been address and there has been a significant improvement with a promise of further positive development. Whether the tool will be used by whole R\&D department in Y Soft, is to be consulted with the authorities of the department.
+
+Nevertheless, there are plans to offer this tool also to other software companies, starting with Kentico Software. Several new features have been requested by the current users and also by myself, in order to fulfill a complex idea of the tool. Some of the planned features are:
+\begin{itemize}
+	\item integration with Cisco Jabber;
+	\item get information about meetings from Microsoft Exchange Server;
+	\item automatic updates of client application;
+	\item set current location based on DNS (IP, WiFi) automatically;
+	\item make the status of a person physically visible;
+	\item client application GUI redesign;
+	\item advanced filtering options of users on web page;
+	\item reservation system of anything else;
+\end{itemize}
+and more. 
+
+I strongly believe, that the AnyOffice tool, together with the idea it carries, will be a success and will make it easier for software companies to better manage their internal communication in an agile environment.
+
+% skratky 7Ss, CSS, IM, QA, R\&D, SWOT, GUI
+
+% napojit a, an, the, in, on, at, with, of, to, %
 
 \clearpage
 \phantomsection
@@ -579,7 +624,7 @@ additional costs
 %\includepdf[pages={1}, scale=.4, pagecommand={}]{data/ProgrammerInterrupted.pdf}
 \begin{figure}[htp] \centering{
 \includegraphics[scale=0.117]{data/ProgrammerInterrupted.png}}
-\cite{software engineerInterrupted}
+\cite{programmerInterrupted}
 \end{figure}  
 
 \chapter{AnyOffice}\label{anyoffice}
