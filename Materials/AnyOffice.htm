@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"><head lang="en">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>AnyOffice</title>
+        <link rel="icon" type="image/png" href="AnyOffice_files/logo.png">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="AnyOffice_files/style.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" type="text/css" href="AnyOffice_files/jquery.css">
+        <script type="text/javascript" src="AnyOffice_files/jquery.js" xml:space="preserve"></script>
+        <script type="text/javascript" xml:space="preserve">
+            function resizeFrame() {
+                var newheight = document.getElementById("colleaguesFrame").contentWindow.document.body.scrollHeight;
+                $("#colleaguesFrame").height(newheight);
+            }
+            /*<![CDATA[*/
+            function countAvailability() {
+                var i = 0;
+                while (document.getElementById("dndend" + i) !== null) {
+                    var elem = document.getElementById("dndend" + i);
+                    i++;
+                    var text = elem.textContent;
+                    var now = /*[[${now}]]*/ new Date();
+                    text = now - text;
+                    var pre = text / Math.abs(text) === 1 ? 'for ' : 'in ';
+                    text = Math.abs(text);
+                    var days = Math.floor(text / 86400000);
+                    if (days > 0) {
+                        elem.textContent = 'for days';
+                        continue;
+                    }
+                    var hours = Math.floor(text / 3600000);
+                    text = text - (hours * 3600000);
+                    hours = hours !== 0 ? hours + 'h ' : '';
+                    var mins = Math.ceil(text / 60000);
+                    if (hours.length === 0) {
+                        mins = mins === 1 ? mins + ' minute' : mins + ' minutes';
+                    } else {
+                        mins = mins + 'm';
+                    }
+                    elem.textContent = pre + hours + mins;
+                }
+            }
+            function applyDataTables() {
+                var targets;
+                if (/*[[${#httpServletRequest.isUserInRole('USER')}]]*/ true) {
+                    targets = [1, 5];
+                } else {
+                    targets = 1;
+                }
+                $.extend($.fn.dataTable.defaults, {
+                    stateSave: true,
+                    stateSaveCallback: function(settings, oData) {
+                        localStorage.setItem('DataTables_' + window.location.pathname, JSON.stringify(oData));
+                    },
+                    stateLoadCallback: function(settings) {
+                        var data = localStorage.getItem('DataTables_' + window.location.pathname);
+                        return JSON.parse(data);
+                    },
+                    paging: true,
+                    lengthChange: true,
+                    pagingType: "simple_numbers",
+                    stripeClasses: ['row1', 'row2'],
+                    pageLength: 50,
+                    "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
+//                    language: {
+//                        processing: "<p th:text='#{dataTables.processing}'/>",
+//                        lengthMenu: "<p th:text='#{dataTables.lengthMenu}'/>",
+//                        zeroRecords: "<p th:text='#{dataTables.zeroRecords}'/>",
+//                        info: "<p th:text='#{dataTables.info}'/>",
+//                        infoEmpty: "<p th:text='#{dataTables.infoEmpty}'/>",
+//                        infoFiltered: "<p th:text='#{dataTables.infoFiltered}'/>",
+//                        infoPostFix: "",
+//                        search: "<p th:text='#{dataTables.search}'/>",
+//                        url: "",
+//                        paginate: {
+//                            first: "<p th:text='#{dataTables.first}'/>",
+//                            previous: "<p th:text='#{dataTables.previous}'/>",
+//                            next: "<p th:text='#{dataTables.next}'/>",
+//                            last: "<p th:text='#{dataTables.laset}'/>"
+//                        },
+//                        aria: {
+//                            sortAscending: "<p th:text='#{dataTables.sortAscending}'/>",
+//                            sortDescending: "<p th:text='#{dataTables.sortDescending}'/>"
+//                        }
+//                    }
+                });
+                $('#persons').dataTable({
+                    sorting: [[0, "asc"]],
+                    columnDefs: [{
+                            targets: [0],
+                            orderData: [0, 1]
+                        }, {
+                            targets: [1],
+                            orderData: [1, 0],
+                            type: 'alt-string'
+                        }, {
+                            targets: [2],
+                            orderData: [2, 0]
+                        }, {
+                            targets: [3],
+                            orderData: [3, 0]
+                        }, {
+                            targets: [4],
+                            orderData: [4, 0]
+                        }],
+                    dom: '<"dt_search"f><"dt_length"l><t><ip>'
+                });
+            }
+            ;
+            /*]]>*/
+            function retrieveColleaguesUrl(url) {
+                $("#colleaguesBlock").load(url, function() {
+                    countAvailability();
+                    applyDataTables();
+                });
+            }
+            function retrieveColleagues() {
+                retrieveColleaguesUrl("/colleagues");
+            }
+            function interact(id) {
+                var url = '/interact?id=' + id;
+                $.post(url, function() {
+                    retrieveColleagues();
+                });
+            }
+            function cancelinteract(id) {
+                var url = '/cancelinteract?id=' + id;
+                $.post(url, function() {
+                    retrieveColleagues();
+                });
+            }
+        </script>
+    </head>
+    <body onresize="resizeFrame()">
+        <div id="main_container">
+            <div id="header">
+                <div>
+                    <div id="applicationsmenu">
+                        <ul>
+                            <li id="first" class="current"><a href="https://anyoffice.ysoft.local/" shape="rect">AnyOffice</a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=https://booking.ysoft.local/&amp;app=Booking&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>Booking</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=http://bamboo.ysoft.local/dm&amp;app=Download%20Manager&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>Download Manager</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=https://license.ysoft.local/&amp;app=Licence&amp;inframe=true" shape="rect" target="_top">
+                                    <span>Licence</span>
+                                    
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=https://vcac.ysoft.local/vcac/&amp;app=VMware&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>VMware</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=http://bamboo.ysoft.local/allPlans.action&amp;app=Bamboo&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>Bamboo</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=http://jira.ysoft.local&amp;app=Jira&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>Jira</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=http://intranet.ysoft.local&amp;app=Intranet&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>Intranet</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=http://10.0.10.150&amp;app=SQ5%20%28150%29&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>SQ5 (150)</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                            <li>
+                                <a href="https://anyoffice.ysoft.local/otherApp?url=http://10.0.10.150&amp;app=SQ6%20%28120%29&amp;inframe=false" shape="rect" target="_blank">
+                                    <span>SQ6 (120)</span>
+                                    <img class="extLinkImage" src="AnyOffice_files/external_link.png" alt="">
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <table style="width:100%">
+                        <tbody>
+                            <tr>
+                                <td rowspan="1" colspan="1">
+                                    <div id="logo"><a href="https://anyoffice.ysoft.local/" shape="rect"><img src="AnyOffice_files/logo.png" alt="logo" title="AnyOffice"></a></div>
+                                    <h1 id="topTitle">AnyOffice</h1>
+                                </td>
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    <form method="get" enctype="application/x-www-form-urlencoded" action="/downloadClient">
+                                        <button class="btn-download" type="submit">
+                                            <span>Download client</span>
+                                            <img src="AnyOffice_files/download.png" alt="">
+                                        </button>
+                                    </form>
+                                </td>
+                                <td rowspan="1" colspan="1">
+                                    <div id="profile">
+                                        <div>
+                                            <a class="username" href="https://anyoffice.ysoft.local/personEdit" shape="rect">Martin Bryndza</a>
+                                            <a href="https://anyoffice.ysoft.local/personEdit" shape="rect">
+                                                <img class="usernameIcon" src="AnyOffice_files/gear.png" alt="">
+                                            </a>
+                                            <div>
+                                                <span>Availability: </span>
+                                                <span>Available</span>
+                                            </div>
+                                            <div>
+                                                <span>Job Title: </span>
+                                                <span>QA Engineer for ETNA</span>
+                                            </div>
+                                            <div>
+                                                <span>Current Place: </span> 
+                                                <span>My place</span>
+                                            </div>
+                                            <form method="post" enctype="application/x-www-form-urlencoded" action="/logout">
+                                                <input value="Log out" type="submit">
+                                            </form>
+                                        </div>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <div class="green_box">
+                            <span>What's new 1.5.:</span><br>
+                            <span>- Maximum 90 minutes for Do Not Disturb</span><br>
+                            <span>- Minimum 10 minutes for Available</span>
+                        </div>
+                    </div>
+                    <div id="menu">
+                        <ul>
+                            <li id="first" class="current"><a href="https://anyoffice.ysoft.local/" shape="rect">Colleagues</a></li>
+                            <li><a href="https://anyoffice.ysoft.local/graph" shape="rect">Graph of States</a></li>
+                            <li><a href="https://anyoffice.ysoft.local/personEdit" shape="rect">Your Profile</a></li>
+                            <li><a href="https://anyoffice.ysoft.local/faq" shape="rect">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="main_content">
+                <form name="autorefresh" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                    <input name="dorefresh" onclick="autoRefresh()" type="checkbox">Auto refresh every 10 seconds
+                </form>
+                    
+                <br>
+                <div id="colleaguesBlock"><div>
+                    <div class="dataTables_wrapper no-footer" id="persons_wrapper"><div class="dt_search"><div class="dataTables_filter" id="persons_filter"><label>Search:<input aria-controls="persons" placeholder="" class="" type="search"></label></div></div><div class="dt_length"><div id="persons_length" class="dataTables_length"><label>Show <select class="" aria-controls="persons" name="persons_length"><option selected="selected" value="25">25</option><option value="50">50</option><option value="100">100</option><option value="-1">All</option></select> entries</label></div></div><div><table aria-describedby="persons_info" role="grid" id="persons" class="hover compact dataTable no-footer" onloadeddata="countAvailability()">
+                        <thead>
+                            <tr role="row"><th aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 100px;" aria-controls="persons" tabindex="0" class="sorting_asc" rowspan="1" colspan="1">Name</th><th aria-label="Availability: activate to sort column ascending" style="width: 81px;" aria-controls="persons" tabindex="0" class="sorting" rowspan="1" colspan="1">Availability</th><th aria-label="Available: activate to sort column ascending" style="width: 67px;" aria-controls="persons" tabindex="0" class="sorting" rowspan="1" colspan="1">Available</th><th aria-label="Current Place: activate to sort column ascending" style="width: 115px;" aria-controls="persons" tabindex="0" class="sorting" rowspan="1" colspan="1">Current Place</th><th aria-label="Job Title: activate to sort column ascending" style="width: 274px;" aria-controls="persons" tabindex="0" class="sorting" rowspan="1" colspan="1">Job Title</th><th aria-label="Watch: activate to sort column ascending" style="width: 46px;" aria-controls="persons" tabindex="0" class="sorting" rowspan="1" colspan="1">Watch</th></tr>
+                        </thead>
+                        <tbody>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        <tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Anežka Koublová</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend10" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">RnD akvarko</td>
+                                <td rowspan="1" colspan="1">Systems Developer</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(300);">
+                                        <img title="Notify me when Anežka Koublová becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">BoB Bikar</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend9" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">U kuchynky</td>
+                                <td rowspan="1" colspan="1">QA Destroyer</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(366);">
+                                        <img title="Notify me when BoB Bikar becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">dobias</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend15" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Brno</td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(726);">
+                                        <img title="Notify me when dobias becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">erneker</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend20" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Prague Open Space</td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(695);">
+                                        <img title="Notify me when erneker becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">furst</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend7" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">R&amp;D</td>
+                                <td rowspan="1" colspan="1">Java Developer</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(715);">
+                                        <img title="Notify me when furst becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">havelkam</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend3" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1"></td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(167);">
+                                        <img title="Notify me when havelkam becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">hoferica</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend24" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Brno CSS</td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(523);">
+                                        <img title="Notify me when hoferica becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">homola</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend2" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1"></td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(1451);">
+                                        <img title="Notify me when homola becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">horak</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend11" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Brno</td>
+                                <td rowspan="1" colspan="1">Developer</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(305);">
+                                        <img title="Notify me when horak becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">hrabovsky</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend21" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Na stolicke u mna</td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(210);">
+                                        <img title="Notify me when hrabovsky becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Jakub Pavlak</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_AWAY">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/AWAY.png" alt="Away" title="AWAY">
+                                    <span style="bottom: 4px; position: relative">Away</span>
+                                </td>
+                                <td id="dndend19" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Brno</td>
+                                <td rowspan="1" colspan="1">Team Lead for QA team</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(111);">
+                                        <img title="Notify me when Jakub Pavlak becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Jakub Čupera</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend0" style="text-align: center;" rowspan="1" colspan="1">for 22h 12m</td>
+                                <td rowspan="1" colspan="1">My place</td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(1522);">
+                                        <img title="Notify me when Jakub Čupera becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Juraj Michálek</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend8" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Horni Lomna</td>
+                                <td rowspan="1" colspan="1">Engineering Team Lead</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(131);">
+                                        <img title="Notify me when Juraj Michálek becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Libor Nekula</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend27" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">CSS office</td>
+                                <td rowspan="1" colspan="1">Junior Technical Consultant</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(681);">
+                                        <img title="Notify me when Libor Nekula becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Lukáš Mencl</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend22" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">My place</td>
+                                <td rowspan="1" colspan="1">QA</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(272);">
+                                        <img title="Notify me when Lukáš Mencl becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Marek Viglaš</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend1" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">QA open space</td>
+                                <td rowspan="1" colspan="1">Software Verification Engineer - Localization </td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(19);">
+                                        <img title="Notify me when Marek Viglaš becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Martin Halfar</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend29" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Other</td>
+                                <td rowspan="1" colspan="1">Developer (SQTA)</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(45);">
+                                        <img title="Notify me when Martin Halfar becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Martin Laznovsky</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend4" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">My place</td>
+                                <td rowspan="1" colspan="1">QA Engineer</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(1381);">
+                                        <img title="Notify me when Martin Laznovsky becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Michal Ordelt</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend30" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">Brno</td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(2212);">
+                                        <img title="Notify me when Michal Ordelt becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Ondrej Myska</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend23" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">My place</td>
+                                <td rowspan="1" colspan="1">Developer in ETNA (FX, Toshiba, OKI)</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(11);">
+                                        <img title="Notify me when Ondrej Myska becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">osovsky</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend5" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">My place</td>
+                                <td rowspan="1" colspan="1">Chief Architect</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(1235);">
+                                        <img title="Notify me when osovsky becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Pavel Piskac</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend16" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">CSS Brno</td>
+                                <td rowspan="1" colspan="1">Senior Technical Consultant</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(61);">
+                                        <img title="Notify me when Pavel Piskac becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">pilat</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend14" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1"></td>
+                                <td rowspan="1" colspan="1"></td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(2606);">
+                                        <img title="Notify me when pilat becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row2" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">polan</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_UNKNOWN">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/UNKNOWN.png" alt="Unknown" title="UNKNOWN">
+                                    <span style="bottom: 4px; position: relative">Unknown</span>
+                                </td>
+                                <td id="dndend6" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">WC</td>
+                                <td rowspan="1" colspan="1">QA stetka</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    
+                                    <a class="clickable" shape="rect" onclick="javascipt:interact(2961);">
+                                        <img title="Notify me when polan becomes available" class="tableimg" alt="Request consultation" src="AnyOffice_files/binoculars-off.png">
+                                    </a>
+                                </td>
+                            </tr><tr class="row1" role="row">
+                                <td class="sorting_1 sorting_2" rowspan="1" colspan="1">Roman Kohoutek</td>
+                                <td style="text-align: left;" rowspan="1" colspan="1" class="state_AWAY">
+                                    
+                                    <img class="tableimg" src="AnyOffice_files/AWAY.png" alt="Away" title="AWAY">
+                                    <span style="bottom: 4px; position: relative">Away</span>
+                                </td>
+                                <td id="dndend17" style="text-align: center;" rowspan="1" colspan="1">for days</td>
+                                <td rowspan="1" colspan="1">R&amp;D</td>
+                                <td rowspan="1" colspan="1">TL</td>
+                                
+                                <td style="text-align: center;" rowspan="1" colspan="1">
+                                    <a class="clickable" shape="rect" onclick="javascipt:cancelinteract(130);">
+                                        <img title="Do not notify me when Roman Kohoutek becomes available" class="tableimg" alt="Remove_consultation" src="AnyOffice_files/binoculars-on.png">
+                                    </a>
+                                    
+                                </td>
+                            </tr></tbody>
+                    </table></div><div><div aria-live="polite" role="status" id="persons_info" class="dataTables_info">Showing 1 to 25 of 31 entries</div><div id="persons_paginate" class="dataTables_paginate paging_simple_numbers"><a id="persons_previous" tabindex="0" data-dt-idx="0" aria-controls="persons" class="paginate_button previous disabled">Previous</a><span><a tabindex="0" data-dt-idx="1" aria-controls="persons" class="paginate_button current">1</a><a tabindex="0" data-dt-idx="2" aria-controls="persons" class="paginate_button ">2</a></span><a id="persons_next" tabindex="0" data-dt-idx="3" aria-controls="persons" class="paginate_button next">Next</a></div></div></div>                
+                </div></div>
+
+            </div>
+            <div id="footer">
+                <div class="footer_links">
+                    <a href="mailto:martin.bryndza@ysoft.com?Subject=AnyOffice%20feedback" target="_top" shape="rect">Give feedback</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1KBnO47-__GHa7FxmEUh5LD9qcuNt7khoX5y8gTpUmnY/edit?usp=sharing" target="_blank" shape="rect">Report bug/feature</a>
+                    <a href="http://wiki.ysoft.local/x/GgMtAw" target="_blank" shape="rect">Wiki (manual)</a>
+                </div>
+                <div class="copyright">
+                    (c) Martin Bryndza
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="AnyOffice_files/autorefresh.js" xml:space="preserve"></script>
+        <script type="text/javascript" charset="utf-8" src="AnyOffice_files/jquery_002.js" xml:space="preserve"></script>
+        <script type="text/javascript" charset="utf-8" src="AnyOffice_files/alt-string.js" xml:space="preserve"></script>
+        <script type="text/javascript" xml:space="preserve">
+                        retrieveColleagues();
+        </script>
+    
+
+</body></html>

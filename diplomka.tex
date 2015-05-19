@@ -83,7 +83,7 @@
 \clubpenalty=10000
 \widowpenalty=10000
 \thesistitle{Making Internal Communication in~a~Software Company More~Efficient}  %  thesis  title
-\thesissubtitle{Diploma thesis}
+\thesissubtitle{Master's Thesis}
 \thesisstudent{Martin Bryndza}        %  name  of  the  author
 \thesiswoman{false} %  defines  author’s  gender
 \thesisfaculty{fi}
@@ -101,7 +101,7 @@
 I would like to thank to my supervisor Mgr. Petr Neugebauer, MBA for his valuable advices and guidance. Great thanks go to the Y Soft Corporation for giving me the opportunity to perform the unnecessary research. Many thanks also go to my colleagues from the ETNA team, who contributed to this thesis with their cooperation and willingness to try new things. These are the people who agreed to do some extra work without hesitation. I would like to send many thanks also to my colleagues from the QA team for their support in the last months of me working on this thesis. With their help I was able to have enough time for the thesis while also getting all the planned work done for each sprint. Last but not least, I would like to thank to my dear Marie for her love and patience she had with me working overnight and also to my parents for their support throughout my studies. 
 \end{ThesisThanks}
 \begin{ThesisAbstract}
-The goal of this thesis is to streamline communication between team members and to prevent loss of productivity due to frequent interruptions in a mid-size software company, where employers are dealing with adaptation of agile approaches. The thesis should analyze internal processes as well as requirements and expectations of different stakeholders regarding productivity, especially communication gaps. Based on these identified issues, the implementation part of the work will cover design and implementation of a tool, which will enforce the team members to follow the proposed process(es). This thesis is realized in cooperation with Y Soft Corporation, a.s.
+The goal of this thesis is to streamline communication between teams and their members and to prevent loss of productivity due to frequent interruptions in a mid-size software company, where employers are dealing with adaptation of agile approaches. The thesis should analyze internal processes as well as requirements and expectations of different stakeholders regarding productivity, especially communication gaps. Based on these identified issues, the implementation part of the work will cover design and implementation of a tool, which will enforce the team members to follow the proposed process(es). This thesis is realized in cooperation with Y Soft Corporation, a.s.
 \end{ThesisAbstract}
 \begin{ThesisKeyWords}
 Agile, Communication, Company, Internal, Interruption, Organization, Team, Teamwork.
@@ -373,10 +373,10 @@ Internal communication inside Research and Development department happen in seve
 Communication inside R\&D department is on a high level not only because it is required, but also thanks to the various communication channels and occasions for communication that are available. Other factor is that the majority of members of the department are in the same location. This allows them to use the most efficient way of communication - the face-to-face communication. On the other hand, the ad-hoc communication is so frequent, that it becomes bothering to the most exposed people. Based on the information in section \ref{currentState}, there currently are 3403 possible communication paths inside the R\&D department. The main communication paths between the individual roles of people in R\&D department (defined in section \ref{currentState}) are marked on picture \ref{pic:paths}. The preferred communication paths are marked red, however, many other paths exist.
 
 			
-		\subsection{Consultations from the CSS Department}
+		\subsection{Consultations from the CSS Department}\label{cssConsult}
 As the number of employees in Customer Services Support department grew, so did the number of consultations towards Research and Development department. With new employees, trivial matters were frequently discussed with the developers instead of their senior colleagues from CSS. Moreover, the people from the CSS department often did not know, which of their colleague from R\&D department they should contact, in order to get help with a particular matter. These issues resulted in defining a process for CSS ro R\&D consultations. The following paragraphs describe this process and is based on Y Soft's internal documentation \cite{ysoftInternal}. This process applies to all communication between R\&D and CSS, whether the source is external (e.g. from a customer) or internal (e.g. inquiry about functionality). At the end of the section you can find some comments about some possible, more or less frequent exceptions and deviations from the defined process. These findings are based on personal consultations with colleagues from CSS and R\&D departments.
 
-Before creating a consultation request to R\&D department, CSS employees have to make sure that the matter can not be solved inside the CSS department. For this purpose, a Senior CSS Technical Consultant is marked as CSS budy and is supposed to help solve the matter or confirm the need of an R\&D consultation. Every day, a different person represents this role.
+Before creating a consultation request to R\&D department, CSS employees have to make sure that the matter can not be solved inside the CSS department. For this purpose, a Senior CSS Technical Consultant is marked as CSS buddy and is supposed to help solve the matter or confirm the need of an R\&D consultation. Every day, a different person represents this role.
 
 When a consultation with R\&D is necessary, a request for consultation should be created. There is a list of components with an appropriate R\&D team assigned to it. The consultation request should be assigned to the team leader of the relevant team. The team leader then decides, which team member will resolve the consultation request and assigns the request to him or her. The team member then gives response or asks about more details in writing. All communication is linked to the consultation request. This communication should continue in this manner until the matter is resolved. Optionally, it is possible to talk to the appropriate team leader over the phone and agree on a personal consultation.
 
@@ -520,7 +520,7 @@ From the first part of this chapter you can learn the steps necessary to start u
 	\section{Architecture and Design Patterns}
 	(+ technologies)
 	
-	\section{Code Review and Feedback}
+	\section{Code Review and Usability Feedbacks}
 
 code
 GUI
@@ -528,6 +528,27 @@ functionality
 
 
 \chapter{Results}
+Together with Chief of Engineering and some Team Leads, we came upon agreement, that the AnyOffice tool will be tried by 3 engineering teams for a period of 1 month. We chose an Integration team from Quality Assurance, one team of developers with a member from quality assurance and one team without him. All users were presented with installation instructions and basic usage instructions. Also, they were asked to note down any external disturbance and also, whether it was by a person currently using the tool or not.
+
+The results show that 45 \% of disturbances were during users' the Available state, the remaining 55 \% during the Do Not Disturb state.\footnote{The Away state is not figuring here as the user had to be present in order to note the disturbance, as the disturbances were noted using the client application.} The probable reason is that the disturbance was noted mostly when users were in the Do Not Disturb state and forgot to note the disturbance while in the Available state.
+
+The users not using the tool, disturbed their colleagues by 30 \% in the Available state and 70 \% in the Do Not Disturb state. Considering disturbances by AnyOffice users only, 20 \% of disturbances were during the Do Not Disturb state of the object and the rest 80 \% were in the Available state. The AnyOffice users, who disturbed their colleague in his Do Not Disturb state, said that it was caused by their habit and thus their forgot to check the disturbed user's state.
+
+\pict{Disturbances by people, who do not use AnyOffice}{data/aoNotDisturbances.png}{width=0.8\textwidth}{pic:aoNotDisturbances}
+\pict{Disturbances by people, who use AnyOffice}{data/aoDisturbances.png}{width=0.8\textwidth}{pic:aoDisturbances}
+
+\paragraph*{Feedback from users mainly being contacted: } Although there was some decrease in number disturbances during the Do Not Disturb periods, they were unable to fully experience a interruption-free work periods, mainly due to the colleagues not using the AnyOffice tool. Also thanks to the ''automatic-switch'' function, the tool was unobtrusive. When changing their place of work, they rarely remembered to switch their location also in AnyOffice.
+
+\paragraph*{Feedback from users mainly contacting somebody else: } Users found it a little obtrusive, having to check the states of people on the web page of AnyOffice before contacting them. Integration with HipChat is an improvement, but they would rather see the current state of a person when being approached\footnote{When asked, how the state should be visible, most of them thought of something like a sticky note on a visible place.}. Users also did not notice any major restrictions or complications in their work, that would be caused by the tool. If a person was unavailable, they either contacted somebody else, or waited for the person to become available. To find out, when the person becomes available, they mostly used the Watch function, alternatively remembered when to contact the person themselves according to the time information on AnyOffice web page. Sometimes, the original matter became irrelevant in the meantime, as they found the answer themselves. Furthermore, in some urgent cases, they contacted the person despite the Do Not Disturb state. Regarding switching their states, these people mostly did not use the Do Not Disturb state, as it is not necessary for them.
+
+\paragraph*{Feedback from Customer Support Services department: } As mentioned in section \ref{cssConsult}, CSS department has a ''buddy'' system, thus they do not need to manage interruptions there. In the aforementioned section was further stated, that occasionally also ad-hoc consultations with R\&D department happen. Inquired people from CSS agreed, that they would use the CSS tool in terms of checking the state of the person they want to contact before doing so. For this reason, they would like to be able to get a notification about a person becoming available without having to authenticate at the web page.
+
+Overall, AnyOffice reduced number of disturbances in an inappropriate time by 71 \%\footnote{For every 70 disturbances by a person not using the AnyOffice tool, there were 20 disturbances by an AnyOffice user.}. Thus it is true to say, that the tool succeeded in grouping the disturbances together, into the Available state periods. A day of a developer with a lot of programming work and no meeting scheduled, can be seen on figure \ref{pic:anyOfficeStatesFinal}, as it was captured by the AnyOffice tool.
+
+\pict{States of a developer using AnyOffice}{data/anyOfficeStatesFinal.png}{width=0.8\textwidth}{pic:anyOfficeStatesFinal}
+
+After introduction of ''Start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people considered the tool unobtrusive.
+
 (Graphs from AnyOffice containing states and consultations
 
 Usability for the CSS department and other departments)
