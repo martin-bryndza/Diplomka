@@ -103,7 +103,7 @@
 \widowpenalty=10000
 \thesistitle{Making Internal Communication in~a~Software Company More~Efficient}  %  thesis  title
 \thesissubtitle{Master's Thesis}
-\thesisstudent{Martin Bryndza}        %  name  of  the  author
+\thesisstudent{Bc. Martin Bryndza}        %  name  of  the  author
 \thesiswoman{false} %  defines  author’s  gender
 \thesisfaculty{fi}
 \thesisyear{2015}
@@ -133,46 +133,53 @@ Agile, Communication, Company, Internal, Interruption, Organization, Team, Teamw
 
 \chapter{Introduction}
 
-Communication is the act of transmitting information between individuals. The need to communicate effectively pervades software development, operations, and support. Developers and end users must communicate with one another. Developers and operations staff must communicate. Developers and management must communicate. And so on.
+(agile manifesto)
+In recent years, word Agile became very popular, mostly among managers in software companies. Agile 
+
+The Agile Manifesto is driven by the following principles, as stated in \cite{agileManifesto}:
+\begin{itemize}
+	\item Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
+	\item Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
+	\item Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
+	\item Business people and developers must work together daily throughout the project.
+	\item Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+	\item The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
+	\item Working software is the primary measure of progress.
+	\item Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
+	\item Continuous attention to technical excellence and good design enhances agility.
+	\item Simplicity -the art of maximizing the amount of work not done- is essential.
+	\item The best architectures, requirements, and designs emerge from self-organizing teams.
+	\item At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly. 
+\end{itemize}
+The principles show, that continuous cooperation is essential. 
 
 
 	\section{Motivation}
-Several months ago, as a Junior Quality Assurance Engineer in Y Soft, I've become a part of an engineering team. My role is to give support to the team in terms of being present throughout the development cycle and, from the quality point of view, to give my inputs where necessary. This means, that I'm tightly cooperating with the team all of the time. 
+Several months ago, as a Junior Quality Assurance Engineer in Y Soft, I've become a part of an engineering team. My role is to give support to the team throughout the development cycle, in terms of assuring high level of quality. To be able to do that, I have to give inputs and tightly cooperate with the team all the time. 
 
-After a few weeks of my presence in the team I started noticing, that, quite regularly, the developers of the team go home frustrated. Often they leave work earlier, with a comment, that they did nothing that day and there is no point in staying there longer. On the other hand, some other days I see them working late hours, most of the time apparently stressed out about not meeting deadlines.
+After a few weeks of my presence in the team I started noticing, that the developers of the team go home frustrated quite regurarly. Often they leave work earlier. Their reason is that they did nothing that day and there is no point in staying there longer. On the other hand, some other days I see them working late hours, most of the time apparently stressed out about not meeting deadlines.
 
-In Y Soft, we use Agile as a philosophy and a little modified version of Scrum as a framework. This means, that as a team member, I'm also part of planning and team review meetings. There I noticed, that even if only about half of the developers' time is planned, spring goals are eventually either not met or there is a serious amount of time pressure at the end of the sprint, in order to get things somehow done on time.
+In Y Soft, we use a tailored Scrum framework. This means, that as a team member, I'm also part of planning and team review meetings. There I noticed, that only about half of the developers' time is planned. Despite of that, there is a serious amount of time pressure at the end of the sprint, in order to meet the planned sprint goals on time. Sometimes, some goals even have to be moved to the next sprint.
 
 This got me thinking, why is that so. What it is that the developers are doing, which is not planned. I don't see them procrastinating much and they very rarely take breaks. In fact, it was not very difficult to tell, that it is the communication, which is on a high level in the Research and Development department. Some of the communication, like corporate meetings or cooperation on tasks, is predicted and planned. But there also is a significant amount of unpredictable communication, which can be denoted as unofficial. This includes ad-hoc help to colleagues with their tasks, providing information when requested, conversations about long term goals, about state of things, sharing feedbacks and more. These conversations are not managed nor tracked, they can happen anytime and take several minutes or maybe even hours each day.
 
-I asked my colleagues to give their opinions on this observation. Almost all of them confirmed, that the internal communication is distractive for them and that they feel its direct impact on their productivity. The other inquired colleagues declared, that they are only rarely interrupted or that they don't mind the interruptions, even less if they are related to their current task.
+I asked my colleagues to give their opinions on this observation. Almost all of them confirmed, that the internal communication is distractive for them and that they feel its direct impact on their productivity. The other inquired colleagues declared, that they are only rarely interrupted or that they don't mind the interruptions. If an interruption is related to their current task, it is mostly not seen as interruption at all.
 
-The aforementioned realization and research are reasons for this thesis, which goal is to streamline the internal communication between team members in Research and Development department in Y Soft Corporation, a.s., with possible applicability also to other departments and companies. The main focus will be on the daily communication, that happens throughout the Scrum Process, which is shown on Figure \ref{pic:scrumProcess}. The focused part of the process is marked with a red arrow.
+The aforementioned realization and research are reasons for this thesis. The main goal is to streamline the internal communication between team members in Research and Development department in Y Soft Corporation, a.s., with possible applicability also to other departments and companies. The main focus will be on the daily communication, that happens throughout the Scrum Process. The focused part of the process is marked with a red arrow on figure \ref{pic:scrumProcess}.
 
 \pict{Scrum Process \cite{scrumProcess}}{data/Scrum_process.png}{width=0.8\textwidth}{pic:scrumProcess}
 
 
 	\section{Structure of the Thesis}
-The first part of this thesis explains what it means to interrupt for a software engineer to be interrupted. Several studies are mentioned in this chapter, in order to get an image of all possible impacts that interruptions can have on not only an engineer but a knowledge worker in general. Rest of this chapter is dedicated to three most common time management techniques, choosing one as the most appropriate for use in an agile environment, where cooperation is essential.
+The first part of this thesis explains what it means for a software engineer to be interrupted. Several studies are mentioned in this chapter, in order to get an image of all possible impacts that interruptions can have. The impacts are significant not only for an engineer, but a knowledge worker in general. Rest of this chapter is dedicated to the three most common time management techniques. One of the techniques is chosen as the most appropriate for use in an agile environment, where cooperation is essential.
 
 Chapter \ref{internalCommunication} introduces a concept of the internal organizational communication, mentioning several most common myths in communication management. Second part of this chapter advises on the steps to take and risks to count with, when establishing an efficient internal communication. This is followed by some ideas on why it would not be a good idea to eliminate ad-hoc face-to-face communication in an agile environment, as this would be the simplest solution of the aforementioned issues.
 
 Analytical part of the thesis focuses on the historical background and current state of the Y Soft Corporation, as it is essential for understanding the nature of communication in the company. There it is possible to see the rapid growth in number of employees in the recent years, which introduced the issues this theses is addressing. Report from an unconference with Kentico Software is also a part of this chapter, which confirmed that Y Soft's employees are not the only ones who are troubled by frequent interruptions in their work. The chapter is concluded by definition of issues, that need to be resolved.
 
-The final parts of the thesis bring solution in a form of a new tool, that has also been implemented as a part of the work. The usage instruction of the tool are included in this part together with a list of issues this tool solves and purposes it can serve. From the development point of view, used technologies, architecture and design patterns are presented here. The chapter also includes the feedback from colleagues that were using the tool, as well as the one that performed a code review.
+The final parts of the thesis bring a solution in a form of a new tool. The usage instruction of the tool are included in this part, together with a list of issues this tool solves and purposes it can serve. From the development point of view, used technologies, architecture and design patterns are presented here. The chapter also includes the feedback from colleagues that were using the tool, as well as the one that performed a code review.
 
 The thesis also includes summarization of results in terms of measured improvements as well as subjective feelings of the users. The last chapter is dedicated to ideas about future development of the tool and its potential.
-
-
-
-
-%Agile frameworks overview, benefits of agile approaches => communication (From ISTQB syllabus)
-
-
-%http://www.agilemodeling.com/essays/communication.htm
-%Communication is the act of transmitting information between individuals. The need to communicate effectively pervades software development, operations, and support. Developers and end users must communicate with one another. Developers and operations staff must communicate. Developers and management must communicate. And so on.
-
-
 
 
 \chapter{Effective Work}
@@ -561,7 +568,7 @@ The users not using the tool, disturbed their colleagues by 30 \% in the Availab
 
 \twopict{Not AnyOffice users}{data/aoNotDisturbances.png}{pic:aoNotDisturbances}{AnyOffice users}{data/aoDisturbances.png}{pic:aoDisturbances}{Disturbances by people}{width=0.9\textwidth}{pic:disturbancesGraphs}
 
-\paragraph*{Feedback from users mainly being contacted: } Although there was some decrease in number disturbances during the Do Not Disturb periods, they were unable to fully experience a interruption-free work periods, mainly due to the colleagues not using the AnyOffice tool. Also thanks to the ''automatic-switch'' function, the tool was unobtrusive. When changing their place of work, they rarely remembered to switch their location also in AnyOffice.
+\paragraph*{Feedback from users mainly being contacted: } Although there was some decrease in number disturbances during the Do Not Disturb periods, the users were unable to fully experience an interruption-free work periods, mainly due to the colleagues not using the AnyOffice tool. Also thanks to the ''automatic-switch'' function, the tool was unobtrusive. When changing their place of work, they rarely remembered to switch their location also in AnyOffice.
 
 \paragraph*{Feedback from users mainly contacting somebody else: } Users found it a little obtrusive, having to check the states of people on the web page of AnyOffice before contacting them. Integration with HipChat is an improvement, but they would rather see the current state of a person when being approached\footnote{When asked, how the state should be visible, most of them thought of something like a sticky note on a visible place.}. Users also did not notice any major restrictions or complications in their work, that would be caused by the tool. If a person was unavailable, they either contacted somebody else, or waited for the person to become available. To find out, when the person becomes available, they mostly used the Watch function, alternatively remembered when to contact the person themselves according to the time information on AnyOffice web page. Sometimes, the original matter became irrelevant in the meantime, as they found the answer themselves. Furthermore, in some urgent cases, they contacted the person despite the Do Not Disturb state. Regarding switching their states, these people mostly did not use the Do Not Disturb state, as it is not necessary for them.
 
@@ -586,7 +593,7 @@ The tool requires no maintenance other than updating the server-side application
 
 \chapter{Conclusions and Future Work}
 
-Internal communication inside Research and Development department is manage in some ways. There are rules for effective meetings, email communication, reporting system and also consultations from Customer Support Services department, which are up to their purpose. What has not been managed is the ad-hoc face-to-face internal communication inside the R\&D department. Due to a rapid growth in numbers of employees, number of communication paths grew as well. Currently, there are so many possible sources of interruption, that it became at times impossible to keep focus on one thing for more than half an hour, or even less. Too many interruptions in inappropriate times are hurting to work productivity and are a cause of frustration, stress and higher work effort among employees.
+Internal communication inside Research and Development department is being managed in some ways. There are rules for effective meetings, email communication, reporting system and also consultations from Customer Support Services department, which are up to their purpose. What has not been managed is the ad-hoc face-to-face internal communication inside the R\&D department. Due to a rapid growth in numbers of employees, number of communication paths grew as well. Currently, there are so many possible sources of interruption, that it became at times impossible to keep focus on one thing for more than half an hour, or even less. Too many interruptions in inappropriate times are hurting to work productivity and are a cause of frustration, stress and higher work effort among employees.
 
 This thesis analyzed the current state by studying customs and processes from point of view of their users. The identified issues were gathered from several informal consultations with members of both R\&D and CSS departments. Impacts of these issues were confirmed by several studies \cite{studySpeedAndStress, studyAttention, studyDealingWithInterruptions, studyResumptionStrategies}. With a knowledge of important factors of efficient organizational communication, and also inspiration by the most common time management techniques, a solution was proposed. Moreover, a tool has been created in order to support this solution and make it easier to follow.
 
@@ -605,7 +612,7 @@ Nevertheless, there are plans to offer this tool also to other software companie
 \end{itemize}
 and more. 
 
-I strongly believe, that the AnyOffice tool, together with the idea it carries, will be a success and will make it easier for software companies to better manage their internal communication in an agile environment.
+I strongly believe, that the AnyOffice tool, together with the idea it carries, will be a success and will make it easier for software companies to better manage their internal communication in their agile environments.
 
 % skratky 7Ss, CSS, IM, QA, R\&D, SWOT, GUI
 
