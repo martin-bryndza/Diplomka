@@ -132,32 +132,23 @@ Agile, Communication, Company, Internal, Interruption, Organization, Team, Teamw
 %\listoftables % prints list of tables
 
 \chapter{Introduction}
+In recent years, word Agile became very popular among managers in software companies. As many other companies, development in Y Soft has become agile as well. After several struggles in the beginning, the company has managed to tailor Scrum framework to its needs and the employees has got used to the new style of work.
 
-(agile manifesto)
-In recent years, word Agile became very popular, mostly among managers in software companies. Agile 
-
-The Agile Manifesto is driven by the following principles, as stated in \cite{agileManifesto}:
+Agile software development is driven by The Agile Manifesto \cite{agileManifesto}, which consists of the following four principles:
 \begin{itemize}
-	\item Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.
-	\item Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.
-	\item Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.
-	\item Business people and developers must work together daily throughout the project.
-	\item Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
-	\item The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.
-	\item Working software is the primary measure of progress.
-	\item Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.
-	\item Continuous attention to technical excellence and good design enhances agility.
-	\item Simplicity -the art of maximizing the amount of work not done- is essential.
-	\item The best architectures, requirements, and designs emerge from self-organizing teams.
-	\item At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly. 
+	\item Individuals and interactions over processes and tools
+	\item Working software over comprehensive documentation
+	\item Customer collaboration over contract negotiation
+	\item Responding to change over following a plan 
 \end{itemize}
-The principles show, that continuous cooperation is essential. 
+The second principle results in less robust documentation, which means that a lot of knowledge is kept by the people only. Obtaining that knowledge by somebody else brings in a need to communicate. Following the last point of the manifesto, everything around products can change rapidly and so does the knowledge, which has to be distributed again. This brings up a need for more and more communication. 
+(Since 2001, when the manifesto was written, software products became much more complicated and interconnected. Such systems require lots of cooperation not only inside teams, but also among them. This makes communication a significant part of a day of every software engineer.)
 
 
 	\section{Motivation}
-Several months ago, as a Junior Quality Assurance Engineer in Y Soft, I've become a part of an engineering team. My role is to give support to the team throughout the development cycle, in terms of assuring high level of quality. To be able to do that, I have to give inputs and tightly cooperate with the team all the time. 
+Several months ago, as a Junior Quality Assurance Engineer in Y Soft, I've become a part of an engineering team. My role now is to give support to the team throughout the development cycle, in terms of assuring high level of quality. To be able to do that, I have to give inputs and tightly cooperate with the team all the time. 
 
-After a few weeks of my presence in the team I started noticing, that the developers of the team go home frustrated quite regurarly. Often they leave work earlier. Their reason is that they did nothing that day and there is no point in staying there longer. On the other hand, some other days I see them working late hours, most of the time apparently stressed out about not meeting deadlines.
+After a few weeks of my presence in the team I started noticing, that the developers of the team go home frustrated quite regurarly. Often they leave work earlier. Their reason is that they made no progress that day and there is no point in staying there longer. On the other hand, some other days I see them working late hours, most of the time apparently stressed out about not meeting deadlines.
 
 In Y Soft, we use a tailored Scrum framework. This means, that as a team member, I'm also part of planning and team review meetings. There I noticed, that only about half of the developers' time is planned. Despite of that, there is a serious amount of time pressure at the end of the sprint, in order to meet the planned sprint goals on time. Sometimes, some goals even have to be moved to the next sprint.
 
@@ -165,7 +156,7 @@ This got me thinking, why is that so. What it is that the developers are doing, 
 
 I asked my colleagues to give their opinions on this observation. Almost all of them confirmed, that the internal communication is distractive for them and that they feel its direct impact on their productivity. The other inquired colleagues declared, that they are only rarely interrupted or that they don't mind the interruptions. If an interruption is related to their current task, it is mostly not seen as interruption at all.
 
-The aforementioned realization and research are reasons for this thesis. The main goal is to streamline the internal communication between team members in Research and Development department in Y Soft Corporation, a.s., with possible applicability also to other departments and companies. The main focus will be on the daily communication, that happens throughout the Scrum Process. The focused part of the process is marked with a red arrow on figure \ref{pic:scrumProcess}.
+The aforementioned realization and research are reasons for this thesis. The main goal is to streamline the internal communication between team members in Research and Development department in Y Soft Corporation, a.s., with possible applicability also to other departments and companies. The main focus will be on the daily communication, that happens throughout the Scrum Process. The focused part of the process is marked with a red arrow on Figure \ref{pic:scrumProcess}.
 
 \pict{Scrum Process \cite{scrumProcess}}{data/Scrum_process.png}{width=0.8\textwidth}{pic:scrumProcess}
 
@@ -229,15 +220,10 @@ These methods clearly disrupt teamwork or are at least not beneficial to it. Som
 
 In conclusion, constant interruptions are mostly harmful to the work efficiency, ease of work and company itself. On the other hand, some of the interruptions are highly beneficial to the interrupting person and the interrupted worker as well. Most of the common techniques used to avoid unwanted interruptions are really basic, mostly inefficient and disruptive to the teamwork.
 
-	\section{Time Management Techniques}
-
-....
-
-The Pomodoro Technique \cite{pomodoro} was created with the aim of using time as a valuable ally to accomplish what we want to do, the way we want to do it, and to empower us to continually improve our work or study processes. 
-
-This technique is often used complementary to a set of methods named ''Getting Things Done'' \cite{gtd} created by David Allen, which he presents as ''A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''	
+	\section{Productivity Techniques}
+Internet, as well as libraries are full of books, papers and articles about work productivity. The proposed solutions wary from a set of simple roles to complex techniques. However, two of the techniques stand out, as they are supported by a big user base - Pomodoro Technique \cite{pomodoro} and Getting Things Done \cite{gtd}. The Pomodoro Technique was created with the aim of using time as a valuable ally to accomplish what we want to do, the way we want to do it, and to empower us to continually improve our work or study processes. This technique is often used complementary to a set of methods named ''Getting Things Done'' created by David Allen, which he presents as ''A gold mine of insights for how to have more energy, be more relaxed, and get a lot more accomplished with much less effort.''	
 	
-The Getting Things Done is more of a personal guide for organizing tasks into projects in order to stop forgetting to do things, to make yourself do them, to do them on time and to have more time for yourself. The method is suited more for a solitary workers, who do not need to work in teams or the teamwork is not very intense, as the method does not consider external interruptions.
+The Getting Things Done is more of a personal guide for organizing tasks into projects in order to stop forgetting to do things, to make yourself do them, to do them on time and to have more time for yourself. The method is suited more for a solitary workers, who do not need to work in teams or the teamwork is not very intense, as the method does not consider external interruptions. On the other hand, The Pomodoro Technique requires much less administration and focuses more on actually doing the things. It also fights interruptions while not dismissing them completely, which makes it more suitable for purposes of this thesis.
 
 	\section{The Pomodoro Technique}
 %The Pomodoro Technique was invented by Francesco Cirillo in the early 80s, as a result of his own and fellow students ineffective study habits. The name ''Pomodoro'' translates as ''Tomato'' and is inspired by a kitchen timer, that usually comes in a shape of this vegetable. And it is this kitchen-timer-like device which plays an important role in the process of using the Pomodoro Technique.
@@ -435,11 +421,11 @@ Thankfully, there is a high level of face-to-face communication in Y Soft and th
 
 \pict{Interruptions of an exposed developer}{data/originalStatesExposed.png}{width=0.8\textwidth}{pic:originalStatesExposed}
 
-A day of a developer is depicted on the graph in figure \ref{pic:originalStatesExposed}. The working hours were almost completely spent on consultations and other interruptions. Between those interruptions, the developer often had less than 30 minutes of time, which is just enough to start doing something serious or to restore work on a previous task. The following interruption made the developer change context again. After the interruption, the developer had to spend some time in order to gain the focus back again. Although there was some value from the consultations given by the developer, there also was a lot of time wasted on refocusing. Another scenario would be the developer not wanting to loose focus on the task, which lowered the quality of the consultation, as the developer did not pay full attention to it. Moreover, the developer went home frustrated, that he did almost nothing that day and that he is behind his schedule, thus he would have to work longer hours the following day. The most interesting is that the developer marked that day as a casual one, which means that this is a pretty common scenario.
+A day of a developer is depicted on the graph in Figure \ref{pic:originalStatesExposed}. The working hours were almost completely spent on consultations and other interruptions. Between those interruptions, the developer often had less than 30 minutes of time, which is just enough to start doing something serious or to restore work on a previous task. The following interruption made the developer change context again. After the interruption, the developer had to spend some time in order to gain the focus back again. Although there was some value from the consultations given by the developer, there also was a lot of time wasted on refocusing. Another scenario would be the developer not wanting to loose focus on the task, which lowered the quality of the consultation, as the developer did not pay full attention to it. Moreover, the developer went home frustrated, that he did almost nothing that day and that he is behind his schedule, thus he would have to work longer hours the following day. The most interesting is that the developer marked that day as a casual one, which means that this is a pretty common scenario.
 
 \pict{Interruptions of a less exposed developer}{data/originalStatesNormal.png}{width=0.8\textwidth}{pic:originalStatesNormal}
 
-Graph in figure \ref{pic:originalStatesNormal} shows an example of a day, which was rated as subnormally calm. There were only two unexpected interruptions, both of them were face-to-face conversations with colleagues that needed ad-hoc help. Although such a day is considered ideal, there is a couple of things that could be improved here. Firstly, there is a possibility, that if the interruptions happened in some other time, they might have been less disruptive for the developer. Secondly, there might have been somebody looking for the developer during his absence before lunch and during the lunch period. The person probably went to check his workplace several times only to find out, that he was not there. There were 5 minutes, during which the developer was present in between his absences (marked by a red stripe at about 11 a.m.). It there were some way to notify that person about presence of the developer at his workplace, the person could have been able to contact him during those 5 minutes.
+Graph in Figure \ref{pic:originalStatesNormal} shows an example of a day, which was rated as subnormally calm. There were only two unexpected interruptions, both of them were face-to-face conversations with colleagues that needed ad-hoc help. Although such a day is considered ideal, there is a couple of things that could be improved here. Firstly, there is a possibility, that if the interruptions happened in some other time, they might have been less disruptive for the developer. Secondly, there might have been somebody looking for the developer during his absence before lunch and during the lunch period. The person probably went to check his workplace several times only to find out, that he was not there. There were 5 minutes, during which the developer was present in between his absences (marked by a red stripe at about 11 a.m.). It there were some way to notify that person about presence of the developer at his workplace, the person could have been able to contact him during those 5 minutes.
 
 As mentioned in section \ref{improvingEff}, a SWOT analysis is a tool suitable to find out what should be enhanced and what should be eliminated:
 \paragraph*{Strengths}
@@ -455,7 +441,7 @@ As mentioned in section \ref{improvingEff}, a SWOT analysis is a tool suitable t
 	\item Extensive communication impacts productivity of work. Every day, members of R\&D are distracted several times. (The impact is stated in the previous chapters.)
 	\item Too many communication paths. In R\&D, it is possible to talk anytime to anybody, which adds on possible sources of distractions.
 	\item A lot of knowledge is not documented. Some knowledge is very difficult to be documented or it is not feasible to do so.
-	%\item It is easier to ask somebody then to find the information yourself in the documentation or other sources.
+	\item It is easier to ask somebody then to find the information yourself in the documentation or other sources.
 	\item Multiple communication tools. There are several tools currently in use and each person uses some indefinite subset of them.
 \end{itemize}
 \paragraph*{Opportunities}
@@ -471,11 +457,11 @@ As mentioned in section \ref{improvingEff}, a SWOT analysis is a tool suitable t
 	\item Chaotic and disruptive environment discourage new potential employees to work in Y Soft.
 \end{itemize}
 
-Based on the analysis and studied materials, the main focus of the solution will be to defragment time of workers and to make the time of their interruptions depend on themselves. For example, if the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the figure \ref{pic:groupedStates}.
+Based on the analysis and studied materials, the main focus of the solution will be to defragment time of workers and to make the time of their interruptions depend on themselves. For example, if the interruptions were grouped together, there would have been less time spent on refocusing and more time on doing some productive work. An example of such situation can be seen on graph in the Figure \ref{pic:groupedStates}.
 
 \pict{Grouped interruptions of an exposed developer}{data/groupedStates.png}{width=0.8\textwidth}{pic:groupedStates}
 
-The graph in figure \ref{pic:groupedStates} was created from graph in figure \ref{pic:originalStatesExposed} by postponing the external unexpected interruptions by no more than 1 hour. This way the interruptions got grouped together, which reduced the number of the main task resumptions from 14 to 6, which is a theoretical reduction of 57 \%. 
+The graph in Figure \ref{pic:groupedStates} was created from graph in Figure \ref{pic:originalStatesExposed} by postponing the external unexpected interruptions by no more than 1 hour. This way the interruptions got grouped together, which reduced the number of the main task resumptions from 14 to 6, which is a theoretical reduction of 57 \%. 
 
 It is important to note, that there already have been some attempts to reduce the number of external interruptions by allowing people to be in a Do Not Disturb state. One of the methods was called ''a rule of headphones''. Basically, when a person has headphones on, he or she is not supposed to be interrupted. Eventually, this and other similar methods started to be ignored for various reasons.
 
@@ -488,7 +474,7 @@ For Customer Services Support department, it is necessary to know, whether it is
 With that said and to sum things up, the solution should make the interruptions of software engineers depend on themselves, although with some restrictions to it, in order to keep the communication on a sufficient level and not hurt the agile environment. Thus, there is also a need to effectively inform people when it is possible to contact their coworkers.
 
 
-\chapter{Proposed Solution}
+\chapter{Proposed Solution}\label{proposedSolution}
 This chapter will elaborate on possible solutions of the defined issues and presents the selected one.
 
 \paragraph*{Use existing IMs and email for communication: } As stated in section \ref{commImportance}, face-to-face communication is important because of its high efficiency and it would be counterproductive to eliminate it. Moreover, co-workers should be encouraged to choose this form of communication over communication using email or IMs, which are very popular. Even though forcing the communication to happen over IMs would solve the interruptions, one would never know when his message will get a response or whether it is not just being overlooked.
@@ -512,7 +498,7 @@ There is a need to make people to be available regularly and let their colleague
 
 With periods of unavailability that are individual to each employee, the aforementioned problems would be solved. Also, when there are more people who could provide the response, there is a better chance that some of them is available at that moment. Moreover, employees could use the do not disturb status only when needed. As this status would be only temporal, the default state would be the available state.
 
-After several meeting with one of the teams and some more consultations in R\&D and CSS departments, we agreed on the solution depicted on the figure \ref{pic:states}.
+After several meeting with one of the teams and some more consultations in R\&D and CSS departments, we agreed on the solution depicted on the Figure \ref{pic:states}.
 
 \pict{States of employees and possible switches between them}{data/States.png}{width=0.8\textwidth}{pic:states}
 
@@ -533,38 +519,114 @@ The implemented tool will enforce the following basic set of rules:
 
 \chapter{AnyOffice Tool}
 
-The new tool got name AnyOffice. It consists of a web page and a light client application, which runs on the users' machines in the notification area of taskbar.
+The new tool got name AnyOffice. It consists of a web page and a light client application, which runs on the users' workstations in the notification area of the system's taskbar. Screenshots of the web page as well as the client application can be found in the Appendix~\ref{anyoffice}.
 
-From the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The last section is dedicated to the technologies, that were used to implement this tool and to those the tool makes use of.
+From the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The~third section elaborates on~possible motivation for users to use the tool voluntarily. The~final two sections are dedicated to architecture of the implementation, and also used design patterns. This is followed by notes from a code review performed by a Senior Java Developer, feedbacks from an Interaction Designer and also first feedbacks from users.
 
 
 	\section{Basic Setup and Usage}
+Upon navigating to the web address of the AnyOffice tool, a list of users is displayed. It is possible to filter the users, see their current state and workplace. The list of users is by default refreshed automatically every 10 seconds.
 
+Users can be in one of the following states:
+\begin{itemize}
+	\item Available - user is sitting at the computer and is available to be contacted;
+	\item Do Not Disturb - user is sitting at the computer, but should not be disturbed (except officially urgent cases);
+	\item Away - user is not present at the computer or is occupied by some other activity;
+	\item Unknown - there is no connection with the user's workstation, thus the state is not known.
+\end{itemize}
+
+A time information in the column ''Available'' can indicate two things:
+\begin{itemize}
+	\item In case the user is currently available or away during the Available state, the information shows how long has passed since the last Do Not Disturb period of the user. This indicates, whether the user has tendency to switch to Do Not Disturb state soon or not. For example, if the user has just recently become available, the information shows ''for 4 minutes''. In this case it is obvious, that the user will be available for at least 6 minutes.
+	\item If the user is currently in the Do Not Disturb state, the column informs about time left until the user becomes available. For example ''in 1h 10m'' means, that the user will be available in 70 minutes.
+\end{itemize}
+
+In the top-right corner of the web page, there is a login form. Users should use their domain credentials to log in. By doing so for the first time, a new account is automatically created. An authenticated version of the page is shown on the Figure~\ref{pic:anyofficeHome}. Instead of the login form, a summary of the user's details together with a logout button are shown. In order to edit the user's details, click on the username. On the profile page it is possible to set display name, job title and current place. In order to integrate the account with HipChat, email and token need to be filled in. An example of the profile page is shown on Figure~\ref{pic:anyofficeProfile}.
+
+On the top of the page, there is a button to download the client application. The application is then started by running\footnote{The~\texttt{jar} file can be run directly from a file explorer.} the downloaded \texttt{anyoffice-client.jar} file. It is necessary to have Java Runtime Environment 7 and later installed in the system. In a moment, a new window is displayed on the screen. Enter the user's domain credentials to log in. When successful, a new green icon appears in the notification area of the system's taskbar. Right click the icon to open a menu. The menu can be seen on the Figure~\ref{pic:anyofficeClient}.
+
+The user is now in an Available state, which is indicated by the green icon. In order to change the user's state to Do Not Disturb, open the menu and choose the \texttt{Do Not Disturb for 90 min.} menu item or \texttt{Do Not Disturb for...} menu item to choose a custom length of the period. To indicate the Do Not Disturb state, the icon turns red. It is possible to switch to the Available state anytime by clicking the \texttt{Available} menu item. In such case, the Do Not Disturb state will now be unavailable for 10 minutes. The Away state is switched automatically, when user locks the workstation or is not active for longer period of time.
+
+If the user changes the workplace (e.g. is currently working at a standup desk), this should be indicated by changing the location in AnyOffice. To do so, open the menu and either select one of the available locations or click on the \texttt{Other location...} menu item to set a custom location.
+
+This is all there is to know about the basic setup and usage of the AnyOffice tool. See the next section for a complete list of possibilities.
 
 
 	\section{Purposes and Features to Reach Them}
-(Purposes of AnyOffice with description of features, that make them possible)
+(Ku kazdej veci tu napisem par slov)
+\paragraph*{Know current state of a colleague: } (web page, hipchat)
+\paragraph*{Know current location of a colleague: } (settings and showing)
+\paragraph*{Find out, when a colleague becomes available: } (Available column and watch function)
+\paragraph*{See a summary of your day: } (Graph of States)
+\paragraph*{Change your current state: } (switching of states, choosing period of the Do Not Disturb)
+\paragraph*{Work several hours with minimum interruptions: } (automatic switching of states)
+\paragraph*{Use the client only for tracking of your presence: } (disable popups, run at system startup)
+\paragraph*{Be notified to start working on a task: } (scheduled notifications to switch to DND)
 
 
 	\section{Motivations to use AnyOffice}
+The most ideal way of introducing a new tool is by motivating the potential users to choose the tool themselves, instead of doing it by a regulation from their superiors.
+
+(1. Not to be interrupted in work to prevent frustration
+
+2. Those who contact these people to prevent being sent away and having to come again later
+
+3. Those usually unreachable will be asked by the people trying to reach them to use the tool)
 
 	
 	\section{Architecture and Design Patterns}
-	(+ technologies)
+heavy server - thin client architecture
+
+Server and client communicate using REST services provided by the server, sending json objects, using basic authentication
+
+
+		\subsection{Server-side application}
+server in Java 8 EE MVC application, that consist of 4 modules (+ diagram of modules with couplings) - autowired beans used throughout the project
+
+\begin{itemize}
+	\item Backend - data model in EJBs made from POJOs; Spring Data JPA with Hibernate (DAOs);
+	\item ServiceApi - services and DTOs
+	\item Core - main logic of switching states, managing interactions, scheduled tasks for checking the expiration of states
+	\item Frontend - Thymeleaf (relatively new template engine) together with Spring's Controllers and RestControllers
+\end{itemize}
+
+SpringFramework configured in code as much as possible (minimum of xml files), which is new in Spring 4 
+
+configuration of security (Spring's authentication filter chain)
+
+localization - Spring's MessageSource
+
+		\subsection{Client application}
+client is a Java 7 application, Swing for GUI
+
+
+		\subsection{Deployment}
+built by gradle, using SpringBoot for running, Git for tracking on GitHub, FatJar plugin of gradle to make runnable jars
+
+server app is built into war file, runs on Tomcat with PostgreSQL DB
+
+
+		\subsection{DesignPatterns}
+najdem alebo vyrobim nejake design patterny
+
 	
 	\section{Code Review and Usability Feedbacks}
 
-code
-GUI
-functionality
+code review od Juraja uz mam email
+
+GUI review od UX chlapcov mam poznamky
+
+functionality review co som postupne dostaval feedback od ludi
+
+longer DND time and shorter Available time je zmena oproti povodnemu zadaniu na ziadost vyvojarov aj team leadov
 
 
 \chapter{Results}\label{results}
-Together with Chief of Engineering and some Team Leads, we came upon agreement, that the AnyOffice tool will be tried by 3 engineering teams for a period of 1 month. We chose an Integration team from Quality Assurance, one team of developers with a member from quality assurance and one team without him. All users were presented with installation instructions and basic usage instructions. Also, they were asked to note down any external disturbance and also, whether it was by a person currently using the tool or not.
+Together with Chief of Engineering and some Team Leads, we came upon agreement, that the AnyOffice tool will be tried by 3 engineering teams for a period of 1 month. We chose an Integration team from Quality Assurance and two development teams. One of the teams has been assigned a member from quality assurance, while the other has not. All the new users were presented with installation instructions and basic usage instructions. Also, they were asked to note down any external disturbance. The disturbances were divided into those made by a person currently using the AnyOffice tool and to those made by other people.
 
 The results show that 45 \% of disturbances were during users' the Available state, the remaining 55 \% during the Do Not Disturb state.\footnote{The Away state is not figuring here as the user had to be present in order to note the disturbance, as the disturbances were noted using the client application.} The probable reason is that the disturbance was noted mostly when users were in the Do Not Disturb state and forgot to note the disturbance while in the Available state.
 
-The users not using the tool, disturbed their colleagues by 30 \% in the Available state and 70 \% in the Do Not Disturb state. Considering disturbances by AnyOffice users only, 20 \% of disturbances were during the Do Not Disturb state of the object and the rest 80 \% were in the Available state. The AnyOffice users, who disturbed their colleague in his Do Not Disturb state, said that it was caused by their habit and thus their forgot to check the disturbed user's state. Visual comparison can be seen on figure \ref{pic:disturbancesGraphs}.
+The users not using the tool, disturbed their colleagues by 30 \% in the Available state and 70 \% in the Do Not Disturb state. Considering disturbances by AnyOffice users only, 20 \% of disturbances were during the Do Not Disturb state of the object and the rest 80 \% were in the Available state. The AnyOffice users, who disturbed their colleague in his Do Not Disturb state, said that it was caused by their habit and thus their forgot to check the disturbed user's state. Visual comparison can be seen on Figure \ref{pic:disturbancesGraphs}.
 
 \twopict{Not AnyOffice users}{data/aoNotDisturbances.png}{pic:aoNotDisturbances}{AnyOffice users}{data/aoDisturbances.png}{pic:aoDisturbances}{Disturbances by people}{width=0.9\textwidth}{pic:disturbancesGraphs}
 
@@ -574,15 +636,6 @@ The users not using the tool, disturbed their colleagues by 30 \% in the Availab
 
 \paragraph*{Feedback from Customer Support Services department: } As mentioned in section \ref{cssConsult}, CSS department has a ''buddy'' system, thus they do not need to manage interruptions there. In the aforementioned section was further stated, that occasionally also ad-hoc consultations with R\&D department happen. Inquired people from CSS agreed, that they would use the CSS tool in terms of checking the state of the person they want to contact before doing so. For this reason, they would like to be able to get a notification about a person becoming available without having to authenticate at the web page.
 
-Overall, AnyOffice reduced number of inappropriate time disturbances by 71~\%\footnote{For every 70 disturbances by a person not using the AnyOffice tool, there were 20 disturbances by an AnyOffice user.}. Therefor, it is true to say, that the tool succeeded in grouping the disturbances together, into the Available state periods. A day of a developer with a lot of programming work and no meeting scheduled, can be seen on figure \ref{pic:anyOfficeStatesFinal}, as it was captured by the AnyOffice tool.
-
-\pict{States of a developer using AnyOffice}{data/anyOfficeStatesFinal.png}{width=0.8\textwidth}{pic:anyOfficeStatesFinal}
-
-After introduction of ''Start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people started to consider the tool unobtrusive. 
-
-
-
-
 Initial costs related to introducing the AnyOffice tool consist of:
 \begin{itemize}
 	\item{hardware to run the server-side application (neglegible for Y Soft);}
@@ -591,15 +644,21 @@ Initial costs related to introducing the AnyOffice tool consist of:
 \end{itemize}
 The tool requires no maintenance other than updating the server-side application and the client application when necessary. 
 
-\chapter{Conclusions and Future Work}
+Overall, AnyOffice reduced number of inappropriate time disturbances by 71~\%\footnote{For every 70 disturbances by a person not using the AnyOffice tool, there were 20 disturbances by an AnyOffice user.}. Therefor, it is true to say, that the tool succeeded in grouping the disturbances together, into the Available state periods. A day of a developer with a lot of programming work and no meeting scheduled, can be seen on Figure \ref{pic:anyOfficeStatesFinal}, as it was captured by the AnyOffice tool.
 
+\pict{States of a developer using AnyOffice}{data/anyOfficeStatesFinal.png}{width=1\textwidth}{pic:anyOfficeStatesFinal}
+
+After introduction of ''Start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people started to consider the tool unobtrusive. Also, the ''watch'' function helps them to reach an unavailable colleague as soon as possible. This means that the tool has fulfilled all the requirements listed in chapter \ref{proposedSolution}.
+
+
+\chapter{Conclusions and Future Work}
 Internal communication inside Research and Development department is being managed in some ways. There are rules for effective meetings, email communication, reporting system and also consultations from Customer Support Services department, which are up to their purpose. What has not been managed is the ad-hoc face-to-face internal communication inside the R\&D department. Due to a rapid growth in numbers of employees, number of communication paths grew as well. Currently, there are so many possible sources of interruption, that it became at times impossible to keep focus on one thing for more than half an hour, or even less. Too many interruptions in inappropriate times are hurting to work productivity and are a cause of frustration, stress and higher work effort among employees.
 
 This thesis analyzed the current state by studying customs and processes from point of view of their users. The identified issues were gathered from several informal consultations with members of both R\&D and CSS departments. Impacts of these issues were confirmed by several studies \cite{studySpeedAndStress, studyAttention, studyDealingWithInterruptions, studyResumptionStrategies}. With a knowledge of important factors of efficient organizational communication, and also inspiration by the most common time management techniques, a solution was proposed. Moreover, a tool has been created in order to support this solution and make it easier to follow.
 
 According to the results stated in previous chapter \ref{results}, I consider the solution and the tool a success. All of the issues has been address and there has been a significant improvement with a promise of further positive development. Whether the tool will be used by whole R\&D department in Y Soft, is to be consulted with the authorities of the department.
 
-Nevertheless, there are plans to offer this tool also to other software companies, starting with Kentico Software. Several new features have been requested by the current users and also by myself, in order to fulfill a complex idea of the tool. Some of the planned features are:
+Nevertheless, there are plans to offer this tool also to other software companies, starting with Kentico~Software. Several new features have been requested by the current users and also by myself, in order to fulfill a complex idea of the tool. Some of the planned features are:
 \begin{itemize}
 	\item integration with Cisco Jabber;
 	\item get information about meetings from Microsoft Exchange Server;
@@ -609,14 +668,15 @@ Nevertheless, there are plans to offer this tool also to other software companie
 	\item client application GUI redesign;
 	\item advanced filtering options of users on web page;
 	\item reservation system of anything else;
+	\item integrate other tools by embedding them into a frame or by using their APIs;
 \end{itemize}
 and more. 
 
-I strongly believe, that the AnyOffice tool, together with the idea it carries, will be a success and will make it easier for software companies to better manage their internal communication in their agile environments.
+I strongly believe, that the AnyOffice tool, together with the idea it carries, will be a success and that the tool will make it easier for software companies to better manage their internal communication in their agile environments.
 
 % skratky 7Ss, CSS, IM, QA, R\&D, SWOT, GUI
 
-% napojit a, an, the, in, on, at, with, of, to, %
+% napojit a, an, the, in, on, at, with, of, to, by, %, Figure, Appendix, chapter, section
 
 \clearpage
 \phantomsection
@@ -639,6 +699,7 @@ I strongly believe, that the AnyOffice tool, together with the idea it carries, 
 \pict{AnyOffice - Home page}{data/anyoffice_home.png}{width=1\textwidth}{pic:anyofficeHome}
 \pict{AnyOffice - Graph of States}{data/anyoffice_graph.png}{width=1\textwidth}{pic:anyofficeGraph}
 \pict{AnyOffice - FAQ}{data/anyoffice_faq.png}{width=1\textwidth}{pic:anyofficeFaq}
+\pict{AnyOffice - Client Application}{data/client.png}{width=1\textwidth}{pic:anyofficeClient}
 
 
 \end{document}
