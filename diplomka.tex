@@ -519,7 +519,7 @@ The implemented tool will enforce the following basic set of rules:
 
 \chapter{AnyOffice Tool}
 
-The new tool got name AnyOffice. It consists of a web page and a light client application, which runs on the users' workstations in the notification area of the system's taskbar. Screenshots of the web page as well as the client application can be found in the Appendix~\ref{anyoffice}.
+The new tool got AnyOffice as a working name. It consists of a web page and a client application, which runs on the users' workstations in the notification area of the system's taskbar. Screenshots of the web page as well as the client application can be found in the Appendix~\ref{anyoffice}.
 
 From the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The~third section elaborates on~possible motivation for users to use the tool voluntarily. The~final two sections are dedicated to architecture of the implementation, and also used design patterns. This is followed by notes from a code review performed by a Senior Java Developer, feedbacks from an Interaction Designer and also first feedbacks from users.
 
@@ -575,26 +575,46 @@ The most ideal way of introducing a new tool is by motivating the potential user
 
 	
 	\section{Architecture and Design Patterns}
-heavy server - thin client architecture
+The AnyOffice tool consists of a server-side application and a thin client. This means that all data storage and processing is done on the server and the client serves only as a graphical user interface. The project is in package \texttt{eu.bato.anyoffice} and all packages mentioned later are subpackages of this package.
 
-Server and client communicate using REST services provided by the server, sending json objects, using basic authentication
+The server provides RESTful API for the client to receive current data in a form of JSON objects. Each request contains Basic Authentication authorization header.
 
 
 		\subsection{Server-side application}
-server in Java 8 EE MVC application, that consist of 4 modules (+ diagram of modules with couplings) - autowired beans used throughout the project
+The server-side application is written in Java EE version 7 and Java SE version 8. This allows using the new features like lambda expressions, Stream API for Collections, Optional from util package, and to use references to non-static variables from anonymous classes. Complete list of Java 8 enhancements can be found on page \cite{java8}.
 
+The server consists of the four modules that are on Figure \ref{pic:anyofficeModules} and are described in the following paragraphs and .
+
+\pict{AnyOffice - Modules}{data/modules.png}{width=0.8\textwidth}{pic:anyofficeModules}
+
+\paragraph*{Backend: } The backend module serves for persistence purposes. In package \texttt{backend.model}, there are POJO classes that form the data model. The model can be seen on Figure~\ref{pic:anyofficeModel}. The project is prepared for management of other entities like printers or shared notebooks. For this purpose there are dedicated classes \texttt{Resource} and its \texttt{ResourceState}, which can be ignored for now\footnote{When the functionality is added, the model will be more complicated. There is a need to define types of resources and their possible states.}. The \texttt{Person} object represents all users of the system. As each user can interact with entities, for this purpose there is the association. This can represent either an interaction between two users (a consultation), or a reservation of some resource. For measurement purposes, there is the \texttt{ConsultationRequest} object, which stores all interactions between two users. Also for measurements, there was the \texttt{Disturbance} object introduced, which stores all disturbances reported by users. The \texttt{PersonStateSwitch} object stores all changes of states of users, which is necessary to create the graphs of states on the web interface. 
+
+\pict{AnyOffice - Model}{data/model.png}{width=0.8\textwidth}{pic:anyofficeModel}
+
+The objects are annotated with JPA annotations, in order to be mapped into tables in a relational database. For development purposes a Derby database is used. The Object Relational Mapping is configured in class \texttt{backend.config.DataConfig}. The project uses Spring Data JPA for this purpose. The necessary \texttt{EntityManagerFactoryBean} is configured purely in Java, without any use of deprecated xml files. However, persistence unit is still configured using an xml file, in \texttt{persistence.xml} located in module's resources, as I have not found any other feasible way. 
+
+All objects from the model have appropriate Database Access Object (DAO) located in the \texttt{backend.dao} package. All DAO interfaces extend the default \texttt{Dao<T, U extends Serializable>} interface, which defines basic operations: \texttt{save}, \texttt{findOne}, \texttt{findAll} and \texttt{delete}. The DAO interfaces are implemented in the \texttt{impl} subpackage.
+
+The \texttt{Backend} module also contains implementations of interfaces from the \texttt{ServiceApi} module, which provide connection between the persistence and application layers of the application. These implementations are dependent on the implementation of the DAOs, and can be easily replaced by any other implementation as far as they implement the interfaces in the \texttt{ServiceApi} module. This way it is possible for example to replace this backend with a backend that stores data in files on a disk.
+
+\paragraph*{ServiceApi: } As the name of the module suggests, this is the API of the application. The module is a facade of the persistence layer. It contains Data Transfer Objects (DTO), which are adjusted to the needs of the presentation layer. The services in the \texttt{serviceapi.service} package use these DTOs to communicate with the presentation layer and converts them to DAOs, which are used by the persistence layer. It also provides methods, that are logical from the presentation point of view.
+
+\paragraph*{Core: } The core module implements the application logic. It can be replaced in order to implement some different inner logic using the same persistence layer and presentation layer. It provides methods for handling of states and interactions. Also it contains schedulers for running tasks checking the expiration of states\footnote{As stated in chapter \ref{proposedSolution}, the Do Not Disturb state has to be automatically switched to Available state after the defined period.}. A lot of aspects are configurable by editing the \texttt{conf/core.properties} file. The configuration options include:
 \begin{itemize}
-	\item Backend - data model in EJBs made from POJOs; Spring Data JPA with Hibernate (DAOs);
-	\item ServiceApi - services and DTOs
-	\item Core - main logic of switching states, managing interactions, scheduled tasks for checking the expiration of states
-	\item Frontend - Thymeleaf (relatively new template engine) together with Spring's Controllers and RestControllers
+	\item maximum period of Do Not Disturb state;
+	\item minimum period of Available state;
+	\item interval of checking the expiration of states of persons;
+	\item period, after which client applications are considered offline..
 \end{itemize}
+(tu by som mohol popisat logiku)
 
-SpringFramework configured in code as much as possible (minimum of xml files), which is new in Spring 4 
+\paragraph*{Frontend: } The \texttt{Frontend} module represents the presentation layer and also provides RESTful service, which is currently used by the client application. This module is implemented using the Spring MVC Framework. The Controllers for the web application are in the package \texttt{frontend.web.controllers}. Thymeleaf was chosen for the template engine. The main reason was the possibility to directly crate html pages, apart from the JSP. The REST Controllers are located in the package \texttt{frontend.rest.v1\_0.controllers}. 
 
-configuration of security (Spring's authentication filter chain)
+Application security is driven by the Spring's Security Filter Chain. The most important part is that the requests from the RESTful service are filtered out by the \\texttt{authenticationFilter()} at the very beginning of the chain, and the requests from the web interface are handled by the chain itself. This allows to use stateless authentication for the RESTful service, and sessions for the web application. The requests that require authentication, are approved or rejected by Spring's \texttt{AuthenticationManagerBuilder}. Based on the current configuration, the authentication is done either against database or an AD server.
 
-localization - Spring's MessageSource
+Although only English is currently supported, the web application is fully prepared for internationalization. This is configured in the \texttt{AppConfig} class where \texttt{MessageSource} bean is defined. The only thing left to support other languages is to add more localization files into the \texttt{i18n} package in resources.
+
+Configuration of this module is done in two files - \texttt{application.properties} and \texttt{ldap.properties}. The first one defines password encryption details, path to the file of the client application and whether the authentication is done using AD or database. The other file serves for configuration of the AD authentication, defining server address, credentials, default organizational unit and domain.
 
 		\subsection{Client application}
 client is a Java 7 application, Swing for GUI
@@ -604,6 +624,8 @@ client is a Java 7 application, Swing for GUI
 built by gradle, using SpringBoot for running, Git for tracking on GitHub, FatJar plugin of gradle to make runnable jars
 
 server app is built into war file, runs on Tomcat with PostgreSQL DB
+
+posible configuration
 
 
 		\subsection{DesignPatterns}
@@ -699,7 +721,8 @@ I strongly believe, that the AnyOffice tool, together with the idea it carries, 
 \pict{AnyOffice - Home page}{data/anyoffice_home.png}{width=1\textwidth}{pic:anyofficeHome}
 \pict{AnyOffice - Graph of States}{data/anyoffice_graph.png}{width=1\textwidth}{pic:anyofficeGraph}
 \pict{AnyOffice - FAQ}{data/anyoffice_faq.png}{width=1\textwidth}{pic:anyofficeFaq}
-\pict{AnyOffice - Client Application}{data/client.png}{width=1\textwidth}{pic:anyofficeClient}
+\pict{AnyOffice - Client Application}{data/client.png}{width=0.5\textwidth}{pic:anyofficeClient}
+\pict{AnyOffice - Packages}{data/packages.png}{height=1\textheight}{pic:anyofficePackages}
 
 
 \end{document}
