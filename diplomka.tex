@@ -14,6 +14,7 @@
 \usepackage{float}
 \usepackage{verbatim}
 \usepackage{pdfpages}
+\usepackage{cleveref}[2012/02/15]
  
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
@@ -79,6 +80,8 @@
 	\end{figure}
 }
 
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
 \makeatletter
 \renewcommand\paragraph{
    \vspace{-10pt}
@@ -123,7 +126,7 @@ I would like to thank to my supervisor Mgr. Petr Neugebauer, MBA for his valuabl
 The goal of this thesis is to streamline communication between teams and their members and to prevent loss of productivity due to frequent interruptions in a mid-size software company, where employers are dealing with adaptation of agile approaches. The thesis should analyze internal processes as well as requirements and expectations of different stakeholders regarding productivity, especially communication gaps. Based on these identified issues, the implementation part of the work will cover design and implementation of a tool, which will enforce the team members to follow the proposed process(es). This thesis is realized in cooperation with Y Soft Corporation, a.s.
 \end{ThesisAbstract}
 \begin{ThesisKeyWords}
-Agile, Communication, Company, Internal, Interruption, Organization, Team, Teamwork.
+Agile, Communication, Company, Internal, Interruption, Java, Organization, Pomodoro, Spring, Team, Teamwork, Thymeleaf.
 \end{ThesisKeyWords}
 \MainMatter
 \tableofcontents %  prints  table  of  contents
@@ -187,7 +190,7 @@ A comic made by Jason Heeris [Appendix \ref{app:software engineer}],  is probabl
 %Imagine a software engineer in a middle of a debugging task. He has finally come to a sufficient level of understanding of the tricky condition in the code, has done the right amount of cycles to get the correct value in a variable, which purpose is a little mystery to him, and is very probably just about to find out, what causes the exception, that the important customer sees in logs from time to time under unknown conditions. All of a sudden, a colleague comes by to ask about that other task the software engineer had been working on and is currently under test. The distraction causes him to accidentally step over the expression instead of stepping into it. So, he asks the colleague to repeat the question, as he was only partly listening. After helping the colleague, he looks down at his paper wondering, what ''18rts97'' means, and restarts the debugging process.
 
 
-		\subsection{The Real Cost of Interruptions }
+		\subsection{The Real Cost of Interruptions }\label{costOfInterruptions}
 Several studies \cite{studySpeedAndStress, studyAttention, studyDealingWithInterruptions, studyResumptionStrategies} have been done on interruptions and their impact on work. Various measures have been done including context of the interruptions, their frequency, impact on work efficiency, stress level, workload and effort. Other studies focus on the amount of productivity time wasted by these interruptions. In this section, I will mention several of these studies.
 
 \paragraph*{More Speed and Stress: } The study \cite{studySpeedAndStress} was performed on people answering to emails in their inbox as quickly, correctly and politely as possible. They were told that their ``supervisor'' is sitting in another room and will contact them regularly to ask questions either over telephone or IM\footnote{IM can refer to Instant Messenger or Instant Message, which is a text message sent using a service (messenger), that enables real time communication over the Internet.}. The results of the study show, that when people are constantly interrupted, they develop a mode of working faster and producing less, to compensate for the time lost by the interruptions. However, this faster pace of work has its cost: higher workload and frustration, more stress, effort and time pressure. In conclusion, when being interrupted, the work can be done faster, but at a price. This study also shows that the context of the interruption to the currently performed task makes no difference or a very little difference. Table \ref{table:workload} shows the measures stated.
@@ -314,17 +317,17 @@ In order to understand the employees, their customs and needs, first it is neces
 
 Y Soft Corporation, a.s. was founded in 2000 by a small group of students as a part of a student project at Masaryk University in Brno. After several failed projects, the founders discovered a niche in the market, which secured the future of the company. They developed a system, that enabled authentication of users at printers using a card reader. The whole company had 3 to 4 members, who were working at their dorm rooms.
 
-In 2003, the company introduced SmartQ software, which controlled printing and copying processes. The system enabled securing the printing and scanning processes and blocking printing functions. Moreover, Y Soft was the first to introduce a precise charging system for print services. In this period, the company grew by X employees, .............
+In 2003, the company introduced SmartQ software, which controlled printing and copying processes. The system enabled securing the printing and scanning processes and blocking printing functions. Moreover, Y Soft was the first to introduce a precise charging system for print services.
 
-In years 2004 and 2005, SmartQ was renamed to YSoft SafeQ. A new hardware terminal was introduced. ........
+In years 2004 and 2005, SmartQ was renamed to YSoft SafeQ. A new hardware terminal was introduced. The company slowly started to grow by a few new employees.
 
-In 2006, company grew by another X employees, as it bought a new production line for the hardware terminal, YSoft SafeQ Terminal Professional. The company also developed the first integrated terminal for multifunction printers.
+In 2006, company grew by another couple of employees, as it bought a new production line for the hardware terminal, YSoft SafeQ Terminal Professional. The company also developed the first integrated terminal for multifunction printers.
 
 In 2007 - 2010 the Y Soft Corporation continued its growth while introducing several new technologies. The company acquired XpertImage and established new offices in Japan, Israel and Dallas, Texas area. Moreover, the company moved its headquarters to new offices in Technology park in Brno.
 
-In 2011, a new office in Miami, Florida was established and the company invested significantly in the expansion of quality assurance department, a department for assuring quality of the product by testing. This expansion introduced several new employees into the company. The new quality assurance engineers required a lot of attention from developers and were usually working on something contextually different than the developers did. Nevertheless, the communication level was not so significant, as the whole Research and Development department consisted of only XY (30) people.
+In 2011, a new office in Miami, Florida was established and the company invested significantly in the expansion of quality assurance department, a department for assuring quality of the product by testing. This expansion introduced several new employees into the company. The new quality assurance engineers required a lot of attention from developers and were usually working on something contextually different than the developers did. Nevertheless, the communication level was not so significant, as the whole Research and Development department consisted of only about 35 people.
 
-Year 2012 was the year when company moved to a new bigger offices again. The Research and Development department grew significantly, increasing distance between it's members. As a result of that. the communication noise and complexity of communication grew significantly too.
+Year 2012 was the year when company moved to a new bigger offices again. The Research and Development department started to grow significantly, increasing distance between it's members. As a result of that. the communication noise and complexity of communication grew significantly too. 
 
 The recent years of Y Soft were marked by a spirit of growth in number of employees, mostly in the Research and Development department. Equitrac Systems of Australia and be3D were acquired by Y Soft too. Also, new offices in Dubai were established.
 
@@ -382,7 +385,7 @@ Internal communication inside Research and Development department happen in seve
 
 \pict{Communication paths in R\&D department}{data/paths.png}{width=1\textwidth}{pic:paths}
 
-Communication inside R\&D department is on a high level not only because it is required, but also thanks to the various communication channels and occasions for communication that are available. Other factor is that the majority of members of the department are in the same location. This allows them to use the most efficient way of communication - the face-to-face communication. On the other hand, the ad-hoc communication is so frequent, that it becomes bothering to the most exposed people. Based on the information in section \ref{currentState}, there currently are 3655 possible communication paths\footnote{There currently are 86 people in R\&D department, while everybody can possibly speak with anybody. This is a common ''handshake problem'' or combination of n items:
+Communication inside R\&D department is on a high level not only because it is required, but also thanks to the various communication channels and occasions for communication that are available. Other factor is that the majority of members of the department are in the same location. This allows them to use the most efficient way of communication~--~the face-to-face communication. On the other hand, the ad-hoc communication is so frequent, that it becomes bothering to the most exposed people. Based on the information in section \ref{currentState}, there currently are 3655 possible communication paths\footnote{There currently are 86 people in the R\&D department, while everybody can possibly speak with anybody. This is a common ''handshake problem'' or combination of n items:
 \begin{equation}
 	\frac{n*(n-1)}{2}=\frac{86*85}{2}=3655.
 \end{equation} } inside the R\&D department. The main communication paths between the individual roles of people in R\&D department (defined in section \ref{currentState}) are marked on picture \ref{pic:paths}. The preferred communication paths are marked red, however, many other paths exist.
@@ -521,7 +524,7 @@ The implemented tool will enforce the following basic set of rules:
 
 The new tool got AnyOffice as a working name. It consists of a web page and a client application, which runs on the users' workstations in the notification area of the system's taskbar. Screenshots of the web page as well as the client application can be found in the Appendix~\ref{anyoffice}.
 
-From the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The~third section elaborates on~possible motivation for users to use the tool voluntarily. The~final two sections are dedicated to architecture of the implementation, and also used design patterns. This is followed by notes from a code review performed by a Senior Java Developer, feedbacks from an Interaction Designer and also first feedbacks from users.
+In the first part of this chapter you can learn the steps necessary to start using the tool. Second section lists all the issues this tool addresses and all of its benefits. The~third section elaborates on~possible motivations for users to use the tool voluntarily. The~fourth sections is dedicated to architecture of the implementation, also mentioning some of the used libraries and technologies. This is followed by notes from a code review performed by a Senior Java Developer, feedbacks from an Interaction Designer and also first feedbacks from users.
 
 
 	\section{Basic Setup and Usage}
@@ -537,57 +540,71 @@ Users can be in one of the following states:
 
 A time information in the column ''Available'' can indicate two things:
 \begin{itemize}
-	\item In case the user is currently available or away during the Available state, the information shows how long has passed since the last Do Not Disturb period of the user. This indicates, whether the user has tendency to switch to Do Not Disturb state soon or not. For example, if the user has just recently become available, the information shows ''for 4 minutes''. In this case it is obvious, that the user will be available for at least 6 minutes.
+	\item In case the user is currently available or away during the Available state, the information shows how long has passed since the last Do Not Disturb period of the user. This indicates, whether the user has tendency to switch to Do Not Disturb state soon or not. For example, if the user has just recently become available, the information shows ''for 4 minutes''. In this case it is obvious, that the user will be available for at least next 6 minutes.
 	\item If the user is currently in the Do Not Disturb state, the column informs about time left until the user becomes available. For example ''in 1h 10m'' means, that the user will be available in 70 minutes.
 \end{itemize}
 
-In the top-right corner of the web page, there is a login form. Users should use their domain credentials to log in. By doing so for the first time, a new account is automatically created. An authenticated version of the page is shown on the Figure~\ref{pic:anyofficeHome}. Instead of the login form, a summary of the user's details together with a logout button are shown. In order to edit the user's details, click on the username. On the profile page it is possible to set display name, job title and current place. In order to integrate the account with HipChat, email and token need to be filled in. An example of the profile page is shown on Figure~\ref{pic:anyofficeProfile}.
+In the top-right corner of the web page, there is a login form. Enter the user's domain credentials to log in. By doing so for the first time, a new account is automatically created. On the authenticated version of the page\footnote{An authenticated version of the main page can be seen on the Figure~\ref{pic:anyofficeHome}.}, top-right corner is occupied by a summary of the user's details together with a logout button. 
 
-On the top of the page, there is a button to download the client application. The application is then started by running\footnote{The~\texttt{jar} file can be run directly from a file explorer.} the downloaded \texttt{anyoffice-client.jar} file. It is necessary to have Java Runtime Environment 7 and later installed in the system. In a moment, a new window is displayed on the screen. Enter the user's domain credentials to log in. When successful, a new green icon appears in the notification area of the system's taskbar. Right click the icon to open a menu. The menu can be seen on the Figure~\ref{pic:anyofficeClient}.
+In order to edit the user's details, click on the username or select ''Your profile'' from the main menu. On the profile page it is possible to set display name, job title and current place. To integrate the account with HipChat, email and token need to be filled in. An example of the profile page is shown on Figure~\ref{pic:anyofficeProfile}.
 
-The user is now in an Available state, which is indicated by the green icon. In order to change the user's state to Do Not Disturb, open the menu and choose the \texttt{Do Not Disturb for 90 min.} menu item or \texttt{Do Not Disturb for...} menu item to choose a custom length of the period. To indicate the Do Not Disturb state, the icon turns red. It is possible to switch to the Available state anytime by clicking the \texttt{Available} menu item. In such case, the Do Not Disturb state will now be unavailable for 10 minutes. The Away state is switched automatically, when user locks the workstation or is not active for longer period of time.
+On the top of the page, there is a button to download the client application. The application is then started by running the downloaded \texttt{anyoffice-client.jar} file\footnote{The~\texttt{jar} file can be run directly from a file explorer.  It is necessary to have Java Runtime Environment 7 or later installed in the system.}. In a moment, a new window is displayed on the screen, like the one on Figure \ref{pic:loginWindow}. Enter the user's domain credentials to log in. When successful, a new green icon appears in the notification area of the system's taskbar. Right click the icon to open a menu. The menu can be seen on the Figure~\ref{pic:anyofficeClient}.
+\pict{Login window of client application}{data/loginWindow.png}{width=0.5\textwidth}{pic:loginWindow} 
+
+The user is now in an Available state, which is indicated by the green icon. In order to change the user's state to Do Not Disturb, open the menu and choose the \texttt{Do Not Disturb for 90 min.} menu item or \texttt{Do Not Disturb for...} menu item to choose a custom length of the period. To indicate the Do Not Disturb state, the icon turns red. It is possible to switch to the Available state anytime by clicking the \texttt{Available} menu item. In such case, the Do Not Disturb state will now be unavailable for 10 minutes. The Away state is switched automatically, when user locks the workstation or is not active for a longer period of time.
 
 If the user changes the workplace (e.g. is currently working at a standup desk), this should be indicated by changing the location in AnyOffice. To do so, open the menu and either select one of the available locations or click on the \texttt{Other location...} menu item to set a custom location.
 
-This is all there is to know about the basic setup and usage of the AnyOffice tool. See the next section for a complete list of possibilities.
+This is all there is to know about the basic setup and usage of the AnyOffice tool. For users, link to these information can be found in the footer of the web page.
 
 
-	\section{Purposes and Features to Reach Them}
-(Ku kazdej veci tu napisem par slov)
-\paragraph*{Know current state of a colleague: } (web page, hipchat)
-\paragraph*{Know current location of a colleague: } (settings and showing)
-\paragraph*{Find out, when a colleague becomes available: } (Available column and watch function)
-\paragraph*{See a summary of your day: } (Graph of States)
-\paragraph*{Change your current state: } (switching of states, choosing period of the Do Not Disturb)
-\paragraph*{Work several hours with minimum interruptions: } (automatic switching of states)
-\paragraph*{Use the client only for tracking of your presence: } (disable popups, run at system startup)
-\paragraph*{Be notified to start working on a task: } (scheduled notifications to switch to DND)
-
-
-	\section{Motivations to use AnyOffice}
-The most ideal way of introducing a new tool is by motivating the potential users to choose the tool themselves, instead of doing it by a regulation from their superiors.
-
-(1. Not to be interrupted in work to prevent frustration
-
-2. Those who contact these people to prevent being sent away and having to come again later
-
-3. Those usually unreachable will be asked by the people trying to reach them to use the tool)
-
+	\section{Functions and Features}
+	In this section I will list all the requested functions of the tool, explain their purpose and shortly describe the features that make them possible.
 	
-	\section{Architecture and Design Patterns}
-The AnyOffice tool consists of a server-side application and a thin client. This means that all data storage and processing is done on the server and the client serves only as a graphical user interface. The project is in package \texttt{eu.bato.anyoffice} and all packages mentioned later are subpackages of this package.
+\paragraph*{Change your current state: } The basic feature of the AnyOffice tool is the ability to switch between Available and Do Not Disturb states. This can easily be done using the client application's menu\footnote{\label{clientNote}The menu of the client application can be seen on Figure \ref{pic:anyofficeClient}}. Users can see there, whether it is allowed for them to switch to the Do Not Disturb state at the moment. If not, there is information about the time remaining until the end of the mandatory availability. When a user switches to the Do Not Disturb state, it is possible to choose one of the default periods or manually set a custom duration of the period. Users can switch back to the Available state anytime. The Away state is set for them automatically when they do not move their mouse for a configured period of time or the workstation is locked. The Unknown state is set when user exits the client application or the application has not contacted the server for a configured period of time.
 
-The server provides RESTful API for the client to receive current data in a form of JSON objects. Each request contains Basic Authentication authorization header.
+\paragraph*{Reach a colleague: } In order to go to talk to a colleague in a right time, it is necessary to be able to easily check one's state. The states are displayed on the main page of the web application\footnote{\label{mainPage}The states of users can be seen on Figure \ref{pic:anyofficeHome}.}, and are optionally also transfered to the HipChat communicator. To indicate, whether the state of an account in HipChat is transfered from the AnyOffice or not, a status message ''AnyOffice'' is set. A difference between synchronized and not synchronized account can be seen on Figure \ref{pic:hipchatStatus}. Together with time, it is necessary to know the location of the person. For this purpose, users can set their location using the client application or directly on the web application. The locations of users are displayed in the list of users together with their states on the main page of the web application\cref{mainPage}.
+
+\pict{Snippet of users list on HipChat}{data/hipchatStatus.png}{width=0.2\textwidth}{pic:hipchatStatus} 
+
+\paragraph*{Find out, when a colleague becomes available: } It is possible to do so in two different ways. The first one is to check the ''Available'' column of the list of users on the main page. There is an information indicating remaining period of one's Do Not Disturb period. The other option is to use the ''watch'' functionality - log in to the web application a click the ''binoculars'' icon\cref{mainPage} of the particular user. When the ''watched'' user becomes available, the current user is notified by a popup window in the middle of the screen, to be able to react instantly. This window is shown on the Figure \ref{pic:availableNotification}. The ''watched'' user is informed about an upcoming consultation by a small bubble in the notification area of the taskbar.
+\pict{Notification about a user becoming available}{data/availableNotification.png}{width=0.6\textwidth}{pic:availableNotification}
+
+\paragraph*{Work for several hours with minimum interruptions: } Sometimes users need to be distracted as little as possible, mostly when working on a high priority task. For this purpose, they can set up an automatic switching of states. The ''automatic-switch'' feature can be turned on from the menu of the client application, in the ''Automatically switch to Do Not Disturb'' submenu\cref{clientNote}. It is possible to choose to automatically set the state only one time, or always when possible until this feature is turned off. In this case, user will cycle through periods of Do Not Disturb and Available states according to configured rules.
+
+\paragraph*{Use the client application only for tracking of your presence: } The users, who are usually contacted by others, and who do not have a need to prevent distractions, want to use the client application only to show their presence to other users. For them, the application needs to be as little obtrusive as possible, ideally unnoticeable. For this purpose, it is possible to disable all popups of the application, and also to have it run at the system startup. These settings can be done in the windows invoked by the ''Settings...'' menu item\cref{clientNote}. The settings window is shown on Figure \ref{pic:clientSettings}.
+\pict{Settings window}{data/settingsWindow.png}{width=0.5\textwidth}{pic:clientSettings}
+
+\paragraph*{See a summary of your day: } A secondary feature allows users to sum up their day by displaying a graph of their states. The graph simulates a clock with periods of each state displayed around it. Users can switch between days and define when their day started, in order to see the whole day even when doing a night shift. For example, this should allow them to examine their day to find possible causes of being behind the schedule, and to prevent future necessity of overtime work. The feature can be found on the web application, and here is shown in Figure \ref{pic:anyofficeGraph}.
+
+Apart from these features, there are some other less important ones, like scheduled switches of states and internal web tools embedded into the web application pages.
+
+	\section{Motivations to Use AnyOffice}
+The most ideal way of introducing a new tool is by motivating the potential users to choose the tool themselves, instead of doing it by a regulation from their superiors. Thus, the tool has to bring some additional value from using it. In the case of AnyOffice it is quite difficult. The tool brings the most value to the people being interrupted a lot (e.g. developers), and is more of a burden for the people usually seeking information (e.g. QA Engineers). Next, there is a third group of users, which are the providers of information and do not mind interruptions (e.g. Product Managers). Fortunately, the users can motivate each other to start using the tool, but the process requires their discipline. The motivation of the groups could be done as follows:
+\begin{enumerate}
+	\item The people usually being interrupted are the ones, who requested a tool like this. Thus, their motivation is obvious, as it is to avoid changing focus while doing complicated work, or to prevent having to switch focus often. The direct benefits were stated in section \ref{costOfInterruptions}.
+	\item If the first group of users is disciplined enough, they will start rejecting consultations during their Do Not Disturb periods. This would motivate the others to start using the tool in order to know, when is the first possible moment, when they can contact a person without being sent away\footnote{\label{note1}The users are notified, when a person becomes available, by the ''watch'' function.}. 
+	\item The third group are the main providers of information, who are usually unreachable due to frequent meetings, either planned or unplanned. Moreover, these people tend to work on other places then their original workplace. It is important for others to reach these people as soon as possible. Therefor, this group will be motivated to use the tool in order to increase their reachability\cref{note1} and to let others know about their current whereabouts\footnote{The current location can be set on the web page or using the client application.}.
+\end{enumerate}
+
+This chain of motivation is quite complicated and contains a lot of conditions. However, if the fundamental features will serve their purpose correctly, it is very probable that it will work. Moreover, to get the tool used by whole department will take some time, which is necessary for the people to get used to the new habits. Also, they have to understand the need of the discipline and to reject conversations with people while being in the Do Not Disturb state. 
+
+On the other hand, there is a possibility, that even though a tool like this was requested by the first group of people, they can be unable to change their habits in order to use the tool successfully.
+	
+	\section{Implementation and Deployment}
+The AnyOffice tool consists of a server-side application and a thin client. This means that all data storage and processing is done on the server and the client serves only as a graphical user interface. The project is in a package \texttt{eu.bato.anyoffice} and all packages mentioned later are subpackages of this one.
+
+The server provides RESTful API for the client to receive current data. Each request contains Basic Authentication authorization header and the body consists of JSON objects.
 
 
 		\subsection{Server-side application}
-The server-side application is written in Java EE version 7 and Java SE version 8. This allows using the new features like lambda expressions, Stream API for Collections, Optional from util package, and to use references to non-static variables from anonymous classes. Complete list of Java 8 enhancements can be found on page \cite{java8}.
+The server-side application is written in combination of Java EE version 7\footnote{Java EE has not been released in version 8.} and Java SE version 8. This allows using the new features like lambda expressions, Stream API for Collections, class \texttt{Optional} from \texttt{util} package, and to use references to non-static variables from anonymous classes. Complete list of Java 8 enhancements can be found on the Oracle's web page \cite{java8}.
 
-The server consists of the four modules that are on Figure \ref{pic:anyofficeModules} and are described in the following paragraphs and .
+The server consists of four modules. The modules and their couplings are shown on the Figure \ref{pic:anyofficeModules}. More information about the modules is given in the following paragraphs.
 
 \pict{AnyOffice - Modules}{data/modules.png}{width=0.8\textwidth}{pic:anyofficeModules}
 
-\paragraph*{Backend: } The backend module serves for persistence purposes. In package \texttt{backend.model}, there are POJO classes that form the data model. The model can be seen on Figure~\ref{pic:anyofficeModel}. The project is prepared for management of other entities like printers or shared notebooks. For this purpose there are dedicated classes \texttt{Resource} and its \texttt{ResourceState}, which can be ignored for now\footnote{When the functionality is added, the model will be more complicated. There is a need to define types of resources and their possible states.}. The \texttt{Person} object represents all users of the system. As each user can interact with entities, for this purpose there is the association. This can represent either an interaction between two users (a consultation), or a reservation of some resource. For measurement purposes, there is the \texttt{ConsultationRequest} object, which stores all interactions between two users. Also for measurements, there was the \texttt{Disturbance} object introduced, which stores all disturbances reported by users. The \texttt{PersonStateSwitch} object stores all changes of states of users, which is necessary to create the graphs of states on the web interface. 
+\paragraph*{Backend: } The backend module serves for persistence purposes. In package \texttt{backend.model}, there are POJO classes that form the data model. The model can be seen on Figure~\ref{pic:anyofficeModel}. The project is prepared for management of other entities like printers or shared notebooks. For this purpose, there are dedicated classes \texttt{Resource} and its \texttt{ResourceState}, which can be ignored for now\footnote{When the functionality is added, the model will be more complicated. There is a need to define types of resources and their possible states.}. The \texttt{Person} object represents all users of the system. As each user can interact with entities, for this purpose there is the association. This can represent either an interaction between two users (a consultation), or a reservation of some resource. For measurement purposes, there is the \texttt{ConsultationRequest} object, which stores all interactions between two users. Also for measurements, there was the \texttt{Disturbance} object introduced, which stores all disturbances reported by users. The \texttt{PersonStateSwitch} object stores all changes of states of users, which is necessary to create the graphs of states on the web interface. 
 
 \pict{AnyOffice - Model}{data/model.png}{width=0.8\textwidth}{pic:anyofficeModel}
 
@@ -595,52 +612,77 @@ The objects are annotated with JPA annotations, in order to be mapped into table
 
 All objects from the model have appropriate Database Access Object (DAO) located in the \texttt{backend.dao} package. All DAO interfaces extend the default \texttt{Dao<T, U extends Serializable>} interface, which defines basic operations: \texttt{save}, \texttt{findOne}, \texttt{findAll} and \texttt{delete}. The DAO interfaces are implemented in the \texttt{impl} subpackage.
 
-The \texttt{Backend} module also contains implementations of interfaces from the \texttt{ServiceApi} module, which provide connection between the persistence and application layers of the application. These implementations are dependent on the implementation of the DAOs, and can be easily replaced by any other implementation as far as they implement the interfaces in the \texttt{ServiceApi} module. This way it is possible for example to replace this backend with a backend that stores data in files on a disk.
+The \texttt{Backend} module also contains implementations of interfaces from the \texttt{ServiceApi} module, which provide connection between the persistence and application layers of the application. These implementations are dependent on the implementation of the DAOs, and can be easily replaced by any other implementation as far as they implement the interfaces in the \texttt{ServiceApi} module. This way it is for example possible to replace this backend with a backend that stores data in files on a disk.
 
 \paragraph*{ServiceApi: } As the name of the module suggests, this is the API of the application. The module is a facade of the persistence layer. It contains Data Transfer Objects (DTO), which are adjusted to the needs of the presentation layer. The services in the \texttt{serviceapi.service} package use these DTOs to communicate with the presentation layer and converts them to DAOs, which are used by the persistence layer. It also provides methods, that are logical from the presentation point of view.
 
-\paragraph*{Core: } The core module implements the application logic. It can be replaced in order to implement some different inner logic using the same persistence layer and presentation layer. It provides methods for handling of states and interactions. Also it contains schedulers for running tasks checking the expiration of states\footnote{As stated in chapter \ref{proposedSolution}, the Do Not Disturb state has to be automatically switched to Available state after the defined period.}. A lot of aspects are configurable by editing the \texttt{conf/core.properties} file. The configuration options include:
+\paragraph*{Core: } The core module implements the application logic. It can be replaced in order to implement some different inner logic using the same persistence layer and presentation layer. It provides methods for handling of states and interactions. Also it contains schedulers for running tasks that check expiration of states\footnote{As stated in the Chapter \ref{proposedSolution}, the Do Not Disturb state has to be automatically switched to Available state after a defined period.}. A lot of aspects are configurable by editing the \texttt{conf/core.properties} file. The configuration options include:
 \begin{itemize}
 	\item maximum period of Do Not Disturb state;
 	\item minimum period of Available state;
 	\item interval of checking the expiration of states of persons;
-	\item period, after which client applications are considered offline..
+	\item period, after which client applications are considered offline.
 \end{itemize}
 (tu by som mohol popisat logiku)
 
-\paragraph*{Frontend: } The \texttt{Frontend} module represents the presentation layer and also provides RESTful service, which is currently used by the client application. This module is implemented using the Spring MVC Framework. The Controllers for the web application are in the package \texttt{frontend.web.controllers}. Thymeleaf was chosen for the template engine. The main reason was the possibility to directly crate html pages, apart from the JSP. The REST Controllers are located in the package \texttt{frontend.rest.v1\_0.controllers}. 
+\paragraph*{Frontend: } The \texttt{Frontend} module represents the presentation layer and also provides the RESTful service, which is currently used by the client application. This module is implemented using the Spring MVC Framework. The Controllers for the web application are in the package \texttt{frontend.web.controllers}. Thymeleaf was chosen for the template engine here. The main reason was the possibility to directly crate html pages, which is more practical in the development phase than using the JSP pages. The REST Controllers are located in the package \texttt{frontend.rest.v1\_0.controllers}. 
 
 Application security is driven by the Spring's Security Filter Chain. The most important part is that the requests from the RESTful service are filtered out by the \\texttt{authenticationFilter()} at the very beginning of the chain, and the requests from the web interface are handled by the chain itself. This allows to use stateless authentication for the RESTful service, and sessions for the web application. The requests that require authentication, are approved or rejected by Spring's \texttt{AuthenticationManagerBuilder}. Based on the current configuration, the authentication is done either against database or an AD server.
 
-Although only English is currently supported, the web application is fully prepared for internationalization. This is configured in the \texttt{AppConfig} class where \texttt{MessageSource} bean is defined. The only thing left to support other languages is to add more localization files into the \texttt{i18n} package in resources.
+Although only English is currently supported, the web application is fully prepared for internationalization. This is configured in the \texttt{AppConfig} class where \texttt{MessageSource} bean is defined. The only thing left to do in order to support other languages, is to add more localization files into the \texttt{i18n} package in resources.
 
 Configuration of this module is done in two files - \texttt{application.properties} and \texttt{ldap.properties}. The first one defines password encryption details, path to the file of the client application and whether the authentication is done using AD or database. The other file serves for configuration of the AD authentication, defining server address, credentials, default organizational unit and domain.
 
 		\subsection{Client application}
-client is a Java 7 application, Swing for GUI
+Based on the requests from my colleagues, the application is compatible with Java 7, so that there is no need for them to upgrade to Java 8. The main parts of the implementation are \texttt{TrayIconManager}, \texttt{RestClient}, \texttt{StateCheckService} and \texttt{WorkstationLockListener}.
 
+\paragraph*{TrayIconManager: } This class takes care of all the graphical stuff. The base is a \texttt{TrayIcon} from \texttt{java.awt} package. The other windows and popups are created from Java's Swing components. It provides three methods with package visibility: \texttt{updateFromServer}, \texttt{lock} and \texttt{close}. As the names may suggest, these serve for updating the GUI according to information from server, sending information about user session being locked or unlocked and for closing the application. The class also takes care about displaying all popups and windows when necessary. The main focus during the implementation of the class, was to make it as responsive as possible even if the server is unreachable.
 
-		\subsection{Deployment}
-built by gradle, using SpringBoot for running, Git for tracking on GitHub, FatJar plugin of gradle to make runnable jars
+\paragraph*{RestClient: } The \texttt{RestClient} class serves for communication with the server. It uses \texttt{RestTemplate} from Spring Web MVC library to send requests and get responses from the RESTful service provided by the server.
 
-server app is built into war file, runs on Tomcat with PostgreSQL DB
+\paragraph*{StateCheckService: } This Singleton class schedules a task for regular calls to the \texttt{TrayIconManager}, in order to check for any changes on the server and to update the GUI accordingly. It also runs a periodical check for the mouse position, in order to find longer periods of mouse inactivity to set the Away state accordingly.
 
-posible configuration
+\paragraph*{WorkstationLockListener: } This listener creates an invisible window on user's desktop. As soon as the window gets a notification from the operating system about the user's session being locked, the \texttt{WorkstationLockListener} transfers this information to the \\texttt{TrayIconManager}, which updates the GUI and sends the information to server.
 
+After first run, the client is initialized with default values from \texttt{client.properties} file in resources. Any change to configuration, that user makes, is stored into home folder of the current session account on the operating system. This allows keeping the configuration even after update of the application.
 
-		\subsection{DesignPatterns}
-najdem alebo vyrobim nejake design patterny
+		\subsection{Deployment}\label{deployment}
+The whole application is built using Gradle build automation system. Each module has its own \texttt{build.gradle} file containing necessary dependencies and tasks. Those tasks and dependencies, which are common for all modules, are defined in a \\texttt{build.gradle} file in the project folder, which is superior to the folders of separate modules.
 
+For versioning of the project, Git version control system was chosen. The main reason is its ease of use and good merging capabilities. The whole project is hosted on GitHub.
+
+For development purposes, the web application is run using Spring Boot. The reason is that the Sping Boot has an embedded Tomcat server and requires minimum to no configuration. This allows the developers to run the application without any hassle. The client application is a standard Java application, thus it is run in a standard way by Gradle's Java plugin.
+
+The server application is deployed as a \texttt{war} file to a server running Tomcat and a PostgreSQL database. The client application is packed into a runnable jar and uploaded to a server, available for users to download and run it.
+
+After copying the \texttt{war} file into the \texttt{webapps} folder of a Tomcat server, it may be necessary to change its configuration. To do so, edit files \texttt{application.properties}, \texttt{ldap.properties}, \texttt{database.properties} and \texttt{core.properties} according to your environment. It is also recommended to change the default configuration of the client application by modifying the \texttt{client.properties} file.
 	
 	\section{Code Review and Usability Feedbacks}
 
-code review od Juraja uz mam email
+Before the tool was made available for the first user, the code has been reviewed by a Senior Java Developer. There has also been some changes to the graphical user interface based on the comments from a colleague specialized in user experience. Afterwards, the AnyOffice tool was shortly used by a few users to get an early feedback.
 
-GUI review od UX chlapcov mam poznamky
+The code review revealed no critical issues. The reviewer was happy about the classical web application architecture being followed. He advised me to use FindBugs plugin for Gradle, in order to reveal small implementation issues or bad practices. Eventually, the FindBugs plugin returned several warning, which were mostly identified as bad practices. I have addressed most of the issues found.
 
-functionality review co som postupne dostaval feedback od ludi
+Feedback from the user experience point of view was very interesting. It initiated several changes in the graphical user interface of both the web application and the client application\footnote{The final interfaces can be seen in the Appendix \ref{anyoffice}.}:
+\begin{itemize}
+	\item the state icons (dots) were also added a textual description;
+	\item the ''Download client'' button was moved from the footer of the page to the top and was made more dominant;
+	\item ''Graph of states'' was added the clock image into the middle of the graph, a legend was added to the graph and the filter is now refreshing the graph after every change;
+	\item the location setting was changed from a text field into a drop down menu;
+	\item the ''FAQ'' page was reformatted for a better readability;
+	\item the menu of the client application was turned upside down in order to support the default position of taskbar on Windows operating systems.
+\end{itemize}
+There has also been several other cosmetic changes in a form of changed fonts and paddings, in order to make the page look cleaner and more readable. It was also recommended to introduce icons into the menu of the client application and to make a custom layout of the menu items, but this change has not been implemented in the first version of the application.
 
-longer DND time and shorter Available time je zmena oproti povodnemu zadaniu na ziadost vyvojarov aj team leadov
+The early feedback from users introduced the following changes:
+\begin{itemize}
+	\item the Do Not Disturb period lasts 90 minutes instead of the original 45 minutes;
+	\item user has to stay in the Available state only 10 minutes, while the original configuration required 15 minutes;
+	\item the length of the Do Not Disturb period is configurable, so that users do not need to remember to switch back to the Available state, if they do not need the whole 90 minutes period;
+	\item features ''automatic-switch'', ''start at system startup'' and ''disable popups''  were introduced;
+	\item a direct link to the web application was added into the menu of the client application;
+	\item the list of users on the main page of the web application is refreshed automatically;
+\end{itemize}
 
 
 \chapter{Results}\label{results}
@@ -652,11 +694,11 @@ The users not using the tool, disturbed their colleagues by 30 \% in the Availab
 
 \twopict{Not AnyOffice users}{data/aoNotDisturbances.png}{pic:aoNotDisturbances}{AnyOffice users}{data/aoDisturbances.png}{pic:aoDisturbances}{Disturbances by people}{width=0.9\textwidth}{pic:disturbancesGraphs}
 
-\paragraph*{Feedback from users mainly being contacted: } Although there was some decrease in number disturbances during the Do Not Disturb periods, the users were unable to fully experience an interruption-free work periods, mainly due to the colleagues not using the AnyOffice tool. Also thanks to the ''automatic-switch'' function, the tool was unobtrusive. When changing their place of work, they rarely remembered to switch their location also in AnyOffice.
+\paragraph*{Feedback from users mainly being contacted: } Although there was some decrease in number disturbances during the Do Not Disturb periods, the users were unable to fully experience an interruption-free work periods, mainly due to the colleagues not using the AnyOffice tool. Also thanks to the ''automatic-switch'' function, they tend to forget about the states being changed and stay in the Do Not Disturb state even when not necessary. They would welcome a more visible way of showing their current status and a physical button to easily turn the Do Not Disturb state on or off. Furthermore, when changing their place of work, they rarely remembered to switch their location also in AnyOffice. Rather than that, they would like to see the list of requested consultations together with the matters to be discussed and be able to instantaneously agree with the initiator on a meeting.
 
-\paragraph*{Feedback from users mainly contacting somebody else: } Users found it a little obtrusive, having to check the states of people on the web page of AnyOffice before contacting them. Integration with HipChat is an improvement, but they would rather see the current state of a person when being approached\footnote{When asked, how the state should be visible, most of them thought of something like a sticky note on a visible place.}. Users also did not notice any major restrictions or complications in their work, that would be caused by the tool. If a person was unavailable, they either contacted somebody else, or waited for the person to become available. To find out, when the person becomes available, they mostly used the Watch function, alternatively remembered when to contact the person themselves according to the time information on AnyOffice web page. Sometimes, the original matter became irrelevant in the meantime, as they found the answer themselves. Furthermore, in some urgent cases, they contacted the person despite the Do Not Disturb state. Regarding switching their states, these people mostly did not use the Do Not Disturb state, as it is not necessary for them.
+\paragraph*{Feedback from users mainly contacting somebody else: } Users found it a little obtrusive, having to check the states of people on the web page of AnyOffice before contacting them. Integration with HipChat is an improvement, but they would rather see the current state of a person when being approached\footnote{When asked, how the state should be visible, most of them thought of something like a sticky note on a visible place.}. Users also did not notice any major restrictions or complications in their work, that would be caused by the tool. If a person was unavailable, they either contacted somebody else, or waited for the person to become available. To find out, when the person becomes available, they mostly used the ''watch'' function. Sometimes, the original matter became irrelevant in the meantime, as they found the answer themselves. Furthermore, in some urgent cases, they contacted the person despite the Do Not Disturb state. Regarding switching their states, these people mostly did not use the Do Not Disturb state, as it is not necessary for them.
 
-\paragraph*{Feedback from Customer Support Services department: } As mentioned in section \ref{cssConsult}, CSS department has a ''buddy'' system, thus they do not need to manage interruptions there. In the aforementioned section was further stated, that occasionally also ad-hoc consultations with R\&D department happen. Inquired people from CSS agreed, that they would use the CSS tool in terms of checking the state of the person they want to contact before doing so. For this reason, they would like to be able to get a notification about a person becoming available without having to authenticate at the web page.
+\paragraph*{Feedback from Customer Support Services department: } As mentioned in section \ref{cssConsult}, CSS department has a ''buddy'' system, thus they do not need to manage interruptions there. In the aforementioned section was further stated, that occasionally also ad-hoc consultations with R\&D department happen. Inquired people from CSS agreed, that they would use the CSS tool in terms of checking the state of the person they want to contact, before actually doing so. For this reason, they would like to be able to get a notification about a person becoming available without having to authenticate at the web page.
 
 Initial costs related to introducing the AnyOffice tool consist of:
 \begin{itemize}
@@ -670,7 +712,7 @@ Overall, AnyOffice reduced number of inappropriate time disturbances by 71~\%\fo
 
 \pict{States of a developer using AnyOffice}{data/anyOfficeStatesFinal.png}{width=1\textwidth}{pic:anyOfficeStatesFinal}
 
-After introduction of ''Start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people started to consider the tool unobtrusive. Also, the ''watch'' function helps them to reach an unavailable colleague as soon as possible. This means that the tool has fulfilled all the requirements listed in chapter \ref{proposedSolution}.
+After introduction of ''start at system startup'', ''automatic-switch'' and ''disable popups'' functions, people started to consider the tool unobtrusive. Also, the ''watch'' function helps them to reach an unavailable colleague as soon as possible. This means that the tool has fulfilled all the requirements listed in the Chapter \ref{proposedSolution}.
 
 
 \chapter{Conclusions and Future Work}
@@ -678,21 +720,21 @@ Internal communication inside Research and Development department is being manag
 
 This thesis analyzed the current state by studying customs and processes from point of view of their users. The identified issues were gathered from several informal consultations with members of both R\&D and CSS departments. Impacts of these issues were confirmed by several studies \cite{studySpeedAndStress, studyAttention, studyDealingWithInterruptions, studyResumptionStrategies}. With a knowledge of important factors of efficient organizational communication, and also inspiration by the most common time management techniques, a solution was proposed. Moreover, a tool has been created in order to support this solution and make it easier to follow.
 
-According to the results stated in previous chapter \ref{results}, I consider the solution and the tool a success. All of the issues has been address and there has been a significant improvement with a promise of further positive development. Whether the tool will be used by whole R\&D department in Y Soft, is to be consulted with the authorities of the department.
+According to the results stated in the previous Chapter \ref{results}, I consider the solution and the tool a success in terms of being able to solve the issues defined in Chapter \ref{issues}. Despite of that, in the current version the tool can not be used by the R\&D department in Y Soft and most probably also any other company.
 
-Nevertheless, there are plans to offer this tool also to other software companies, starting with Kentico~Software. Several new features have been requested by the current users and also by myself, in order to fulfill a complex idea of the tool. Some of the planned features are:
+However, the feedback collected from the testing group of user could make a change. Their requests are very reasonable and also very similar in many points. Both groups, the usual initiators and the usual objects of the communication, would like a more visible way of showing one's state. A simple LED or a small light could serve this purpose and would eliminate the need to check the website before contacting a person. Moreover, it would remind the person about his or her current state and thus it will not be forgotten about. The other request, made by the people usually contacted, was to fully manage their consultations also in the periods of availability. This idea follows the principles of the Pomodoro technique, as it would make the interruptions fully depend on the objects of the interruptions.
+
+If the management of the Y Soft Corporation will be positive, the AnyOffice tool will be tested again after removing the current usability flaws. Apart from the features requested by users, there are some other, which were planned from the very beginning and should bring more value to the tool. Some of them are:
 \begin{itemize}
 	\item integration with Cisco Jabber;
 	\item get information about meetings from Microsoft Exchange Server;
 	\item automatic updates of client application;
 	\item set current location based on DNS (IP, WiFi) automatically;
-	\item make the status of a person physically visible;
 	\item client application GUI redesign;
 	\item advanced filtering options of users on web page;
-	\item reservation system of anything else;
-	\item integrate other tools by embedding them into a frame or by using their APIs;
+	\item reservation system of anything else (e.g. shared notebooks, whiteboards, display panels);
+	\item integrate other tools by embedding them into a frame or by using their APIs.
 \end{itemize}
-and more. 
 
 I strongly believe, that the AnyOffice tool, together with the idea it carries, will be a success and that the tool will make it easier for software companies to better manage their internal communication in their agile environments.
 
@@ -710,7 +752,6 @@ I strongly believe, that the AnyOffice tool, together with the idea it carries, 
 \appendix
 
 \chapter{Why You Should Not Interrupt a Programmer}\label{app:software engineer}
-%\includepdf[pages={1}, scale=.4, pagecommand={}]{data/ProgrammerInterrupted.pdf}
 \begin{figure}[htp] \centering{
 \includegraphics[scale=0.117]{data/ProgrammerInterrupted.png}}
 \cite{programmerInterrupted}
@@ -723,6 +764,15 @@ I strongly believe, that the AnyOffice tool, together with the idea it carries, 
 \pict{AnyOffice - FAQ}{data/anyoffice_faq.png}{width=1\textwidth}{pic:anyofficeFaq}
 \pict{AnyOffice - Client Application}{data/client.png}{width=0.5\textwidth}{pic:anyofficeClient}
 \pict{AnyOffice - Packages}{data/packages.png}{height=1\textheight}{pic:anyofficePackages}
+
+\chapter{Contents of the Attached CD}
+The CD attached at the back cover of the thesis contains:
+\begin{itemize}
+	\item the source code of the application;
+	\item the web application packed into a \texttt{war} file ready to be deployed
+	\item the client application in a form of a runnable jar 
+\end{itemize}
+Note, that the applications are pre-configured for the use in Y Soft Corporation. See section \ref{deployment} for more information on the deployment of the applications.
 
 
 \end{document}
